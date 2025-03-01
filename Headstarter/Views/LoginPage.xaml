@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Headstarter.ViewModels"
+             x:Class="Headstarter.Views.LoginPage"
+             Title="Login">
+
+    <VerticalStackLayout Padding="20">
+        <Entry Placeholder="Username" Text="{Binding Username}" />
+        <Entry Placeholder="Password" IsPassword="True" Text="{Binding Password}" />
+        <Picker Title="User Type" SelectedItem="{Binding SelectedUserType}">
+            <Picker.Items>
+                <x:String>Specialist</x:String>
+                <x:String>Recruiter</x:String>
+            </Picker.Items>
+        </Picker>
+        <Button Text="Login" Command="{Binding LoginCommand}" />
+    </VerticalStackLayout>
+</ContentPage>
