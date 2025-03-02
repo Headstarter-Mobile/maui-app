@@ -1,9 +1,9 @@
-using Headstarter.Models;
+using Headstarter.Protos;
 
 namespace Headstarter.Services;
 
 public interface IUserService
 {
-    Task<User> AuthenticateUser(string username, string password, UserType userType);
+    Task<UserData> AuthenticateUser(string username, string password, UserType userType);
     // ... other user-related methods
 }

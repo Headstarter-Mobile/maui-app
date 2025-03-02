@@ -1,21 +1,21 @@
-using Headstarter.Models;
+using Headstarter.Protos;
 
 namespace Headstarter.Services;
 
 public partial class UserService : IUserService
 {
-    private readonly HttpClient _httpClient; // For API calls
+    private readonly GrpcService _grpcService; // For API calls
 
-    public UserService(HttpClient httpClient)
+    public UserService(GrpcService grpcService)
     {
-        _httpClient = httpClient;
+        _grpcService = grpcService;
     }
 
-    public async Task<User> AuthenticateUser(string username, string password, UserType userType)
+    public async Task<UserData> AuthenticateUser(string username, string password, UserType userType)
     {
         if (username == "a" && password == "a")
         {
-            return new User()
+            return new UserData()
             {
                 Username = username,
                 Password = password,
@@ -25,30 +25,28 @@ public partial class UserService : IUserService
         
         try
         {
-            // Construct API endpoint based on userType
-            string endpoint = userType == UserType.Specialist ? "api/specialists/login" : "api/recruiters/login";
-
-            var request = new
+            var response = await _grpcService.usersClient.ValidateUserAsync(new Protos.UserAuthRequest
             {
                 Username = username,
                 Password = password
-            };
-            var json = System.Text.Json.JsonSerializer.Serialize(request);
-            var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-
-            var response = await _httpClient.PostAsync(endpoint, content);
-
-            if (response.IsSuccessStatusCode)
+            });
+            if (response.Status == UserAuthStatus.WrongPassword)
             {
-                var responseContent = await response.Content.ReadAsStringAsync();
-                var user = System.Text.Json.JsonSerializer.Deserialize<User>(responseContent);
-                return user;
-            }
-            else
-            {
-                // Handle authentication failure (e.g., throw an exception)
+                // Handle wrong password
                 return null;
             }
+            if (response.Status == UserAuthStatus.NotFound)
+            {
+                // Handle user not found
+                return null;
+            }
+
+            return new UserData()
+            {
+                Username = username,
+                Password = password,
+                UserType = response.Type
+            };
         }
         catch (Exception ex)
         {
