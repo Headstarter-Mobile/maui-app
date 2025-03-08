@@ -26,7 +26,7 @@ public partial class MainPage : ContentPage
 
 	private async void OnLoginClicked(object? sender, EventArgs e)
 	{
-		await Navigation.PushAsync(new LoginPage(new LoginViewModel(new UserService(new HttpClient())))); // Navigate to sign up page.
+		await Navigation.PushAsync(new LoginPage(new LoginViewModel(new UserService(GrpcService.Instance)))); // Navigate to sign up page.
 	}
 }
 
