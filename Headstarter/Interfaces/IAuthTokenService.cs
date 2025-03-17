@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Headstarter.Interfaces
 {
-    interface IAuth_tokenService
+    interface IAuthTokenService
     {
     }
 }
