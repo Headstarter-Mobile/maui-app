@@ -1,4 +1,4 @@
-﻿namespace Headstarter.Services
+﻿namespace Headstarter.Interfaces
 {
     internal interface IPasswordService
     {
