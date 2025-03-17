@@ -1,4 +1,7 @@
+using Grpc.Core;
+using Headstarter.Interfaces;
 using Headstarter.Protos;
+using System.Threading.Channels;
 
 namespace Headstarter.Services;
 
@@ -9,50 +12,167 @@ public partial class UserService : IUserService
     public UserService(GrpcService grpcService)
     {
         _grpcService = grpcService;
+       
     }
 
-    public async Task<UserData> AuthenticateUser(string username, string password, UserType userType)
-    {
-        if (username == "a" && password == "a")
-        {
-            return new UserData()
-            {
-                Username = username,
-                Password = password,
-                UserType = userType
-            };
-        }
-        
+    public User AuthenticateUser(string username, string password, UserRole userType)
+    {      
         try
         {
-            var response = await _grpcService.usersClient.ValidateUserAsync(new Protos.UserAuthRequest
+            var response = _grpcService.usersClient.GetUser(new User()
             {
-                Username = username,
-                Password = password
-            });
-            if (response.Status == UserAuthStatus.WrongPassword)
-            {
-                // Handle wrong password
-                return null;
-            }
-            if (response.Status == UserAuthStatus.NotFound)
-            {
-                // Handle user not found
-                return null;
-            }
-
-            return new UserData()
-            {
-                Username = username,
+                Name = username,
                 Password = password,
-                UserType = response.Type
-            };
+                Type = userType
+            },_grpcService._metadata);
+            return response;
         }
-        catch (Exception ex)
+        catch (RpcException ex)
         {
-            // Handle exceptions (e.g., network issues)
-            return null;
+            if (ex.Status.StatusCode.Equals(StatusCode.NotFound))
+            {
+                // user not found
+                return null;
+            }
+            else if (ex.Status.StatusCode.Equals(StatusCode.PermissionDenied))
+            {
+                // permission denied
+                return null;
+            }
+            else
+            {
+                // other error
+                return null;
+            }
         }
     }
+
+    public User CreateUser(User user)
+    {
+        try
+        {
+            var response = _grpcService.usersClient.CreateUser(new User()
+            {
+                Name = user.Name,
+                Password = user.Password,
+                Type = user.Type
+            },_grpcService._metadata)
+            ;
+            return response;
+        }
+        catch (RpcException ex)
+        {
+            if (ex.Status.StatusCode.Equals(StatusCode.NotFound))
+            {
+                // user not found
+                return null;
+            }
+            else if (ex.Status.StatusCode.Equals(StatusCode.PermissionDenied))
+            {
+                // permission denied
+                return null;
+            }
+            else
+            {
+                // other error
+                return null;
+            }
+        }
+    }
+
+    public User DeleteUser(User user)
+    {
+
+        try
+        {
+            var response = _grpcService.usersClient.DeleteUser(user,_grpcService._metadata);
+            return user;
+        }
+        catch (RpcException ex)
+        {
+            if (ex.Status.StatusCode.Equals(StatusCode.NotFound))
+            {
+                // user not found
+                return null;
+            }
+            else if (ex.Status.StatusCode.Equals(StatusCode.PermissionDenied))
+            {
+                // permission denied
+                return null;
+            }
+            else
+            {
+                // other error
+                return null;
+            }
+        }
+    }
+
+    public async Task <ICollection<User>> GetAllUsers()
+    {
+        try
+        {
+            var client = _grpcService.usersClient;
+            using var call = client.GetAllUsers(new Google.Protobuf.WellKnownTypes.Empty(), _grpcService._metadata);
+            List<User> users = new List<User>();
+
+            while (await call.ResponseStream.MoveNext())
+            {
+                users.Add(call.ResponseStream.Current);
+            }
+            return users;
+        }
+        catch (RpcException ex)
+        {
+            if (ex.Status.StatusCode.Equals(StatusCode.NotFound))
+            {
+                // user not found
+                return null;
+            }
+            else if (ex.Status.StatusCode.Equals(StatusCode.PermissionDenied))
+            {
+                // permission denied
+                return null;
+            }
+            else
+            {
+                // other error
+                return null;
+            }
+        }
+        }
+
+    public User UpdateUser(User oldUser, User newUser)
+    {
+        try
+        {
+
+            var response = _grpcService.usersClient.UpdateUser(new Headstarter.Protos.UserUpdateRequest()
+            {
+                OldData = oldUser,
+                NewData = newUser
+            }, _grpcService._metadata);
+            return response;
+        }
+        catch (RpcException ex)
+        {
+            if (ex.Status.StatusCode.Equals(StatusCode.NotFound))
+            {
+                // user not found
+                return null;
+            }
+            else if (ex.Status.StatusCode.Equals(StatusCode.PermissionDenied))
+            {
+                // permission denied
+                return null;
+            }
+            else
+            {
+                // other error
+                return null;
+            }
+        }
+    }
+
     // ... other service methods
 }

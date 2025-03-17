@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Headstarter.Interfaces;
 using Headstarter.Protos;
-using Headstarter.Services;
 
 namespace Headstarter.ViewModels;
 
@@ -29,8 +29,8 @@ public class LoginViewModel : INotifyPropertyChanged
         set { _password = value; OnPropertyChanged(); }
     }
 
-    private UserType _selectedUserType;
-    public UserType SelectedUserType
+    private UserRole _selectedUserType;
+    public UserRole SelectedUserType
     {
         get => _selectedUserType;
         set { _selectedUserType = value; OnPropertyChanged(); }
@@ -40,12 +40,12 @@ public class LoginViewModel : INotifyPropertyChanged
 
     private async Task Login()
     {
-        UserData authenticatedUser = await _userService.AuthenticateUser(Username, Password, SelectedUserType);
+        User authenticatedUser = _userService.AuthenticateUser(Username, Password, SelectedUserType);
 
         if (authenticatedUser != null)
         {
             // Navigate to the appropriate screen based on userType
-            if (SelectedUserType == UserType.Candidate)
+            if (SelectedUserType == UserRole.Candidate)
             {
                 await Shell.Current.GoToAsync("SpecialistHomePage");
             }
