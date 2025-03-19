@@ -1,4 +1,4 @@
 [submodule "ProtoFiles"]
-	path = Headstarter/Protos
+	path = Headstarter.Models/Protos
 	url = https://github.com/Headstarter-Mobile/protos
 	branch = main

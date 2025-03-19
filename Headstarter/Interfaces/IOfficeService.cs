@@ -1,14 +1,8 @@
 ﻿using Headstarter.Protos;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Headstarter.Interfaces
 {
-    internal interface IOfficeService
+    public interface IOfficeService
     {
         Office GetOffice(Office office);
         Task<ICollection<Office>> GetAllOffices();
