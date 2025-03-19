@@ -74,7 +74,7 @@ namespace Headstarter.Services
             {
                 var client = _grpcService.officeClient;
                 using var call = client.GetAllOffices(new Google.Protobuf.WellKnownTypes.Empty(), _grpcService._metadata);
-                List<Office> offices = new();
+                List<Office> offices = [];
 
                 while (await call.ResponseStream.MoveNext())
                 {

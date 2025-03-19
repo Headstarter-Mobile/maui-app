@@ -104,7 +104,7 @@ public partial class UserService : IUserService
         {
             var client = _grpcService.usersClient;
             using var call = client.GetAllUsers(new Google.Protobuf.WellKnownTypes.Empty(), _grpcService._metadata);
-            List<User> users = new ();
+            List<User> users = [];
 
             while (await call.ResponseStream.MoveNext())
             {

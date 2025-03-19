@@ -73,7 +73,7 @@ namespace Headstarter.Services
             {
                 var client = _grpcService.positionClient;
                 using var call = client.GetAllPositions(new Google.Protobuf.WellKnownTypes.Empty(), _grpcService._metadata);
-                List<Position> positions = new();
+                List<Position> positions = [];
 
                 while (await call.ResponseStream.MoveNext())
                 {

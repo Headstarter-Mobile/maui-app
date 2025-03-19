@@ -23,7 +23,7 @@ namespace Headstarter.Services
                 {
                     Id = Id
                 }, _grpcService._metadata);
-                List<Notification> notifications = new();
+                List<Notification> notifications = [];
 
                 while (await call.ResponseStream.MoveNext())
                 {
