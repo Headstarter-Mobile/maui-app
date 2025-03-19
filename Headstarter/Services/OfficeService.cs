@@ -1,11 +1,6 @@
 ﻿using Grpc.Core;
 using Headstarter.Interfaces;
 using Headstarter.Protos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Headstarter.Services
 {
@@ -79,7 +74,7 @@ namespace Headstarter.Services
             {
                 var client = _grpcService.officeClient;
                 using var call = client.GetAllOffices(new Google.Protobuf.WellKnownTypes.Empty(), _grpcService._metadata);
-                List<Office> offices = new List<Office>();
+                List<Office> offices = [];
 
                 while (await call.ResponseStream.MoveNext())
                 {
