@@ -1,12 +1,4 @@
-﻿using Headstarter.Protos;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Headstarter.Interfaces
+﻿namespace Headstarter.Interfaces
 {
     public interface IApplicationService
     {
@@ -22,6 +14,6 @@ namespace Headstarter.Interfaces
         Protos.Application CreateApplication(Protos.Application application);
         Protos.Application UpdateApplication(Protos.Application oldApplication, Protos.Application newApplication);
         Protos.Application DeleteApplication(Protos.Application application);
-        
+
     }
 }

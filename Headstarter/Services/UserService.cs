@@ -1,7 +1,6 @@
 using Grpc.Core;
 using Headstarter.Interfaces;
 using Headstarter.Protos;
-using System.Threading.Channels;
 
 namespace Headstarter.Services;
 
@@ -12,19 +11,18 @@ public partial class UserService : IUserService
     public UserService(GrpcService grpcService)
     {
         _grpcService = grpcService;
-       
+
     }
 
-    public User AuthenticateUser(string username, string password, UserRole userType)
-    {      
+    public User AuthenticateUser(string username, string password)
+    {
         try
         {
-            var response = _grpcService.usersClient.GetUser(new User()
+            var response = _grpcService.usersClient.GetUser(new()
             {
                 Name = username,
-                Password = password,
-                Type = userType
-            },_grpcService._metadata);
+                Password = PasswordService.Instance.Hash(password).Result
+            }, _grpcService._metadata);
             return response;
         }
         catch (RpcException ex)
@@ -51,13 +49,7 @@ public partial class UserService : IUserService
     {
         try
         {
-            var response = _grpcService.usersClient.CreateUser(new User()
-            {
-                Name = user.Name,
-                Password = user.Password,
-                Type = user.Type
-            },_grpcService._metadata)
-            ;
+            var response = _grpcService.usersClient.CreateUser(user, _grpcService._metadata);
             return response;
         }
         catch (RpcException ex)
@@ -82,10 +74,9 @@ public partial class UserService : IUserService
 
     public User DeleteUser(User user)
     {
-
         try
         {
-            var response = _grpcService.usersClient.DeleteUser(user,_grpcService._metadata);
+            var response = _grpcService.usersClient.DeleteUser(user, _grpcService._metadata);
             return user;
         }
         catch (RpcException ex)
@@ -107,14 +98,13 @@ public partial class UserService : IUserService
             }
         }
     }
-
-    public async Task <ICollection<User>> GetAllUsers()
+    public async Task<ICollection<User>> GetAllUsers()
     {
         try
         {
             var client = _grpcService.usersClient;
             using var call = client.GetAllUsers(new Google.Protobuf.WellKnownTypes.Empty(), _grpcService._metadata);
-            List<User> users = new List<User>();
+            List<User> users = new ();
 
             while (await call.ResponseStream.MoveNext())
             {
@@ -140,14 +130,13 @@ public partial class UserService : IUserService
                 return null;
             }
         }
-        }
+    }
 
     public User UpdateUser(User oldUser, User newUser)
     {
         try
         {
-
-            var response = _grpcService.usersClient.UpdateUser(new Headstarter.Protos.UserUpdateRequest()
+            var response = _grpcService.usersClient.UpdateUser(new()
             {
                 OldData = oldUser,
                 NewData = newUser
@@ -173,6 +162,4 @@ public partial class UserService : IUserService
             }
         }
     }
-
-    // ... other service methods
 }
