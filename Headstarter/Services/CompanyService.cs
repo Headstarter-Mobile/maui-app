@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Grpc.Core;
+﻿using Grpc.Core;
 using Headstarter.Interfaces;
 using Headstarter.Protos;
 
@@ -22,9 +17,7 @@ namespace Headstarter.Services
         {
             try
             {
-                var response = _grpcService.companyClient.GetCompany(company
-
-                , _grpcService._metadata);
+                var response = _grpcService.companyClient.GetCompany(company, _grpcService._metadata);
                 return response;
             }
             catch (RpcException ex)
@@ -52,7 +45,7 @@ namespace Headstarter.Services
             {
                 var client = _grpcService.companyClient;
                 using var call = client.GetAllCompanies(new Google.Protobuf.WellKnownTypes.Empty(), _grpcService._metadata);
-                List<Company> positions = new List<Company>();
+                List<Company> positions = [];
 
                 while (await call.ResponseStream.MoveNext())
                 {
@@ -109,7 +102,6 @@ namespace Headstarter.Services
         {
             try
             {
-
                 var response = _grpcService.companyClient.UpdateCompany(new Headstarter.Protos.CompanyRequest()
                 {
                     OldData = oldCompany,
@@ -163,5 +155,5 @@ namespace Headstarter.Services
             }
         }
     }
-    
+
 }

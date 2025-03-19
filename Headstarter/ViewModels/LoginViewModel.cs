@@ -40,7 +40,7 @@ public class LoginViewModel : INotifyPropertyChanged
 
     private async Task Login()
     {
-        User authenticatedUser = _userService.AuthenticateUser(Username, Password, SelectedUserType);
+        User authenticatedUser = _userService.AuthenticateUser(Username, Password);
 
         if (authenticatedUser != null)
         {

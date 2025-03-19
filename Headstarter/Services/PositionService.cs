@@ -1,11 +1,6 @@
 ﻿using Grpc.Core;
 using Headstarter.Interfaces;
 using Headstarter.Protos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Headstarter.Services
 {
@@ -78,7 +73,7 @@ namespace Headstarter.Services
             {
                 var client = _grpcService.positionClient;
                 using var call = client.GetAllPositions(new Google.Protobuf.WellKnownTypes.Empty(), _grpcService._metadata);
-                List<Position> positions = new List<Position>();
+                List<Position> positions = new();
 
                 while (await call.ResponseStream.MoveNext())
                 {
