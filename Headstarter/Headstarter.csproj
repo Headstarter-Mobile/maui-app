@@ -29,11 +29,15 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Headstarter.Models\Headstarter.Models.csproj" />
+		<ProjectReference Include="..\Headstarter.Services\Headstarter.Services.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<MauiXaml Update="Pages\MainPage.xaml">
 			<SubType>Designer</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\CompanyPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 	</ItemGroup>
 

@@ -21,7 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Headstarter\Headstarter.csproj" />
+    <ProjectReference Include="..\Headstarter.Models\Headstarter.Models.csproj" />
+    <ProjectReference Include="..\Headstarter.Services\Headstarter.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
