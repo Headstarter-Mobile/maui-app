@@ -1,12 +1,6 @@
 ﻿using Headstarter.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Headstarter.Protos;
 using Grpc.Core;
-using Microsoft.Maui.Platform;
 
 
 namespace Headstarter.Services
@@ -21,7 +15,7 @@ namespace Headstarter.Services
             _grpcService = grpcService;
 
         }
-        public async Task<IList<Notification>> GetUnseenMessagesAfter(int Id)
+        public async Task<ICollection<Notification>> GetUnseenMessagesAfter(int Id)
         {
             try
             {
@@ -30,7 +24,7 @@ namespace Headstarter.Services
                 {
                     Id = Id
                 }, _grpcService._metadata);
-                List<Notification> notifications = new List<Notification>();
+                List<Notification> notifications = [];
 
                 while (await call.ResponseStream.MoveNext())
                 {
@@ -43,27 +37,27 @@ namespace Headstarter.Services
                 if (ex.Status.StatusCode.Equals(StatusCode.NotFound))
                 {
                     // user not found
-                    return null;
+                    return Array.Empty<Notification>();
                 }
                 else if (ex.Status.StatusCode.Equals(StatusCode.PermissionDenied))
                 {
                     // permission denied
-                    return null;
+                    return Array.Empty<Notification>();
                 }
                 else
                 {
                     // other error
-                    return null;
+                    return Array.Empty<Notification>();
                 }
             }
         }
 
-        public bool MarkAsRead(int Id)
+        public async Task<bool> MarkAsRead(int Id)
         {
             try
             {
                 var client = _grpcService.notificationClient;
-                var response = client.MarkAsRead(new MarkAsReadRequest()
+                var response = await client.MarkAsReadAsync(new MarkAsReadRequest()
                 {
                     Id = Id
                 }, _grpcService._metadata);

@@ -1,10 +1,4 @@
 ﻿using Headstarter.Protos;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Headstarter.Interfaces
 {
@@ -15,6 +9,6 @@ namespace Headstarter.Interfaces
         Company CreateCompany(Company company);
         Company UpdateCompany(Company oldCompany, Company newCompany);
         Company DeleteCompany(Company company);
-       
+
     }
 }

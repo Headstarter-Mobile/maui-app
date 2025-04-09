@@ -1,14 +1,8 @@
 ﻿using Headstarter.Protos;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Headstarter.Interfaces
 {
-    internal interface IPositionService
+    public interface IPositionService
     {
         Position GetPosition(Position position);
         Task<ICollection<Position>> GetAllPositions();
