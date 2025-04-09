@@ -1,6 +1,6 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Headstarter.Interfaces;
+using Headstarter.Services;
 using Headstarter.Protos;
 
 namespace Headstarter.ViewModels;
