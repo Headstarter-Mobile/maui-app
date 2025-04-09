@@ -1,9 +1,4 @@
 ﻿using Headstarter.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Headstarter.Protos;
 using Grpc.Core;
 
@@ -72,19 +67,12 @@ namespace Headstarter.Services
             }
         }
 
-        public async Task<ICollection<Protos.Application>> GetAllPositions(
-        int userId,
-        int positionId,
-        string status,
-        string createdAtStart,
-        string createdAtEnd,
-        string updatedAtStart,
-        string updatedAtEnd)
+        public async Task<ICollection<Protos.Application>> GetAllPositions(int userId, int positionId, string status, string createdAtStart, string createdAtEnd, string updatedAtStart, string updatedAtEnd)
         {
             try
             {
                 var client = _grpcService.applicationClient;
-                using var call = client.GetAllApplications(new GetAllApplicationsRequest()
+                using var call = client.GetAllApplications(new()
                 {
                     UserId = userId,
                     PositionId = positionId,
@@ -94,7 +82,8 @@ namespace Headstarter.Services
                     UpdatedAtStart = updatedAtStart,
                     UpdatedAtEnd = updatedAtEnd
                 }, _grpcService._metadata);
-                List<Protos.Application> applications = new List<Protos.Application>();
+
+                List<Protos.Application> applications = [];
 
                 while (await call.ResponseStream.MoveNext())
                 {
@@ -126,9 +115,7 @@ namespace Headstarter.Services
         {
             try
             {
-                var response = _grpcService.applicationClient.GetApplication(application
-
-                , _grpcService._metadata);
+                var response = _grpcService.applicationClient.GetApplication(application, _grpcService._metadata);
                 return response;
             }
             catch (RpcException ex)
@@ -155,8 +142,7 @@ namespace Headstarter.Services
         {
             try
             {
-
-                var response = _grpcService.applicationClient.UpdateApplication(new Headstarter.Protos.UpdateApplicationRequest()
+                var response = _grpcService.applicationClient.UpdateApplication(new()
                 {
                     OldData = oldApplication,
                     NewData = newApplication

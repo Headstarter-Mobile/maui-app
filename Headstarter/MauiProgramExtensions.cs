@@ -19,23 +19,23 @@ public static class MauiProgramExtensions
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 #if ANDROID
-            builder.Services.AddTransient<INotificationManagerService, Headstarter.Services.Android.NotificationManagerService>();
+        builder.Services.AddTransient<INotificationManagerService, Headstarter.Services.Android.NotificationManagerService>();
 #elif IOS
-            builder.Services.AddTransient<INotificationManagerService, Headstarter.Services.iOS.NotificationManagerService>();
+        builder.Services.AddTransient<INotificationManagerService, Headstarter.Services.iOS.NotificationManagerService>();
 #elif MACCATALYST
-            builder.Services.AddTransient<INotificationManagerService, Headstarter.Services.MacCatalyst.NotificationManagerService>();
+        builder.Services.AddTransient<INotificationManagerService, Headstarter.Services.MacCatalyst.NotificationManagerService>();
 #elif WINDOWS
-            builder.Services.AddTransient<INotificationManagerService, Headstarter.Services.Windows.NotificationManagerService>();          
+        builder.Services.AddTransient<INotificationManagerService, Headstarter.Services.Windows.NotificationManagerService>();          
 #endif
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
-		// Register services
-		builder.Services.AddSingleton<HttpClient>();
-		builder.Services.AddSingleton<IUserService, UserService>();
-		builder.Services.AddSingleton<LoginViewModel>();
-		builder.Services.AddSingleton<LoginPage>();
+        // Register services
+        builder.Services.AddSingleton<HttpClient>();
+        builder.Services.AddSingleton<IUserService, UserService>();
+        builder.Services.AddSingleton<LoginViewModel>();
+        builder.Services.AddSingleton<LoginPage>();
 
-		return builder;
-	}
+        return builder;
+    }
 }

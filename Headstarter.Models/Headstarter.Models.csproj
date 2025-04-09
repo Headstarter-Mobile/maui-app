@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<RootNamespace>Headstarter</RootNamespace>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Google.Protobuf" Version="3.29.3" />
+		<PackageReference Include="Grpc.Net.Client" Version="2.67.0" />
+		<PackageReference Include="Grpc.Tools" Version="2.70.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+
+		<!-- Protos -->
+		<Protobuf Include="Protos\empty.proto" GrpcServices="Client" />
+
+		<Protobuf Include="Protos\model_application.proto" GrpcServices="Client" />
+		<Protobuf Include="Protos\model_auth_token.proto" GrpcServices="Client" />
+		<Protobuf Include="Protos\model_company.proto" GrpcServices="Client" />
+		<Protobuf Include="Protos\model_notification.proto" GrpcServices="Client" />
+		<Protobuf Include="Protos\model_office.proto" GrpcServices="Client" />
+		<Protobuf Include="Protos\model_position.proto" GrpcServices="Client" />
+		<Protobuf Include="Protos\model_user.proto" GrpcServices="Client" />
+
+		<Protobuf Include="Protos\service_application.proto" ProtoRoot="Protos/" GrpcServices="Client" />
+		<Protobuf Include="Protos\service_auth_token.proto" ProtoRoot="Protos/" GrpcServices="Client" />
+		<Protobuf Include="Protos\service_company.proto" ProtoRoot="Protos/" GrpcServices="Client" />
+		<Protobuf Include="Protos\service_notification.proto" ProtoRoot="Protos/" GrpcServices="Client" />
+		<Protobuf Include="Protos\service_office.proto" ProtoRoot="Protos/" GrpcServices="Client" />
+		<Protobuf Include="Protos\service_position.proto" ProtoRoot="Protos/" GrpcServices="Client" />
+		<Protobuf Include="Protos\service_user.proto" ProtoRoot="Protos/" GrpcServices="Client" />
+	</ItemGroup>
+
+</Project>
