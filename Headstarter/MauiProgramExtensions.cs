@@ -15,6 +15,10 @@ public static class MauiProgramExtensions
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                fonts.AddFont("Boldnose-Regular.ttf", "Boldnose");
+                fonts.AddFont("Barriecito-Regular.ttf", "Barriecito");
+                fonts.AddFont("LilitaOne-Regular.ttf", "LilitaOne");
+                fonts.AddFont("materialdesignicons-webfont.ttf", "icons");
             });
 
 #if DEBUG

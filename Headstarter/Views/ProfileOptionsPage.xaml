@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Headstarter.Views.ProfileOptionsPage"
+             Title="">
+    <Grid RowDefinitions="*, Auto">
+
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout
+                VerticalOptions="Start"
+                Padding="30,0,30,100"
+                Spacing="25">
+
+                <HorizontalStackLayout HorizontalOptions="Center" Margin="0,30,0,-10">
+                    <Label 
+                        Margin="0,0,0,0"
+                        Text="HEAD"
+                        FontSize="44"
+                        FontFamily="LilitaOne"
+                        FontAttributes="None"
+                        TextColor="{StaticResource LogoGreen}"/>
+
+                    <Image 
+                        Source="headstarter_logo2.png"       
+                        HeightRequest="38"
+                        Aspect="AspectFit"/>
+
+                    <Label 
+                        Margin="0,0,0,0"
+                        Text="TARTER"
+                        FontSize="44"
+                        FontFamily="LilitaOne"
+                        FontAttributes="None"
+                        TextColor="{StaticResource LogoOrange}"/>
+                </HorizontalStackLayout>
+
+
+                <Label Text="Избери твоята роля"
+                   TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                   Margin="0,20,0,0"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+
+                <HorizontalStackLayout HorizontalOptions="Center"  Padding="10,0" Spacing="20" Margin="0,15,0,0">
+                    <Button Text="Работник"  
+                        x:Name="WorkerButton"
+                        HeightRequest="65" WidthRequest="140"
+                        TextColor="{StaticResource Black}"
+                        BackgroundColor="{StaticResource LogoGreen}"
+                        BorderColor="{StaticResource LogoGreen}"    
+                        BorderWidth="2"
+                        CornerRadius="50"
+                        FontSize="16" 
+                        FontAttributes="Bold" 
+                        VerticalOptions="Center"
+                        Padding="0"
+                        Clicked="OnWorkerSelected"/>
+
+                    <BoxView x:Name="Divider"
+                        WidthRequest="2" 
+                        HeightRequest="65" 
+                        BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                        VerticalOptions="Center"/>
+
+                    <Button Text="Работодател"  
+                        x:Name="RecruiterButton"
+                        HeightRequest="65" WidthRequest="140"
+                        TextColor="{StaticResource Black}"
+                        BackgroundColor="{StaticResource LogoRed}"
+                        BorderColor="{StaticResource LogoRed}"
+                        BorderWidth="2"
+                        CornerRadius="50"
+                        FontSize="16" 
+                        FontAttributes="Bold" 
+                        VerticalOptions="Center"
+                        Padding="0"
+                        Clicked="OnRecruiterSelected"/>
+                </HorizontalStackLayout>
+
+
+                <Image Source="image1.png" IsVisible="{Binding WorkerRecruiterNotSelected, Mode=TwoWay}" Margin="0,10"
+                    HorizontalOptions="Center"
+                    HeightRequest="240"               
+                    Aspect="AspectFit" ></Image>
+
+                <!-- rabotnik -->
+                <StackLayout x:Name="WorkerSection" IsVisible="false" VerticalOptions="Start" Padding="30,0,30,100" Spacing="25">
+
+                    <Label Text="Въведете данните на Вашата кандидатура:"
+                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                    Margin="15,15,0,10"
+                    FontSize="16"
+                    FontAttributes="None"
+                    HorizontalOptions="Start"/>
+
+
+                    <Frame x:Name="ProfilePictureFrame"
+                        HeightRequest="150" WidthRequest="150"
+                        CornerRadius="100"
+                        BorderColor="{StaticResource LogoGreen}"
+                        BackgroundColor="Transparent"
+                        Padding="0"
+                        VerticalOptions="Center">
+                    </Frame>
+
+                    <Button Text="Добави профилна снимка" 
+                        HeightRequest="50" WidthRequest="325"
+                        BorderColor="{StaticResource LogoGreen}"
+                        BorderWidth="2"
+                        BackgroundColor="{StaticResource LogoGreen}"
+                        TextColor="Black"
+                        CornerRadius="50"
+                        FontSize="15"/>
+
+                    <Frame Margin="0,0,0,0" CornerRadius="50" HeightRequest="80" WidthRequest="325" BorderColor="{StaticResource LogoGreen}">
+                        <Entry x:Name="LinkedInLink"
+                            Placeholder="Линк към LinkedIn профил"
+                            PlaceholderColor="{StaticResource Gray300}"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                            FontSize="15"
+                            BackgroundColor="Transparent"/>
+                    </Frame>
+
+                    <Frame Margin="0,0,0,0" CornerRadius="50" HeightRequest="80" WidthRequest="325" BorderColor="{StaticResource LogoGreen}">
+                        <Entry x:Name="OtherLink"
+                            Placeholder="Линк към друга социална медия"
+                            PlaceholderColor="{StaticResource Gray300}"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                            FontSize="15"
+                            BackgroundColor="Transparent"/>
+                    </Frame>
+
+                    <Button Text="Прикачи CV" 
+                            x:Name="AttachCV"
+                            HeightRequest="50" WidthRequest="325"
+                            Clicked="OnPickFileClicked"
+                            BorderColor="{StaticResource LogoGreen}"
+                            BorderWidth="2"
+                            BackgroundColor="{StaticResource LogoGreen}"
+                            TextColor="Black"
+                            CornerRadius="50"
+                            FontSize="15">
+                    </Button>
+
+
+                    <Button Text="Завършване" 
+                        Margin="0,20"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                        x:Name="NavigateToProfile1"
+                        HeightRequest="65" WidthRequest="170"
+                        CornerRadius="50"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        BorderWidth="2"
+                        BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                        Clicked="OnWorkerRegister"/>
+
+                </StackLayout>
+
+                <!-- rabotodatel -->
+
+                <StackLayout x:Name="RecruiterSection" IsVisible="false" VerticalOptions="Start" Padding="30,0,30,100" Spacing="25">
+
+                    <Label Text="Въведете данните на Вашата фирма:"
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                        Margin="15,15,0,0"
+                        FontSize="16"
+                        FontAttributes="None"
+                        HorizontalOptions="Start"/>
+
+                    <Frame Margin="0,0,0,0" CornerRadius="50" HeightRequest="80" WidthRequest="325" BorderColor="{StaticResource LogoRed}">
+                        <Entry x:Name="CompanyName"
+                            Placeholder="Имe на фирмата"
+                            PlaceholderColor="{StaticResource Gray300}"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                            FontSize="15"
+                            BackgroundColor="Transparent"/>
+                    </Frame>
+
+                    <Frame x:Name="CompanyLogoFrame"
+                        HeightRequest="185" WidthRequest="325"
+                        CornerRadius="30"
+                        BorderColor="{StaticResource LogoRed}"
+                        BackgroundColor="Transparent"
+                        Padding="0"
+                        VerticalOptions="Center">
+                    </Frame>
+
+                    <Button Text="Прикачи лого" 
+                            HeightRequest="50" WidthRequest="325"
+                            BorderColor="{StaticResource LogoRed}"
+                            BorderWidth="2"
+                            BackgroundColor="{StaticResource LogoRed}"
+                            TextColor="Black"
+                            CornerRadius="50"
+                            FontSize="15"
+                            Clicked="OnPickFileClicked">
+                    </Button>
+
+
+
+                    <Frame Margin="0,0,0,0" CornerRadius="50" HeightRequest="80" WidthRequest="325" BorderColor="{StaticResource LogoRed}">
+                        <Entry x:Name="CompanyLink"
+                            Placeholder="Линк към уебсайт"
+                            PlaceholderColor="{StaticResource Gray300}"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                            FontSize="15"
+                            BackgroundColor="Transparent"/>
+                    </Frame>
+
+                    <Frame Margin="0,0,0,0" CornerRadius="30" HeightRequest="300" WidthRequest="325" BorderColor="{StaticResource LogoRed}">
+                        <Editor x:Name="CompanyInfo"
+                            Placeholder="Описание на фирмата"
+                            PlaceholderColor="{StaticResource Gray300}"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                            FontSize="15"
+                            MaxLength="500"
+                            BackgroundColor="Transparent"/>
+                    </Frame>
+
+
+
+                    <Button Text="Завършване" 
+                        Margin="0,20"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                        x:Name="NavigateToProfile2"
+                        HeightRequest="65" WidthRequest="170"
+                        CornerRadius="50"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        BorderWidth="2"
+                        BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                        Clicked="OnRecruiterRegister"/>
+
+                </StackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+
+
+        <!--<FlexLayout Grid.Row="1"
+                Direction="Column"
+                AlignItems="Center"
+                JustifyContent="Center"
+                Padding="10"
+                BackgroundColor="{StaticResource LogoYellow}">
+
+            <Label Text=" aaaaaaaaaaaaaa"
+               TextColor="Black"
+               FontSize="16"
+               Background="{StaticResource LogoGreen}"
+               Padding="100,5"/>
+
+            <Label Text="Headstarter 2025"
+               TextColor="Black"
+               FontSize="16"
+               Background="{StaticResource LogoGreen}"
+               Padding="100,5"/>
+        </FlexLayout>-->
+
+    </Grid>
+</ContentPage>

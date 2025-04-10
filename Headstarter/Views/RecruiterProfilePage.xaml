@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Headstarter.Views.RecruiterProfilePage"
+             Title="">
+
+    <Grid RowDefinitions="*, Auto">
+
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout
+            VerticalOptions="Start"
+            Padding="0,0,0,100"
+            Spacing="25">
+
+                <HorizontalStackLayout HorizontalOptions="Center" Margin="0,30,0,-10">
+                    <Label 
+                    Margin="0,0,0,0"
+                    Text="HEAD"
+                    FontSize="44"
+                    FontFamily="LilitaOne"
+                    FontAttributes="None"
+                    TextColor="{StaticResource LogoGreen}"
+                    />
+
+                    <Image 
+                    Source="headstarter_logo2.png"
+                    HeightRequest="38"
+                    Aspect="AspectFit"/>
+
+                    <Label 
+                    Margin="0,0,0,0"
+                    Text="TARTER"
+                    FontSize="44"
+                    FontFamily="LilitaOne"
+                    FontAttributes="None"
+                    TextColor="{StaticResource LogoOrange}"
+                    />
+                </HorizontalStackLayout>
+
+                <Frame Margin="0,20,0,0" CornerRadius="50" HeightRequest="550" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" BackgroundColor="Transparent" >
+                    <StackLayout Padding="10,0,10,0" Spacing="25" >
+                        <Label
+                            x:Name="PersonalInfoRec"
+                            Text="Лична информация" 
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            HorizontalOptions="Center"
+                            FontSize="20"
+                            FontAttributes="Bold"/>
+
+                        <Label                           
+                            x:Name="NamesRec"
+                            Text="Име и фамилия:"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="15"/>
+                        <HorizontalStackLayout Margin="0,-10,0,0" Spacing="5" HorizontalOptions="Start" >
+                            <Label                           
+                                x:Name="FNameRec"
+                                Text="Boris"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+                            <Label                           
+                                x:Name="LNameRec"
+                                Text="Vlahov"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+                            <Button 
+                                Margin="0,-10,0,0"
+                                FontFamily="icons"
+                                BackgroundColor="Transparent">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="icons" Glyph="{StaticResource IconPencil}" Color="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" Size="25" />
+                                </Button.ImageSource>
+                            </Button>
+                        </HorizontalStackLayout>
+
+
+                        <Label                           
+                            x:Name="Birthday1Rec"
+                            Text="Рождена дата:"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="15"/>
+
+                        <HorizontalStackLayout Margin="0,-10,0,0" Spacing="2" HorizontalOptions="Start" >
+                            <Label                           
+                                x:Name="DayRec"
+                                Text="04"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+                            <Label                           
+                                x:Name="Dot1Rec"
+                                Text="."
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+                            <Label                           
+                                x:Name="MonthRec"
+                                Text="05"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+                            <Label                           
+                                x:Name="Dot2Rec"
+                                Text="."
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+                            <Label                           
+                                x:Name="YearRec"
+                                Text="2003"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+                            <Button 
+                                Margin="0,-10,0,0"
+                                FontFamily="icons"
+                                BackgroundColor="Transparent">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="icons" Glyph="{StaticResource IconPencil}" Color="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" Size="25" />
+                                </Button.ImageSource>
+                            </Button>
+                        </HorizontalStackLayout>
+
+
+                        <Label                           
+                            x:Name="Phone1Rec"
+                            Text="Телефонен номер:"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="15"/>
+                        <HorizontalStackLayout Margin="0,-10,0,0" Spacing="10" HorizontalOptions="Start" >
+                            <Label                           
+                                x:Name="Phone2Rec"
+                                Text="0888440107"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+
+
+                            <Button 
+                                Margin="0,-10,0,0"
+                                FontFamily="icons"
+                                BackgroundColor="Transparent">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="icons" Glyph="{StaticResource IconPencil}" Color="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" Size="25" />
+                                </Button.ImageSource>
+                            </Button>
+                        </HorizontalStackLayout>
+
+                        <Label                           
+                            x:Name="Email1Rec"
+                            Text="Имейл:"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="15"/>
+                        <HorizontalStackLayout Margin="0,-10,0,0" Spacing="10" HorizontalOptions="Start" >
+                            <Label                           
+                                x:Name="Email2Rec"
+                                Text="bobovlahov@gmail.com"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+
+
+                            <Button 
+                                Margin="0,-10,0,0"
+                                FontFamily="icons"
+                                BackgroundColor="Transparent">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="icons" Glyph="{StaticResource IconPencil}" Color="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" Size="25" />
+                                </Button.ImageSource>
+                            </Button>
+                        </HorizontalStackLayout>
+
+                        <Label                           
+                            x:Name="Password1Rec"
+                            Text="Парола:"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="15"/>
+                        <HorizontalStackLayout Margin="0,-10,0,0" Spacing="10" HorizontalOptions="Start" >
+                            <Label                           
+                                x:Name="Password2Rec"
+                                Text="*******"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+
+
+                            <Button 
+                                Margin="0,-10,0,0"
+                                FontFamily="icons"
+                                BackgroundColor="Transparent">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="icons" Glyph="{StaticResource IconPencil}" Color="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" Size="25" />
+                                </Button.ImageSource>
+                            </Button>
+                        </HorizontalStackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Margin="0,30,0,0" CornerRadius="50" HeightRequest="750" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoRed}, Dark={StaticResource LogoRed}}" BackgroundColor="Transparent" >
+                    <StackLayout Padding="10,0,10,0" Spacing="25" >
+                        <Label
+                            x:Name="CompanyInfo"
+                            Text=" Работодателски данни" 
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            HorizontalOptions="Center"
+                            FontSize="20"
+                            FontAttributes="Bold"/>
+
+                        <Label                           
+                            x:Name="CompanyName1"
+                            Text="Име на фирмата:"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="15"/>
+                        <HorizontalStackLayout Margin="0,-10,0,0" Spacing="10" HorizontalOptions="Start" >
+                            <Label                           
+                                x:Name="CompanyName2"
+                                Text="Borislavia Inc"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+                            <Button 
+                                Margin="0,-10,0,0"
+                                FontFamily="icons"
+                                BackgroundColor="Transparent">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="icons" Glyph="{StaticResource IconPencil}" Color="{StaticResource LogoRed}" Size="25" />
+                                </Button.ImageSource>
+                            </Button>
+                        </HorizontalStackLayout>
+
+                        <Label                           
+                            x:Name="CompanyLogo1"
+                            Text="Лого на фирмата:"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="15"/>
+                        <HorizontalStackLayout Margin="0,-10,0,0" Spacing="10" HorizontalOptions="Start" >
+
+                            <Frame x:Name="CompanyLogo2"
+                                HeightRequest="135" WidthRequest="225"
+                                CornerRadius="30"
+                                BorderColor="{StaticResource LogoRed}"
+                                BackgroundColor="Transparent"
+                                Padding="0">
+                                <Image
+                                    Source="image1.png"
+                                    Aspect="AspectFit"></Image>
+                            </Frame>
+                            <Button 
+                                    Margin="0,-10,0,0"
+                                    FontFamily="icons"
+                                    BackgroundColor="Transparent">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="icons" Glyph="{StaticResource IconPencil}" Color="{StaticResource LogoRed}" Size="25" />
+                                </Button.ImageSource>
+                            </Button>
+                        </HorizontalStackLayout>
+
+                        <Label                           
+                            x:Name="CompanyLink1"
+                            Text="Линк към уебсайт"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="15"/>
+                        <HorizontalStackLayout Margin="0,-10,0,0" Spacing="10" HorizontalOptions="Start" >
+                            <Label                           
+                                x:Name="CompanyLink2"
+                                Text="Borislavia.com"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                TextDecorations="Underline"
+                                FontSize="18"/>
+                            <Button 
+                                Margin="0,-10,0,0"
+                                FontFamily="icons"
+                                BackgroundColor="Transparent">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="icons" Glyph="{StaticResource IconPencil}" Color="{StaticResource LogoRed}" Size="25" />
+                                </Button.ImageSource>
+                            </Button>
+                        </HorizontalStackLayout>
+
+                        <Label                           
+                            x:Name="CompanyTextInfo1"
+                            Text="Описание на фирмата:"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="15"/>
+                        <HorizontalStackLayout Margin="0,-10,0,0" Spacing="10" HorizontalOptions="Start" >
+                            <Label                           
+                                x:Name="CompanyTextInfo2"  
+                                Text="In a world where time moves fast, we seek moments that last. A smile, a kind word, or a shared laugh can make all the difference. Life is a journey, full of surprises and lessons. Embrace each day with hope, cherish loved ones, and never stop dreaming. The best stories are yet to be written aaaaaaa."
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="None"
+                                FontSize="16"
+                                LineBreakMode="WordWrap"
+                                MaxLines="10"
+                                WidthRequest="280"/>
+                            <Button 
+                                Margin="0,-10,0,0"
+                                FontFamily="icons"
+                                BackgroundColor="Transparent">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="icons" Glyph="{StaticResource IconPencil}" Color="{StaticResource LogoRed}" Size="25" />
+                                </Button.ImageSource>
+                            </Button>
+                        </HorizontalStackLayout>
+
+
+
+                    </StackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+
+        <!--<FlexLayout Grid.Row="1"
+            Direction="Column"
+            AlignItems="Center"
+            JustifyContent="Center"
+            Padding="10"
+            BackgroundColor="{StaticResource LogoYellow}">
+
+        <Label Text=" aaaaaaaaaaaaaa"
+           TextColor="Black"
+           FontSize="16"
+           Background="{StaticResource LogoGreen}"
+           Padding="100,5"/>
+
+        <Label Text="Headstarter 2025"
+           TextColor="Black"
+           FontSize="16"
+           Background="{StaticResource LogoGreen}"
+           Padding="100,5"/>
+    </FlexLayout>-->
+
+    </Grid>
+
+
+
+</ContentPage>
