@@ -1,20 +1,53 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <Shell
+    Title="Headstarter"
     x:Class="Headstarter.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Headstarter.Views"
-    Shell.FlyoutBehavior="Flyout"
-    Title="Headstarter">
+    xmlns:local="clr-namespace:Headstarter"
+    xmlns:views="clr-namespace:Headstarter.Views"
+    x:Name="shell"
+    x:DataType="local:AppShell"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.TabBarBackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray950}}"
+    Shell.TabBarTitleColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+    Shell.TabBarForegroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+    Shell.TabBarUnselectedColor="{AppThemeBinding Light={StaticResource Gray950}, Dark=FloralWhite}">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-    <ShellContent
-        Title="Login"
-        ContentTemplate="{DataTemplate local:LoginPage}"
-        Route="LoginPage" />
+    <TabBar>
+        <Tab Title="Начало">
+            <Tab.Icon>
+                <FontImageSource FontFamily="icons" Glyph="{StaticResource IconHome}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:MainPage}" />
+        </Tab>
 
+        <Tab Title="Новини">
+            <Tab.Icon>
+                <FontImageSource FontFamily="icons" Glyph="{StaticResource IconNewspaper}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:RecruiterProfilePage}" />
+        </Tab>
+
+        <Tab Title="Обяви">
+            <Tab.Icon>
+                <FontImageSource FontFamily="icons" Glyph="{StaticResource IconMagnify}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:CompanyPage}" />
+        </Tab>
+
+        <Tab Title="Настройки">
+            <Tab.Icon>
+                <FontImageSource FontFamily="icons" Glyph="{StaticResource IconCog}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:LoginPage}" />
+        </Tab>
+
+        <Tab Title="Профил">
+            <Tab.Icon>
+                <FontImageSource FontFamily="icons" Glyph="{StaticResource IconAccount}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:SignupPage}" />
+        </Tab>
+    </TabBar>
 
 </Shell>

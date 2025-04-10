@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Headstarter.Views.JobOfferWidget"
+             Title="JobOfferWidget">
+
+    <Grid RowDefinitions="*, Auto">
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout
+            VerticalOptions="Start"
+            Padding="30,0,30,100"
+            Spacing="25">
+
+                
+
+                    
+
+                <Frame Margin="0,10,0,0" Padding="0,0,0,0" WidthRequest="325" HeightRequest="170" CornerRadius="30" BackgroundColor="Transparent" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" >
+                    <StackLayout>
+                        <Label     
+                            Margin="15,10,0,0"
+                            Text="Junior Software Developer"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontAttributes="Bold"
+                            FontSize="18">
+                        </Label>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label   
+                                Margin="15,5,0,0"
+                                Text="Ниво:"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="16">
+                            </Label>
+                            <Label
+                                Margin="0,5,0,0"
+                                Text="Entry"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontSize="16">
+                            </Label>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label   
+                                Margin="15,0,0,0"
+                                Text="Години опит:"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="16">
+                            </Label>
+                            <Label
+                                Margin="0,0,0,0"
+                                Text="0 - 2"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontSize="16">
+                            </Label>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label   
+                                Margin="15,0,0,0"
+                                Text="Място:"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="16">
+                            </Label>
+                            <Label
+                                Margin="0,0,0,0"
+                                Text="София"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontSize="16">
+                            </Label>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label   
+                                Margin="15,0,0,0"
+                                Text="Заетост:"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="16">
+                            </Label>
+                            <Label
+                                Margin="0,0,0,0"
+                                Text="8 часа"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontSize="16">
+                            </Label>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label   
+                                Margin="15,0,0,0"
+                                Text="Режим:"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="16">
+                            </Label>
+                            <Label
+                                Margin="0,0,0,0"
+                                Text="Присъствен"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontSize="16">
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <Button
+                            HorizontalOptions="End"
+                            Text="Виж"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                            CornerRadius="50"
+                            BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                            WidthRequest="100"
+                            HeightRequest="50"
+                            Margin="0,-45,10,0">
+                        </Button>
+
+                    </StackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+
+
+</ContentPage>

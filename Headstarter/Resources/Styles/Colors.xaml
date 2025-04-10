@@ -18,6 +18,16 @@
     <Color x:Key="Magenta">#D600AA</Color>
     <Color x:Key="MidnightBlue">#190649</Color>
     <Color x:Key="OffBlack">#1f1f1f</Color>
+    <Color x:Key="LogoGreen">#4AD7AF</Color>
+    <Color x:Key="LogoGreenLight">#9effe4</Color>
+    <Color x:Key="LogoYellow">#FDC702</Color>
+    <Color x:Key="LogoPurple">#7752F7</Color>
+    <Color x:Key="LogoOrange">#F18F16</Color>
+    <Color x:Key="LogoPurpleLight">#DCD3FD</Color>
+    <Color x:Key="LogoOrangeLight">#fce8cf</Color>
+    <Color x:Key="LogoRed">#ff4036</Color>
+    <Color x:Key="LogoRedLight">#ffe7e6</Color>
+    
 
     <Color x:Key="Gray100">#E1E1E1</Color>
     <Color x:Key="Gray200">#C8C8C8</Color>
@@ -41,5 +51,9 @@
     <SolidColorBrush x:Key="Gray500Brush" Color="{StaticResource Gray500}"/>
     <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}"/>
     <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
-    <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
+
+    <SolidColorBrush x:Key="LogoGreen1" Color="{StaticResource LogoGreen}"/>
+    <SolidColorBrush x:Key="LogoYellow1" Color="{StaticResource LogoYellow}"/>
+    <SolidColorBrush x:Key="LogoPurple1" Color="{StaticResource LogoPurple}"/>
+    <SolidColorBrush x:Key="LogoPurpleLight1" Color="{StaticResource LogoPurpleLight}"/>
 </ResourceDictionary>
