@@ -1,6 +1,6 @@
 namespace Headstarter.ViewModels;
 
-class SignupPageViewModel : BaseViewModel
+class SignupPageViewModel
 {
     public SignupPageViewModel()
     {

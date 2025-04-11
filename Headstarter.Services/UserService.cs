@@ -13,20 +13,26 @@ public partial class UserService : IUserService
 
     }
 
-    public User AuthenticateUser(string username, string password)
+    public async Task<LoggedUserData> AuthenticateUser(string email, string password)
     {
         try
         {
-            var response = _grpcService.usersClient.GetUser(new()
+            var hashedPassword = await PasswordService.Instance.Hash(password);
+            var response = await _grpcService.usersClient.LoginUserAsync(new()
             {
-                Name = username,
-                Password = PasswordService.Instance.Hash(password).Result
-            }, _grpcService._metadata);
+                Email = email,
+                Password = password
+            }, _grpcService._metadata, DateTime.UtcNow.AddSeconds(7));
             return response;
         }
         catch (RpcException ex)
         {
-            if (ex.Status.StatusCode.Equals(StatusCode.NotFound))
+            if (ex.Status.StatusCode.Equals(StatusCode.DeadlineExceeded))
+            {
+                // connection failed
+                return null;
+            }
+            else if (ex.Status.StatusCode.Equals(StatusCode.NotFound))
             {
                 // user not found
                 return null;

@@ -1,4 +1,6 @@
-﻿namespace Headstarter.WinUI;
+﻿using Headstarter.Services;
+
+namespace Headstarter.WinUI;
 
 public static class MauiProgram
 {

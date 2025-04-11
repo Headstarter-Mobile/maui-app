@@ -15,17 +15,13 @@ public sealed class GrpcService
     public readonly Protos.NotificationService.NotificationServiceClient notificationServiceClient;
     public readonly Metadata _metadata;
 
-
-    private static readonly GrpcService instance;
-
-    static GrpcService()
+    public GrpcService()
     {
-        instance = new GrpcService();
-    }
-
-    private GrpcService()
-    {
+#if DEBUG
+        channel = GrpcChannel.ForAddress("http://localhost:5001");
+#else
         channel = GrpcChannel.ForAddress("http://129.159.196.117:5001");
+#endif
         _metadata = new Metadata
         {
             { "token", "" }
@@ -37,14 +33,5 @@ public sealed class GrpcService
         companyClient = new Protos.CompanyService.CompanyServiceClient(channel);
         applicationClient = new Protos.ApplicationService.ApplicationServiceClient(channel);
         notificationServiceClient = new Protos.NotificationService.NotificationServiceClient(channel);
-
-    }
-
-    public static GrpcService Instance
-    {
-        get
-        {
-            return instance;
-        }
     }
 }

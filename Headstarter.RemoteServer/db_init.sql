@@ -1,6 +1,6 @@
 
 -- DROP ALL TABLES IF THEY EXIST (for testing purposes)
-DROP TABLE IF EXISTS application, auth_token, company, notification, office, position, position_office, "user" CASCADE;
+DROP TABLE IF EXISTS application, auth_token, company, notification, office, position, position_office, "users" CASCADE;
 
 -- Table: company
 CREATE TABLE company (
@@ -51,8 +51,8 @@ CREATE TABLE position_office (
     PRIMARY KEY (position_id, office_id)
 );
 
--- Table: "user"
-CREATE TABLE "user" (
+-- Table: "users"
+CREATE TABLE "users" (
     id SERIAL PRIMARY KEY,
     name TEXT,
     email TEXT UNIQUE,
@@ -66,7 +66,7 @@ CREATE TABLE "user" (
 -- Table: application
 CREATE TABLE application (
     id BIGSERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES "user"(id),
+    user_id INTEGER REFERENCES "users"(id),
     position_id INTEGER REFERENCES position(id),
     status TEXT,
     created_at TIMESTAMP,
@@ -76,7 +76,7 @@ CREATE TABLE application (
 -- Table: auth_token
 CREATE TABLE auth_token (
     token TEXT PRIMARY KEY,
-    user_id INTEGER REFERENCES "user"(id),
+    user_id INTEGER REFERENCES "users"(id),
     expires_on TIMESTAMP,
     device_type TEXT,
     device_os TEXT
@@ -85,7 +85,7 @@ CREATE TABLE auth_token (
 -- Table: notification
 CREATE TABLE notification (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES "user"(id),
+    user_id INTEGER REFERENCES "users"(id),
     title TEXT,
     text TEXT,
     type TEXT,
@@ -107,10 +107,10 @@ VALUES
 ('Branch Office', '456 Side St', 'New York', 'East coast branch', 2, now(), now());
 
 -- Insert test users with Argon2-hashed passwords
-INSERT INTO "user" (name, email, password, company_id, type, created_at, updated_at)
+INSERT INTO "users" (name, email, password, company_id, type, created_at, updated_at)
 VALUES
-('Alice Johnson', 'alice@example.com', '35mqCdvt2SHgdovUNRaVbGFc/V/numfEMyHD5FNTvj82P8MRBgqdtRuZp8cglGzr', 1, 0, now(), now()), -- pass123
-('Bob Smith', 'bob@example.com', 'BBWPkrflCNUacYFgJNMuzI7OcPmPMxGNslDNvwTbTb17W1pWu8tXwJ7MoyTBgy7m', 2, 1, now(), now()); -- pass456
+('Alice Johnson', 'alice@example.com', '$argon2id$v=19$m=65536,t=3,p=4$UZkKDzX2myuA2wOFm0zYLg$00JiBxrWlayha2RIPEbfMvz7qO9FV7WxpXJeGX2qdzE', 1, 0, now(), now()), -- pass123
+('Bob Smith', 'bob@example.com', '$argon2id$v=19$m=65536,t=3,p=4$KKHuKBtIMjY3Amn9kGR73Q$K0j3BB3Cki7kArynySh1NXhABqo5VTwATSRdNKM6TwM', 2, 1, now(), now()); -- pass456
 
 -- Insert test positions
 INSERT INTO position (status, title, description, company_id, external_application_link, created_at, updated_at, published_at, expires_at, level, years_required_from, years_required_to, hours, type)
