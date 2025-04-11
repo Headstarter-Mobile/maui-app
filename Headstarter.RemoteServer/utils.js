@@ -21,13 +21,13 @@ async function verifyPassword(hashedPassword, passwordHashFromClient) {
   }
 }
 
-async function generateToken(userId, permissions) {
+async function generateToken(userId, permissions, expiresIn) {
   const payload = {
     userId: userId,
     permissions: permissions,
   };
   const secretKey = 'your-secret-key';
-  const token = jwt.sign(payload, secretKey, { expiresIn: '1h' });
+  const token = jwt.sign(payload, secretKey, { expiresIn: expiresIn });
   return token;
 }
 

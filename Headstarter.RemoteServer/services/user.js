@@ -64,71 +64,101 @@ module.exports = {
     }
   },
   loginUser: (pool) => async (call, callback) => {
-    try {
-      const { email, passwordHash } = call.request; // LoginUserRequest
-      const client = await pool.connect();
-      const result = await client.query('SELECT id, name, email, password, company_id, type FROM users WHERE email = $1', [email]);
-      client.release();
+      try {
+          const { email, password } = call.request; // This is a User message
 
-      if (result.rows.length > 0) {
-        const user = result.rows[0];
-        const passwordMatch = await verifyPassword(user.password, passwordHash);
+          const client = await pool.connect();
+          const result = await client.query(
+              'SELECT id, name, email, password, company_id, type, created_at, updated_at FROM users WHERE email = $1',
+              [email]
+          );
+          client.release();
 
-        if (passwordMatch) {
-          // Determine permissions based on user type (adjust as needed)
-          let permissions = [];
-          switch (user.type) {
-            case 0: // UserRole.CANDIDATE
-              permissions = [
-                'positions.read.all',
-                'companies.read.all',
-                'applications.create.own',
-                'applications.read.own',
-                'notifications.create',
-                'notifications.read.own',
-                'users.delete.own',
-                'users.update.own',
-                'auth_tokens.invalidate.own',
-              ];
-              break;
-            case 1: // UserRole.RECRUITER
-              permissions = [
-                'applications.read.own', // Changed from all to own
-                'positions.create.company',
-                'positions.update.company',
-                'positions.read.all',
-                'companies.read.all',
-                'positions.delete.company',
-                'companies.update.company',
-                'offices.create.company',
-                'offices.update.company',
-                'offices.delete.company',
-                'notifications.create',
-                'notifications.read.own',
-                'users.delete.own',
-                'users.update.own',
-                'auth_tokens.invalidate.own',
-              ];
-              break;
-            case 2: // UserRole.ADMIN
-              permissions = ['admin']; // Or a comprehensive list, but "admin" is simpler
-              break;
-            default:
-              permissions = [];
+          if (result.rows.length === 0) {
+              return callback({
+                  code: grpc.status.UNAUTHENTICATED,
+                  details: 'User with the given email not found.',
+              });
           }
 
-          const token = await generateToken(user.id, permissions);
-          callback(null, { token });
-        } else {
-          callback({ code: grpc.status.UNAUTHENTICATED, details: 'Invalid credentials' });
-        }
-      } else {
-        callback({ code: grpc.status.UNAUTHENTICATED, details: 'Invalid credentials' });
+          const user = result.rows[0];
+
+          const passwordMatch = await verifyPassword(user.password, password);
+          if (!passwordMatch) {
+              return callback({
+                  code: grpc.status.UNAUTHENTICATED,
+                  details: 'Invalid password.',
+              });
+          }
+
+          // Determine permissions
+          let permissions = [];
+          switch (user.type) {
+              case 0: // CANDIDATE
+                  permissions = [
+                      'positions.read.all',
+                      'companies.read.all',
+                      'applications.create.own',
+                      'applications.read.own',
+                      'notifications.create',
+                      'notifications.read.own',
+                      'users.delete.own',
+                      'users.update.own',
+                      'auth_tokens.invalidate.own',
+                  ];
+                  break;
+              case 1: // RECRUITER
+                  permissions = [
+                      'applications.read.own',
+                      'positions.create.company',
+                      'positions.update.company',
+                      'positions.read.all',
+                      'companies.read.all',
+                      'positions.delete.company',
+                      'companies.update.company',
+                      'offices.create.company',
+                      'offices.update.company',
+                      'offices.delete.company',
+                      'notifications.create',
+                      'notifications.read.own',
+                      'users.delete.own',
+                      'users.update.own',
+                      'auth_tokens.invalidate.own',
+                  ];
+                  break;
+              case 2: // ADMIN
+                  permissions = ['admin'];
+                  break;
+          }
+
+          const token = await generateToken(user.id, permissions, '1h'); // returns AuthToken
+
+          // Respond with LoggedUserData { userData, token }
+          callback(null, {
+              userData: {
+                  id: user.id,
+                  name: user.name,
+                  email: user.email,
+                  companyId: user.company_id,
+                  type: user.type,
+                  createdAt: user.created_at.toISOString?.() ?? user.created_at,
+                  updatedAt: user.updated_at.toISOString?.() ?? user.updated_at,
+              },
+              token: {
+                  token: token,
+                  userId: user.id,
+                  expiresOn: '',
+                  deviceType: '',
+                  deviceOs: '',
+              }
+          });
+      } catch (err) {
+          console.error('Login error:', err);
+          callback({
+              code: grpc.status.INTERNAL,
+              details: 'Internal server error',
+          });
       }
-    } catch (error) {
-      console.error('Error logging in user:', error);
-      callback({ code: grpc.status.INTERNAL, details: 'Internal server error' });
-    }
   },
   updateUser: (pool) => async (call, callback) => {
     validateToken(call, callback, async () => {

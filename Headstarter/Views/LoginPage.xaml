@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Headstarter.Components"
              x:Class="Headstarter.Views.LoginPage"
              Title="">
     <Grid RowDefinitions="*, Auto">
@@ -64,29 +65,25 @@
                        BackgroundColor="Transparent"
                        HorizontalOptions="Fill"
                        VerticalOptions="Fill"
-                    />   
+                    />
                 </Frame>
 
-
-
                 <Frame CornerRadius="50" HeightRequest="80" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" >
-                    <Entry x:Name="PasswordEntry"
-                       Placeholder="Парола"
-                       PlaceholderColor="{StaticResource Gray300}"
-                       TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                       FontSize="15"
-                       BackgroundColor="Transparent"/>   
+                    <controls:PasswordEntryView Text="{Binding Password}"
+                        Placeholder="Парола"
+                        PlaceholderColor="{StaticResource Gray300}"
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                        FontSize="15"
+                        EntryBackgroundColor="Transparent" />
                 </Frame>
 
                 <HorizontalStackLayout HorizontalOptions="Start" Padding="10,0" Spacing="10">
-                    <CheckBox x:Name="RememberMeCheckBox" VerticalOptions="Center" Color="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" />
+                    <CheckBox x:Name="RememberMeCheckBox" IsChecked="{Binding RememberMe}"  VerticalOptions="Center" Color="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" />
                     <Label Text="Запомни ме" Margin="-10,0"
                         VerticalOptions="Center"
                         FontSize="14"
                         TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"/>
                 </HorizontalStackLayout>
-
-                
 
                 <Button Text="Вход" 
                         BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
@@ -99,8 +96,7 @@
                         HorizontalOptions="Center"
                         BorderWidth="2"
                         BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                        Clicked="NavigateToProfileCommand"/>
-
+                        Clicked="LoginValidation"/>
 
                 <HorizontalStackLayout HorizontalOptions="Center" Padding="10,0" Spacing="10" Margin="0,-5,0,0">
                     <Button Text="Забравена парола"  
