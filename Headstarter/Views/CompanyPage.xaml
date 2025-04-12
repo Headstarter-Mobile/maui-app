@@ -51,18 +51,23 @@
                         BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
                         TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"/>
 
-                        <Frame 
+                        <Border
                             Margin="0,10,0,0"
                             x:Name="CompanyLogo"                                
                             HeightRequest="135" WidthRequest="275"
-                            CornerRadius="30"
-                            BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                            Stroke="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
                             BackgroundColor="Transparent"
                             Padding="0">
-                            <Image
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="30" />
+                            </Border.StrokeShape>
+
+
+                        <Image
                                 Source="image1.png"
                                 Aspect="AspectFit"></Image>
-                        </Frame>
+                        </Border>
 
                         <HorizontalStackLayout Spacing="10" Padding="0,0" Margin="10,0,0,0">
                             <Label 
@@ -71,7 +76,6 @@
                                 TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" FontSize="25"
                                 Text="{StaticResource IconMapMarker}"
                                 BackgroundColor="Transparent">
-                                
                             </Label>
                             <Label                               
                                 Margin="0,0,0,0"
@@ -168,7 +172,7 @@
                             </Label>
                             <Label
                                 Margin="0,5,0,0"
-                                Text="{Binding Level}"
+                                Text="Entry"
                                 TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
                                 FontSize="16">
                             </Label>
@@ -183,7 +187,7 @@
                             </Label>
                             <Label
                                 Margin="0,0,0,0"
-                                Text="0-2"
+                                Text="0 - 2"
                                 TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
                                 FontSize="16">
                             </Label>

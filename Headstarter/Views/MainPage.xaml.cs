@@ -6,5 +6,15 @@
         {
             InitializeComponent();
         }
+
+        private async void OnAboutUsTapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AboutUsPage());
+        }
+
+        private async void NavigateToSearchOfferCommand(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SearchOfferPage());
+        }
     }
 }

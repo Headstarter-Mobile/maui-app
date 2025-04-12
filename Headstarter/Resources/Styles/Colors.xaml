@@ -27,7 +27,7 @@
     <Color x:Key="LogoOrangeLight">#fce8cf</Color>
     <Color x:Key="LogoRed">#ff4036</Color>
     <Color x:Key="LogoRedLight">#ffe7e6</Color>
-    
+
 
     <Color x:Key="Gray100">#E1E1E1</Color>
     <Color x:Key="Gray200">#C8C8C8</Color>

@@ -9,7 +9,7 @@ public partial class App : Application
     public App(IServiceProvider serviceProvider)
     {
         InitializeComponent();
-        
+
         Services = serviceProvider;
 
         // Run session check asynchronously
@@ -20,10 +20,14 @@ public partial class App : Application
     {
         var sessionLoaded = await SessionService.Instance.LoadSessionAsync();
 
-        // Set the actual MainPage based on session state
-        MainPage = sessionLoaded
-            ? new AppShell()
-            : new NavigationPage(new LoginPage());
+        //if (sessionLoaded)
+        //{
+        //    await Shell.Current.GoToAsync("//HomePage");
+        //}
+        //else
+        //{
+        //    await Shell.Current.GoToAsync("//LoginPage");
+        //}
     }
 
     protected override Window CreateWindow(IActivationState? activationState)
