@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Headstarter.Views.AboutUsPage"
+             Title="">
+
+    <Grid RowDefinitions="*, Auto">
+
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout
+        VerticalOptions="Start"
+        Padding="30,0,30,100"
+        Spacing="25">
+
+                <HorizontalStackLayout HorizontalOptions="Center" Margin="0,30,0,-10">
+                    <Label 
+                        Margin="0,0,0,0"
+                        Text="HEAD"
+                        FontSize="44"
+                        FontFamily="LilitaOne"
+                        FontAttributes="None"
+                        TextColor="{StaticResource LogoGreen}"
+                        />
+
+                    <Image 
+                        Source="headstarter_logo2.png"
+                        HeightRequest="38"
+                        Aspect="AspectFit"/>
+
+                    <Label 
+                        Margin="0,0,0,0"
+                        Text="TARTER"
+                        FontSize="44"
+                        FontFamily="LilitaOne"
+                        FontAttributes="None"
+                        TextColor="{StaticResource LogoOrange}"
+                        />
+                </HorizontalStackLayout>
+
+                <Label      
+                    Margin="0,20,0,0"
+                    Text="Кои сме ние?"
+                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"/>
+
+                <Frame Margin="0,20,0,20" CornerRadius="50" HeightRequest="450" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" BackgroundColor="Transparent" >
+                    <VerticalStackLayout Padding="10,0,10,0" Spacing="25" >
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="Алекс Цветанов"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="25"
+                            FontAttributes="Bold"
+                            />
+ 
+                        <Border
+                            x:Name="AlexImage"
+                            HeightRequest="225" WidthRequest="225"
+                            StrokeLineCap="Round"
+                            Stroke ="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                            BackgroundColor="Transparent"
+                            Padding="0">
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="30" />
+                            </Border.StrokeShape>
+
+
+                            <Image
+                                    Source="alex.jpg"
+                                    Aspect="AspectFill">
+                            </Image>
+                        </Border>
+
+                        <Frame
+                            Padding="0"
+                            HasShadow="False"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            CornerRadius="12">
+                            <HorizontalStackLayout
+                                Spacing="5"
+                                Padding="0,0">
+                                <Label 
+                                    FontFamily="icons"
+                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" 
+                                    FontSize="25"
+                                    Text="{StaticResource IconFacebook}"
+                                    BackgroundColor="Transparent" />
+                                <Label
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Start"
+                                    Text="Alex Tsvetanov"
+                                    FontSize="18"
+                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+                            </HorizontalStackLayout>
+                        </Frame>
+
+                        <Frame
+                            Padding="0"
+                            Margin="0,-10,0,0"
+                            HasShadow="False"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            CornerRadius="12">
+                            <HorizontalStackLayout
+                                Spacing="5"
+                                Padding="0,0">
+                                <Label 
+                                    FontFamily="icons"
+                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" 
+                                    FontSize="25"
+                                    Text="{StaticResource IconInstagram}"
+                                    BackgroundColor="Transparent" />
+                                <Label
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Start"
+                                    Text="coder_of_worlds"
+                                    FontSize="18"
+                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+                            </HorizontalStackLayout>
+                        </Frame>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Margin="0,20,0,20" CornerRadius="50" HeightRequest="450" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" BackgroundColor="Transparent" >
+                    <VerticalStackLayout Padding="10,0,10,0" Spacing="25" >
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="Кирил Вълков"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="25"
+                            FontAttributes="Bold"
+                            />
+
+                        <Border x:Name="KirilImage"
+                                HeightRequest="225" WidthRequest="225"
+                                Stroke="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                                BackgroundColor="Transparent"
+                                Padding="0">
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="30" />
+                            </Border.StrokeShape>
+
+
+                            <Image
+                                    Source="kiril.jpg"
+                                    Aspect="AspectFill">
+                            </Image>
+                        </Border>
+
+                        <Frame
+                            Padding="0"
+                            HasShadow="False"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            CornerRadius="12">
+                            <HorizontalStackLayout
+                                Spacing="5"
+                                Padding="0,0">
+                                <Label 
+                                    FontFamily="icons"
+                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" 
+                                    FontSize="25"
+                                    Text="{StaticResource IconFacebook}"
+                                    BackgroundColor="Transparent" />
+                                <Label
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Start"
+                                    Text="Kiril Valkov"
+                                    FontSize="18"
+                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+                            </HorizontalStackLayout>
+                        </Frame>
+
+                        <Frame
+                            Padding="0"
+                            Margin="0,-10,0,0"
+                            HasShadow="False"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            CornerRadius="12">
+                            <HorizontalStackLayout
+                                Spacing="5"
+                                Padding="0,0">
+                                <Label 
+                                    FontFamily="icons"
+                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" 
+                                    FontSize="25"
+                                    Text="{StaticResource IconInstagram}"
+                                    BackgroundColor="Transparent" />
+                                <Label
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Start"
+                                    Text="kirilvalkov_"
+                                    FontSize="18"
+                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+                            </HorizontalStackLayout>
+                        </Frame>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Margin="0,20,0,0" CornerRadius="50" HeightRequest="450" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" BackgroundColor="Transparent" >
+                    <VerticalStackLayout Padding="10,0,10,0" Spacing="25" >
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="Борис Влахов"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="25"
+                            FontAttributes="Bold"
+                            />
+
+                        <Border x:Name="BorisImage"
+                                HeightRequest="225" WidthRequest="225"
+                                Stroke="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                                BackgroundColor="Transparent"
+                                Padding="0">
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="30" />
+                            </Border.StrokeShape>
+
+                            <Image
+                                    Source="boris.jpg"
+                                    Aspect="AspectFill">
+                            </Image>
+                        </Border>
+
+                        <Frame
+                            Padding="0"
+                            HasShadow="False"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            CornerRadius="12">
+                            <HorizontalStackLayout
+                                Spacing="5"
+                                Padding="0,0">
+                                <Label 
+                                    FontFamily="icons"
+                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" 
+                                    FontSize="25"
+                                    Text="{StaticResource IconFacebook}"
+                                    BackgroundColor="Transparent" />
+                                <Label
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Start"
+                                    Text="Boris Vlahov"
+                                    FontSize="18"
+                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+                            </HorizontalStackLayout>
+                        </Frame>
+
+                        <Frame
+                            Padding="0"
+                            Margin="0,-10,0,0"
+                            HasShadow="False"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            CornerRadius="12">
+                            <HorizontalStackLayout
+                                Spacing="5"
+                                Padding="0,0">
+                                <Label 
+                                    FontFamily="icons"
+                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" 
+                                    FontSize="25"
+                                    Text="{StaticResource IconInstagram}"
+                                    BackgroundColor="Transparent" />
+                                <Label
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Start"
+                                    Text="boris_vlahov"
+                                    FontSize="18"
+                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </VerticalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>

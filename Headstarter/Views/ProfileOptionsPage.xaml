@@ -95,14 +95,19 @@
                     HorizontalOptions="Start"/>
 
 
-                    <Frame x:Name="ProfilePictureFrame"
+                    <Border x:Name="ProfilePictureFrame"
                         HeightRequest="150" WidthRequest="150"
-                        CornerRadius="100"
-                        BorderColor="{StaticResource LogoGreen}"
+                        Stroke="{StaticResource LogoGreen}"
                         BackgroundColor="Transparent"
                         Padding="0"
                         VerticalOptions="Center">
-                    </Frame>
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="100" />
+                        </Border.StrokeShape>
+
+
+                    </Border>
 
                     <Button Text="Добави профилна снимка" 
                         HeightRequest="50" WidthRequest="325"
@@ -180,14 +185,19 @@
                             BackgroundColor="Transparent"/>
                     </Frame>
 
-                    <Frame x:Name="CompanyLogoFrame"
+                    <Border x:Name="CompanyLogoFrame"
                         HeightRequest="185" WidthRequest="325"
-                        CornerRadius="30"
-                        BorderColor="{StaticResource LogoRed}"
+                        Stroke="{StaticResource LogoRed}"
                         BackgroundColor="Transparent"
                         Padding="0"
                         VerticalOptions="Center">
-                    </Frame>
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="30" />
+                        </Border.StrokeShape>
+
+
+                    </Border>
 
                     <Button Text="Прикачи лого" 
                             HeightRequest="50" WidthRequest="325"

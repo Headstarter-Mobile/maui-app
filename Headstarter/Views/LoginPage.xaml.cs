@@ -10,7 +10,7 @@ public partial class LoginPage : ContentPage
         InitializeComponent();
         this.BindingContext = Application.Current.Windows[0].Page.Handler.MauiContext.Services.GetService<LoginPageViewModel>();
     }
-    
+
     private async void LoginValidation(object sender, EventArgs e)
     {
         await (this.BindingContext as LoginPageViewModel).LoginValidation();
