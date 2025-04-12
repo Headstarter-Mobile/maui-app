@@ -1,9 +1,277 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Headstarter.Views.SignUpPage">
-    <ContentPage.Content>
+             x:Class="Headstarter.Views.SignupPage"
+             Title="">
 
-    </ContentPage.Content>
+    <Grid RowDefinitions="*, Auto">
+
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout
+            VerticalOptions="Start"
+            Padding="30,0,30,100"
+            Spacing="25">
+
+                <HorizontalStackLayout HorizontalOptions="Center" Margin="0,30,0,-10">
+                    <Label 
+                        Margin="0,0,0,0"
+                        Text="HEAD"
+                        FontSize="44"
+                        FontFamily="LilitaOne"
+                        FontAttributes="None"
+                        TextColor="{StaticResource LogoGreen}"
+                        />
+
+                    <Image 
+                        Source="headstarter_logo2.png"
+                        HeightRequest="38"
+                        Aspect="AspectFit"/>
+
+                    <Label 
+                        Margin="0,0,0,0"
+                        Text="TARTER"
+                        FontSize="44"
+                        FontFamily="LilitaOne"
+                        FontAttributes="None"
+                        TextColor="{StaticResource LogoOrange}"
+                        />
+                </HorizontalStackLayout>
+
+
+
+                <Label Text="Създай своя профил"
+                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                    Margin="0,20,0,0"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"/>
+
+                <Label Text="Въведете Вашите имена:"
+                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                    Margin="15,10,0,0"
+                    FontSize="16"
+                    FontAttributes="None"
+                    HorizontalOptions="Start"/>
+
+                <Frame Margin="0,0,0,0" CornerRadius="50" HeightRequest="80" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
+                    <Entry x:Name="FirstNameEntry"
+                        Placeholder="Имe"
+                        PlaceholderColor="{StaticResource Gray300}"
+                        Keyboard="Email"
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                        FontSize="15"
+                        BackgroundColor="Transparent"/>
+                </Frame>
+
+                <Frame CornerRadius="50" HeightRequest="80" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
+                    <Entry x:Name="LastNameEntry"
+                            Placeholder="Фамилия"
+                            PlaceholderColor="{StaticResource Gray300}"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                            FontSize="15"
+                            BackgroundColor="Transparent"/>
+                </Frame>
+
+                <Label Text="Въведете Вашата рождена дата:"
+                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                    Margin="15,10,0,0"
+                    FontSize="16"
+                    FontAttributes="None"
+                    HorizontalOptions="Start"/>
+
+
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="15" Margin="0,0,0,0">
+                    <Button Text="Ден" 
+                        x:Name="DayButton" 
+                        WidthRequest="75" 
+                        HeightRequest="50"
+                        BackgroundColor="Transparent"
+                        BorderWidth="1"
+                        BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                        CornerRadius="50"
+                        FontSize="15"
+                        Clicked="OnDayButtonClicked"/>
+
+                    <Button Text="Месец" 
+                        x:Name="MonthButton" 
+                        WidthRequest="125" 
+                        HeightRequest="50"
+                        BackgroundColor="Transparent"
+                        BorderWidth="1"
+                        BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                        CornerRadius="50"
+                        FontSize="15"
+                        Clicked="OnMonthButtonClicked"/>
+
+                    <Button Text="Година" 
+                        x:Name="YearButton" 
+                        WidthRequest="95" 
+                        HeightRequest="50"
+                        BackgroundColor="Transparent"
+                        BorderWidth="1"
+                        BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                        CornerRadius="50"
+                        FontSize="15"
+                        Clicked="OnYearButtonClicked"/>
+                </HorizontalStackLayout>
+
+
+                <Label Text="Въведете телефонен номер:"
+                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                    Margin="15,15,0,0"
+                    FontSize="16"
+                    FontAttributes="None"
+                    HorizontalOptions="Start"/>
+
+                <Frame CornerRadius="50" HeightRequest="80" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" >
+                    <Entry x:Name="PhoneNumberEntry"
+                        Placeholder="Телефонен номер"
+                        PlaceholderColor="{StaticResource Gray300}"
+                        Keyboard="Telephone"
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                        FontSize="15"
+                        BackgroundColor="Transparent"/>
+                </Frame>
+
+                <Label Text="Въведете валиден имейл:"
+                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                    Margin="15,15,0,0"
+                    FontSize="16"
+                    FontAttributes="None"
+                    HorizontalOptions="Start"/>
+
+                <Frame CornerRadius="50" HeightRequest="80" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" >
+                    <Entry x:Name="EmailEntry"
+                        Placeholder="Имейл"
+                        PlaceholderColor="{StaticResource Gray300}"
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                        FontSize="15"
+                        BackgroundColor="Transparent"/>
+                </Frame>
+
+                <Label Text="Въведете парола:"
+                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                    Margin="15,15,0,0"
+                    FontSize="16"
+                    FontAttributes="None"
+                    HorizontalOptions="Start"/>
+
+
+
+                <Frame CornerRadius="50" HeightRequest="80" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" >
+                    <Entry x:Name="PasswordEntry"
+                        Placeholder="Парола"
+                        PlaceholderColor="{StaticResource Gray300}"
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                        FontSize="15"
+                        IsPassword="True"   
+                        BackgroundColor="Transparent"/>
+                </Frame>
+
+
+
+                <Frame CornerRadius="50" HeightRequest="80" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" >
+                    <Entry x:Name="ConfirmPasswordEntry"
+                        Placeholder="Повторете паролата"
+                        PlaceholderColor="{StaticResource Gray300}"
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                        FontSize="15"
+                        IsPassword="True"
+                        BackgroundColor="Transparent"/>
+                </Frame>
+
+                <Button Text="Показване / Скриване"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                    HeightRequest="50" WidthRequest="220"
+                    BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                    BorderWidth="2"
+                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                    CornerRadius="50"
+                    FontSize="15"
+                    Clicked="TogglePasswordVisibility"/>
+
+                <Label Text="Изисквания за парола:"
+                    Margin="15,0,0,0"
+                    FontSize="16"
+                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                    FontAttributes="None"
+                    HorizontalOptions="Start"/>
+
+                <StackLayout Margin="20,-20,0,15">
+                    <Label Text="• Минимум 8 символа" FontSize="14" FontAttributes="Italic" TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray400}}"/>
+                    <Label Text="• Поне една главна буква (A-Z)" FontSize="14" FontAttributes="Italic" TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray400}}"/>
+                    <Label Text="• Поне една малка буква (a-z)" FontSize="14"  FontAttributes="Italic" TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray400}}"/>
+                    <Label Text="• Поне една цифра (0-9)" FontSize="14" FontAttributes="Italic" TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray400}}"/>
+                    <Label Text="• Поне един специален символ (!@#$%^*)" FontSize="14" FontAttributes="Italic" TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray400}}"/>
+                </StackLayout>
+
+                <HorizontalStackLayout HorizontalOptions="Start" Padding="10,0" Spacing="10" Margin="0,-20,0,0">
+                    <CheckBox x:Name="AcceptCheckBox" VerticalOptions="Center" Color="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" />
+                    <Label Text="Съгласявам се с общи условия" Margin="-10,0"
+                        VerticalOptions="Center"       
+                        FontSize="14"
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"/>
+                </HorizontalStackLayout>
+
+                <Button Text="Регистрация" 
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                    x:Name="NavigateToEmailVerification"
+                    HeightRequest="65" WidthRequest="180"
+                    CornerRadius="50"
+                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    BorderWidth="2"
+                    BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                    Clicked="NavigateToEmailVerificationCommand"/>
+
+                <HorizontalStackLayout HorizontalOptions="Center" Padding="10,0" Spacing="5" Margin="0,-5,0,0">
+                    <Label Text="Имате акаунт?"  
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                       FontSize="16" 
+                       FontAttributes="Bold" 
+                       VerticalOptions="Center"/>
+
+                    <Button Text="Вход"  
+                        x:Name="NavigateToLogin"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                        BackgroundColor="Transparent"
+                        FontSize="16" 
+                        FontAttributes="Bold" 
+                        VerticalOptions="Center"
+                        Padding="0"
+                        Clicked="NavigateToLoginCommand"/>
+                </HorizontalStackLayout>
+
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+
+        <!--<FlexLayout Grid.Row="1"
+                Direction="Column"
+                AlignItems="Center"
+                JustifyContent="Center"
+                Padding="10"
+                BackgroundColor="{StaticResource LogoYellow}">
+
+            <Label Text=" aaaaaaaaaaaaaa"
+               TextColor="Black"
+               FontSize="16"
+               Background="{StaticResource LogoGreen}"
+               Padding="100,5"/>
+
+            <Label Text="Headstarter 2025"
+               TextColor="Black"
+               FontSize="16"
+               Background="{StaticResource LogoGreen}"
+               Padding="100,5"/>
+        </FlexLayout>-->
+
+    </Grid>
+
 </ContentPage>
