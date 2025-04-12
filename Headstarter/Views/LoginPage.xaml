@@ -1,20 +1,154 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewModels="clr-namespace:Headstarter.ViewModels"
+             xmlns:controls="clr-namespace:Headstarter.Components"
              x:Class="Headstarter.Views.LoginPage"
-             Title="Login">
+             Title="">
+    <Grid RowDefinitions="*, Auto">
 
-    <VerticalStackLayout Padding="20">
-        <Entry Placeholder="Username" Text="{Binding Username}" />
-        <Entry Placeholder="Password" IsPassword="True" Text="{Binding Password}" />
-        <Picker Title="User Type" SelectedItem="{Binding SelectedUserType}">
-            <Picker.Items>
-                <x:String>Specialist</x:String>
-                <x:String>Recruiter</x:String>
-            </Picker.Items>
-        </Picker>
-        <Button Text="Login" Command="{Binding LoginCommand}" />
-    </VerticalStackLayout>
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout
+                VerticalOptions="Start"
+                Padding="30,0,30,100"
+                Spacing="25">
+
+                <HorizontalStackLayout HorizontalOptions="Center" Margin="0,30,0,-10">
+                    <Label 
+                        Margin="0,0,0,0"
+                        Text="HEAD"
+                        FontSize="44"
+                        FontFamily="LilitaOne"
+                        FontAttributes="None"
+                        TextColor="{StaticResource LogoGreen}"
+                        />
+
+                    <Image 
+                        Source="headstarter_logo2.png"
+                        HeightRequest="38"
+                        Aspect="AspectFit"/>
+
+                    <Label 
+                        Margin="0,0,0,0"
+                        Text="TARTER"
+                        FontSize="44"
+                        FontFamily="LilitaOne"
+                        FontAttributes="None"
+                        TextColor="{StaticResource LogoOrange}"
+                        />
+                </HorizontalStackLayout>
+
+
+
+                <Label Text="Влез в своя профил"
+                   TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                   Margin="0,20,0,0"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+
+                <Label Text="Въведете Вашите данни:"
+                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                    Margin="15,10,0,0"
+                    FontSize="16"
+                    FontAttributes="None"
+                    HorizontalOptions="Start"/>
+
+
+                <Frame Margin="0,0,0,0" CornerRadius="50" HeightRequest="80" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
+                    <Entry x:Name="EmailEntry"
+                       Text="{Binding Email}"
+                       Placeholder="Имейл"
+                       PlaceholderColor="{StaticResource Gray300}"
+                       Keyboard="Email"
+                       TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                       FontSize="15"
+                       BackgroundColor="Transparent"
+                       HorizontalOptions="Fill"
+                       VerticalOptions="Fill"
+                    />
+                </Frame>
+
+                <Frame CornerRadius="50" HeightRequest="80" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" >
+                    <controls:PasswordEntryView Text="{Binding Password}"
+                        Placeholder="Парола"
+                        PlaceholderColor="{StaticResource Gray300}"
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                        FontSize="15"
+                        EntryBackgroundColor="Transparent" />
+                </Frame>
+
+                <HorizontalStackLayout HorizontalOptions="Start" Padding="10,0" Spacing="10">
+                    <CheckBox x:Name="RememberMeCheckBox" IsChecked="{Binding RememberMe}"  VerticalOptions="Center" Color="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" />
+                    <Label Text="Запомни ме" Margin="-10,0"
+                        VerticalOptions="Center"
+                        FontSize="14"
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"/>
+                </HorizontalStackLayout>
+
+                <Button Text="Вход" 
+                        BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                        x:Name="NavigateToProfile"
+                        HeightRequest="65" WidthRequest="120"
+                        CornerRadius="50"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        BorderWidth="2"
+                        BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                        Clicked="LoginValidation"/>
+
+                <HorizontalStackLayout HorizontalOptions="Center" Padding="10,0" Spacing="10" Margin="0,-5,0,0">
+                    <Button Text="Забравена парола"  
+                        x:Name="NavigateToForgottenPassword"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                        BackgroundColor="Transparent"
+                        FontSize="16" 
+                        FontAttributes="Bold" 
+                        VerticalOptions="Center"
+                        Padding="0"
+                        Clicked="NavigateToNewPassVerifCommand"/>
+
+                    <BoxView WidthRequest="2" 
+                        HeightRequest="20" 
+                        BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                        VerticalOptions="Center"/>
+
+                    <Button Text="Регистрация"  
+                        x:Name="NavigateToSingup"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                        BackgroundColor="Transparent"
+                        FontSize="16" 
+                        FontAttributes="Bold" 
+                        VerticalOptions="Center"
+                        Padding="0"
+                        Clicked="NavigateToSignupCommand"/>
+                </HorizontalStackLayout>
+
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+
+        <!--<FlexLayout Grid.Row="1"
+                Direction="Column"
+                AlignItems="Center"
+                JustifyContent="Center"
+                Padding="10"
+                BackgroundColor="{StaticResource LogoYellow}">
+
+            <Label Text=" aaaaaaaaaaaaaa"
+               TextColor="Black"
+               FontSize="16"
+               Background="{StaticResource LogoGreen}"
+               Padding="100,5"/>
+
+            <Label Text="Headstarter 2025"
+               TextColor="Black"
+               FontSize="16"
+               Background="{StaticResource LogoGreen}"
+               Padding="100,5"/>
+        </FlexLayout>-->
+
+    </Grid>
 </ContentPage>

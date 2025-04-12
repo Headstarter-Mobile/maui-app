@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Headstarter.Views.WorkerProfilePage"
+             Title="">
+
+    <Grid RowDefinitions="*, Auto">
+
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout
+            VerticalOptions="Start"
+            Padding="30,0,30,100"
+            Spacing="25">
+
+                <HorizontalStackLayout HorizontalOptions="Center" Margin="0,30,0,-10">
+                    <Label 
+                    Margin="0,0,0,0"
+                    Text="HEAD"
+                    FontSize="44"
+                    FontFamily="LilitaOne"
+                    FontAttributes="None"
+                    TextColor="{StaticResource LogoGreen}"
+                    />
+
+                    <Image 
+                    Source="headstarter_logo2.png"
+                    HeightRequest="38"
+                    Aspect="AspectFit"/>
+
+                    <Label 
+                    Margin="0,0,0,0"
+                    Text="TARTER"
+                    FontSize="44"
+                    FontFamily="LilitaOne"
+                    FontAttributes="None"
+                    TextColor="{StaticResource LogoOrange}"
+                    />
+                </HorizontalStackLayout>
+
+                <Frame Margin="0,20,0,0" CornerRadius="50" HeightRequest="550" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" BackgroundColor="Transparent" >
+                    <StackLayout Padding="10,0,10,0" Spacing="25" >
+                        <Label
+                            x:Name="PersonalInfoWorker"
+                            Text="Лична информация" 
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            HorizontalOptions="Center"
+                            FontSize="20"
+                            FontAttributes="Bold"/>
+
+                        <Label                           
+                            x:Name="Names1Worker"
+                            Text="Име и фамилия:"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="15"/>
+                        <HorizontalStackLayout Margin="0,-10,0,0" Spacing="5" HorizontalOptions="Start" >
+                            <Label                           
+                                x:Name="FNameWorker"
+                                Text="Boris"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+                            <Label                           
+                                x:Name="LNameWorker"
+                                Text="Vlahov"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+                            <Button 
+                                Margin="0,-10,0,0"
+                                FontFamily="icons"
+                                BackgroundColor="Transparent">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="icons" Glyph="{StaticResource IconPencil}" Color="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" Size="25" />
+                                </Button.ImageSource>
+                            </Button>
+                        </HorizontalStackLayout>
+
+
+                        <Label                           
+                            x:Name="Birthday1Worker"
+                            Text="Рождена дата:"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="15"/>
+
+                        <HorizontalStackLayout Margin="0,-10,0,0" Spacing="2" HorizontalOptions="Start" >
+                            <Label                           
+                                x:Name="DayWorker"
+                                Text="04"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+                            <Label                           
+                                x:Name="Dot1Worker"
+                                Text="."
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+                            <Label                           
+                                x:Name="MonthWorker"
+                                Text="05"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+                            <Label                           
+                                x:Name="Dot2Worker"
+                                Text="."
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+                            <Label                           
+                                x:Name="YearWorker"
+                                Text="2003"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+                            <Button 
+                                Margin="0,-10,0,0"
+                                FontFamily="icons"
+                                BackgroundColor="Transparent">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="icons" Glyph="{StaticResource IconPencil}" Color="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" Size="25" />
+                                </Button.ImageSource>
+                            </Button>
+                        </HorizontalStackLayout>
+
+
+                        <Label                           
+                            x:Name="Phone1Worker"
+                            Text="Телефонен номер:"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="15"/>
+                        <HorizontalStackLayout Margin="0,-10,0,0" Spacing="10" HorizontalOptions="Start" >
+                            <Label                           
+                                x:Name="Phone2Worker"
+                                Text="0888440107"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+
+
+                            <Button 
+                                Margin="0,-10,0,0"
+                                FontFamily="icons"
+                                BackgroundColor="Transparent">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="icons" Glyph="{StaticResource IconPencil}" Color="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" Size="25" />
+                                </Button.ImageSource>
+                            </Button>
+                        </HorizontalStackLayout>
+
+                        <Label                           
+                            x:Name="Email1Worker"
+                            Text="Имейл:"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="15"/>
+                        <HorizontalStackLayout Margin="0,-10,0,0" Spacing="10" HorizontalOptions="Start" >
+                            <Label                           
+                                x:Name="Email2Worker"
+                                Text="bobovlahov@gmail.com"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+
+
+                            <Button 
+                                Margin="0,-10,0,0"
+                                FontFamily="icons"
+                                BackgroundColor="Transparent">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="icons" Glyph="{StaticResource IconPencil}" Color="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" Size="25" />
+                                </Button.ImageSource>
+                            </Button>
+                        </HorizontalStackLayout>
+
+                        <Label                           
+                            x:Name="Password1Worker"
+                            Text="Парола:"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="15"/>
+                        <HorizontalStackLayout Margin="0,-10,0,0" Spacing="10" HorizontalOptions="Start" >
+                            <Label                           
+                                x:Name="Password2Worker"
+                                Text="*******"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+
+
+                            <Button 
+                                Margin="0,-10,0,0"
+                                FontFamily="icons"
+                                BackgroundColor="Transparent">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="icons" Glyph="{StaticResource IconPencil}" Color="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" Size="25" />
+                                </Button.ImageSource>
+                            </Button>
+                        </HorizontalStackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Margin="0,30,0,0" CornerRadius="50" HeightRequest="600" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoGreen}, Dark={StaticResource LogoGreen}}" BackgroundColor="Transparent" >
+                    <StackLayout Padding="10,0,10,0" Spacing="25" >
+                        <Label
+                            x:Name="WorkerAdditionalInfo"
+                            Text=" Работнически данни" 
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            HorizontalOptions="Center"
+                            FontSize="20"
+                            FontAttributes="Bold"/>
+
+                        <Label                           
+                            x:Name="ProfilePicture1"
+                            Text="Профилна снимка:"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="15"/>
+                        <HorizontalStackLayout Margin="0,0,0,0" Spacing="10" HorizontalOptions="Start" >
+                            <Border x:Name="ProfilePicture2"
+                                HeightRequest="150" WidthRequest="150"
+                                Stroke="{StaticResource LogoGreen}"
+                                BackgroundColor="Transparent"
+                                Padding="0">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="100" />
+                                </Border.StrokeShape>
+
+
+                                <Image
+                                    Source="image1.png"
+                                    Aspect="AspectFit"></Image>
+                            </Border>
+                            <Button 
+                                    Margin="0,-10,0,0"
+                                    FontFamily="icons"
+                                    BackgroundColor="Transparent">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="icons" Glyph="{StaticResource IconPencil}" Color="{StaticResource LogoGreen}" Size="25" />
+                                </Button.ImageSource>
+                            </Button>
+                        </HorizontalStackLayout>
+                                              
+                        <Label                           
+                            x:Name="LinkedInLink1"
+                            Text="Линк към LinkedIn профил:"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="15"/>
+                        <HorizontalStackLayout Margin="0,-10,0,0" Spacing="10" HorizontalOptions="Start" >
+                            <Label                           
+                                x:Name="LinkedInLink2"
+                                Text="https://aaaaaaaaaaaaaaa.com"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                TextDecorations="Underline"
+                                FontSize="18"/>
+                            <Button 
+                                Margin="0,-10,0,0"
+                                FontFamily="icons"
+                                BackgroundColor="Transparent">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="icons" Glyph="{StaticResource IconPencil}" Color="{StaticResource LogoGreen}" Size="25" />
+                                </Button.ImageSource>
+                            </Button>
+                        </HorizontalStackLayout>
+
+                        <Label                           
+                            x:Name="OtherLink1"
+                            Text="Линк към друга социална медия:"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="15"/>
+                        <HorizontalStackLayout Margin="0,-10,0,0" Spacing="10" HorizontalOptions="Start" >
+                            <Label                           
+                                x:Name="OtherLink2"
+                                Text="https://bbbbbbbbbbb.com"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                TextDecorations="Underline"
+                                FontSize="18"/>
+                            <Button 
+                                Margin="0,-10,0,0"
+                                FontFamily="icons"
+                                BackgroundColor="Transparent">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="icons" Glyph="{StaticResource IconPencil}" Color="{StaticResource LogoGreen}" Size="25" />
+                                </Button.ImageSource>
+                            </Button>
+                        </HorizontalStackLayout>
+
+                        <Label                           
+                            x:Name="CVUpload1"
+                            Text="Прикачено CV:"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontSize="15"/>
+                        <HorizontalStackLayout Margin="0,-10,0,0" Spacing="10" HorizontalOptions="Start" >
+                            <Label                           
+                                x:Name="CVUpload2"
+                                Text="harizmatichen.pdf"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="18"/>
+                            <Button 
+                                Margin="0,-10,0,0"
+                                FontFamily="icons"
+                                BackgroundColor="Transparent">
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="icons" Glyph="{StaticResource IconPencil}" Color="{StaticResource LogoGreen}" Size="25" />
+                                </Button.ImageSource>
+                            </Button>
+                        </HorizontalStackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <BoxView 
+                    Margin="0,20"
+                    WidthRequest="325" 
+                    HeightRequest="1" 
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                    VerticalOptions="Center"/>
+
+                <Label                   
+                    Text="Вашите кандидатури"
+                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"/>
+
+
+                <Frame Margin="0,10,0,0" Padding="0,0,0,0" WidthRequest="325" HeightRequest="170" CornerRadius="30" BackgroundColor="Transparent" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" >
+                    <StackLayout>
+                        <Label     
+                            Margin="15,10,0,0"
+                            Text="Junior Software Developer"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontAttributes="Bold"
+                            FontSize="18">
+                        </Label>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label   
+                                Margin="15,5,0,0"
+                                Text="Ниво:"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="16">
+                            </Label>
+                            <Label
+                                Margin="0,5,0,0"
+                                Text="Entry"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontSize="16">
+                            </Label>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label   
+                                Margin="15,0,0,0"
+                                Text="Години опит:"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="16">
+                            </Label>
+                            <Label
+                                Margin="0,0,0,0"
+                                Text="0 - 2"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontSize="16">
+                            </Label>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label   
+                                Margin="15,0,0,0"
+                                Text="Място:"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="16">
+                            </Label>
+                            <Label
+                                Margin="0,0,0,0"
+                                Text="София"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontSize="16">
+                            </Label>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label   
+                                Margin="15,0,0,0"
+                                Text="Заетост:"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="16">
+                            </Label>
+                            <Label
+                                Margin="0,0,0,0"
+                                Text="8 часа"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontSize="16">
+                            </Label>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label   
+                                Margin="15,0,0,0"
+                                Text="Режим:"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="16">
+                            </Label>
+                            <Label
+                                Margin="0,0,0,0"
+                                Text="Присъствен"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontSize="16">
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <Button
+                            HorizontalOptions="End"
+                            Text="Виж"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                            CornerRadius="50"
+                            BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                            WidthRequest="100"
+                            HeightRequest="50"
+                            Margin="0,-45,10,0">
+                        </Button>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Margin="0,10,0,0" Padding="0,0,0,0" WidthRequest="325" HeightRequest="170" CornerRadius="30" BackgroundColor="Transparent" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" >
+                    <StackLayout>
+                        <Label     
+                            Margin="15,10,0,0"
+                            Text="Junior Software Developer"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            FontAttributes="Bold"
+                            FontSize="18">
+                        </Label>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label   
+                                Margin="15,5,0,0"
+                                Text="Ниво:"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="16">
+                            </Label>
+                            <Label
+                                Margin="0,5,0,0"
+                                Text="Entry"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontSize="16">
+                            </Label>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label   
+                                Margin="15,0,0,0"
+                                Text="Години опит:"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="16">
+                            </Label>
+                            <Label
+                                Margin="0,0,0,0"
+                                Text="0 - 2"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontSize="16">
+                            </Label>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label   
+                                Margin="15,0,0,0"
+                                Text="Място:"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="16">
+                            </Label>
+                            <Label
+                                Margin="0,0,0,0"
+                                Text="София"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontSize="16">
+                            </Label>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label   
+                                Margin="15,0,0,0"
+                                Text="Заетост:"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="16">
+                            </Label>
+                            <Label
+                                Margin="0,0,0,0"
+                                Text="8 часа"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontSize="16">
+                            </Label>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <Label   
+                                Margin="15,0,0,0"
+                                Text="Режим:"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontAttributes="Bold"
+                                FontSize="16">
+                            </Label>
+                            <Label
+                                Margin="0,0,0,0"
+                                Text="Присъствен"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                FontSize="16">
+                            </Label>
+                        </HorizontalStackLayout>
+
+                        <Button
+                            HorizontalOptions="End"
+                            Text="Виж"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                            CornerRadius="50"
+                            BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                            WidthRequest="100"
+                            HeightRequest="50"
+                            Margin="0,-45,10,0">
+                        </Button>
+                    </StackLayout>
+                </Frame>
+
+                <BoxView 
+                    Margin="0,20"
+                    WidthRequest="325" 
+                    HeightRequest="1" 
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                    VerticalOptions="Center"/>
+
+                <Button Text="Излез" 
+                        BackgroundColor="{AppThemeBinding Light={StaticResource LogoRed}, Dark={StaticResource LogoRed}}"
+                        x:Name="LogOutButton"
+                        HeightRequest="65" WidthRequest="120"
+                        CornerRadius="50"
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        BorderWidth="2"
+                        BorderColor="{AppThemeBinding Light={StaticResource LogoRed}, Dark={StaticResource LogoRed}}"/>
+
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+
+  
+
+    </Grid>
+
+</ContentPage>
