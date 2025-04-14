@@ -67,12 +67,12 @@ public class OfficeService : IOfficeService
         }
     }
 
-    public async Task<ICollection<Office>> GetAllOffices()
+    public async Task<ICollection<Office>> GetAllOffices(Office filters)
     {
         try
         {
             var client = _grpcService.officeClient;
-            using var call = client.GetAllOffices(new Google.Protobuf.WellKnownTypes.Empty(), _grpcService._metadata);
+            using var call = client.GetAllOffices(filters, _grpcService._metadata);
             List<Office> offices = [];
 
             while (await call.ResponseStream.MoveNext())

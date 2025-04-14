@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Headstarter.Views.MainPage"
+             xmlns:controls="clr-namespace:Headstarter.Components"
              BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray900}}">
 
     <Grid RowDefinitions="*, Auto">
@@ -63,6 +64,20 @@
                     BorderWidth="2"
                     BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
                     Clicked="NavigateToSearchOfferCommand"/>
+
+                <Button Text="Обява" 
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                    Margin="0,20,0,0"
+                    x:Name="NavigateToJobOffer"
+                    HeightRequest="65" WidthRequest="205"
+                    CornerRadius="50"
+                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    BorderWidth="2"
+                    BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                    Clicked="NavigateToJobOfferCommand"/>
 
 
                 <BoxView 
@@ -280,201 +295,7 @@
                     </StackLayout>
                 </Frame>
 
-                <Grid Margin="-30,50,-30,0" Padding="0,50"
-                      BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
-                    <VerticalStackLayout Spacing="25">
-
-                        <Label
-                            Padding="0,0,0,10"
-                            HorizontalOptions="Center"
-                            Text="ЗА НАС"
-                            TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
-                            FontSize="20"
-                            FontAttributes="Bold" />
-
-                        <Frame
-                            Padding="0"
-                            HasShadow="False"
-                            BackgroundColor="Transparent"
-                            BorderColor="Transparent"
-                            CornerRadius="12">
-
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnAboutUsTapped" />
-                            </Frame.GestureRecognizers>
-
-                            <HorizontalStackLayout
-                                Spacing="5"
-                                Padding="30,0">
-                                <Label 
-                                    FontFamily="icons"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" 
-                                    FontSize="25"
-                                    Text="{StaticResource IconFaceManShimmer}"
-                                    BackgroundColor="Transparent" />
-                                <Label
-                                    VerticalTextAlignment="Center"
-                                    HorizontalTextAlignment="Start"
-                                    Text="Екип на HEADSTARTER"
-                                    FontSize="18"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" />
-                            </HorizontalStackLayout>
-                        </Frame>
-
-                        <Frame
-                            Padding="0"
-                            HasShadow="False"
-                            BackgroundColor="Transparent"
-                            BorderColor="Transparent"
-                            CornerRadius="12">
-                            <HorizontalStackLayout
-                                Spacing="5"
-                                Padding="30,0">
-                                <Label 
-                                    FontFamily="icons"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" 
-                                    FontSize="25"
-                                    Text="{StaticResource IconHelp}"
-                                    BackgroundColor="Transparent" />
-                                <Label
-                                    VerticalTextAlignment="Center"
-                                    HorizontalTextAlignment="Start"
-                                    Text="Често задавани въпроси"
-                                    FontSize="18"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" />
-                            </HorizontalStackLayout>
-                        </Frame>
-
-                        <BoxView 
-                            WidthRequest="325" 
-                            HeightRequest="1" 
-                            BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
-                            VerticalOptions="Center"/>
-
-                        <Label
-                            Padding="0,10,0,10"
-                            HorizontalOptions="Center"
-                            Text="СВЪРЖИ СЕ С НАС"
-                            TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
-                            FontSize="20"
-                            FontAttributes="Bold" />
-
-                        <Frame
-                            Padding="0"
-                            HasShadow="False"
-                            BackgroundColor="Transparent"
-                            BorderColor="Transparent"
-                            CornerRadius="12">
-                            <HorizontalStackLayout
-                                Spacing="5"
-                                Padding="30,0">
-                                <Label 
-                                    FontFamily="icons"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" 
-                                    FontSize="25"
-                                    Text="{StaticResource IconPhone}"
-                                    BackgroundColor="Transparent" />
-                                <Label
-                                    VerticalTextAlignment="Center"
-                                    HorizontalTextAlignment="Start"
-                                    Text="+359 988 329 931"
-                                    FontSize="18"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" />
-                            </HorizontalStackLayout>
-                        </Frame>
-
-                        <Frame
-                            Padding="0"
-                            HasShadow="False"
-                            BackgroundColor="Transparent"
-                            BorderColor="Transparent"
-                            CornerRadius="12">
-                            <HorizontalStackLayout
-                                Spacing="5"
-                                Padding="30,0">
-                                <Label 
-                                    FontFamily="icons"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" 
-                                    FontSize="25"
-                                    Text="{StaticResource IconEmail}"
-                                    BackgroundColor="Transparent" />
-                                <Label
-                                    VerticalTextAlignment="Center"
-                                    HorizontalTextAlignment="Start"
-                                    Text="contact_us@headstarter.eu"
-                                    FontSize="18"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" />
-                            </HorizontalStackLayout>
-                        </Frame>
-
-                        <Frame
-                            Padding="0"
-                            HasShadow="False"
-                            BackgroundColor="Transparent"
-                            BorderColor="Transparent"
-                            CornerRadius="12">
-                            <HorizontalStackLayout
-                                Spacing="5"
-                                Padding="30,0">
-                                <Label 
-                                    FontFamily="icons"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" 
-                                    FontSize="25"
-                                    Text="{StaticResource IconFacebook}"
-                                    BackgroundColor="Transparent" />
-                                <Label
-                                    VerticalTextAlignment="Center"
-                                    HorizontalTextAlignment="Start"
-                                    Text="HEADSTARTER"
-                                    FontSize="18"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" />
-                            </HorizontalStackLayout>
-                        </Frame>
-
-                        <Frame
-                            Padding="0"
-                            HasShadow="False"
-                            BackgroundColor="Transparent"
-                            BorderColor="Transparent"
-                            CornerRadius="12">
-                            <HorizontalStackLayout
-                                Spacing="5"
-                                Padding="30,0">
-                                <Label 
-                                    FontFamily="icons"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" 
-                                    FontSize="25"
-                                    Text="{StaticResource IconInstagram}"
-                                    BackgroundColor="Transparent" />
-                                <Label
-                                    VerticalTextAlignment="Center"
-                                    HorizontalTextAlignment="Start"
-                                    Text="headstarter_company"
-                                    FontSize="18"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" />
-                            </HorizontalStackLayout>
-                        </Frame>
-
-                        <BoxView 
-                            WidthRequest="325" 
-                            HeightRequest="1" 
-                            BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
-                            VerticalOptions="Center"/>
-
-                        <HorizontalStackLayout HorizontalOptions="Center" Margin="0,30,0,0">
-                            <Label
-                                Text="HEADSTARTER"
-                                TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
-                                FontFamily="LilitaOne"
-                                FontSize="25" />
-                            <Label
-                                Text=" © 2025"
-                                TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
-                                FontSize="22" />
-                        </HorizontalStackLayout>
-
-                    </VerticalStackLayout>
-                </Grid>
+                <controls:Footer></controls:Footer>
 
             </VerticalStackLayout>
         </ScrollView>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Headstarter.Components.Header">
+
+    <HorizontalStackLayout HorizontalOptions="Center" Margin="0,30,0,-10">
+        <Label 
+                    Margin="0,0,0,0"
+                    Text="HEAD"
+                    FontSize="44"
+                    FontFamily="LilitaOne"
+                    FontAttributes="None"
+                    TextColor="{StaticResource LogoGreen}"
+                    />
+
+        <Image 
+                    Source="headstarter_logo2.png"
+                    HeightRequest="38"
+                    Aspect="AspectFit"/>
+
+        <Label 
+                    Margin="0,0,0,0"
+                    Text="TARTER"
+                    FontSize="44"
+                    FontFamily="LilitaOne"
+                    FontAttributes="None"
+                    TextColor="{StaticResource LogoOrange}"
+                    />
+    </HorizontalStackLayout>
+
+
+</ContentView>

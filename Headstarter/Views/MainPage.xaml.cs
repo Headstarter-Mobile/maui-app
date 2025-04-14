@@ -16,5 +16,9 @@
         {
             await Navigation.PushAsync(new SearchOfferPage());
         }
+        private async void NavigateToJobOfferCommand(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new JobOfferPage());
+        }
     }
 }

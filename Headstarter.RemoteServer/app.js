@@ -21,7 +21,7 @@ const USER_SERVICE_PROTO_PATH = __dirname + '/../Headstarter.Models/Protos/servi
 const options = {
     keepCase: true,
     longs: String,
-    enums: String,
+    enums: Number,
     defaults: true,
     oneofs: true,
 };

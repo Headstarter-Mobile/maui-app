@@ -51,7 +51,7 @@
 		<MauiXaml Update="Views\ForgottenPasswordPage.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
-		<MauiXaml Update="Views\JobOfferWidget.xaml">
+		<MauiXaml Update="Components\JobOfferWidget.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 		<MauiXaml Update="Views\LoginPage.xaml">

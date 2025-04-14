@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Headstarter.Views.CompanyPage"
+             xmlns:controls="clr-namespace:Headstarter.Components"
+             x:Name="MyPageRoot"
              Title="">
 
     <Grid RowDefinitions="*, Auto">
@@ -11,106 +13,91 @@
             Padding="30,0,30,100"
             Spacing="25">
 
-                <HorizontalStackLayout HorizontalOptions="Center" Margin="0,30,0,-10">
-                    <Label 
-                    Margin="0,0,0,0"
-                    Text="HEAD"
-                    FontSize="44"
-                    FontFamily="LilitaOne"
-                    FontAttributes="None"
-                    TextColor="{StaticResource LogoGreen}"
-                    />
-
-                    <Image 
-                    Source="headstarter_logo2.png"
-                    HeightRequest="38"
-                    Aspect="AspectFit"/>
-
-                    <Label 
-                    Margin="0,0,0,0"
-                    Text="TARTER"
-                    FontSize="44"
-                    FontFamily="LilitaOne"
-                    FontAttributes="None"
-                    TextColor="{StaticResource LogoOrange}"
-                    />
-                </HorizontalStackLayout>
+                <controls:Header></controls:Header>
 
                 <VerticalStackLayout Spacing="20" Margin="0,20,0,0">
-                        <Label                            
-                        Text="Borislavia Inc" 
-                        HorizontalOptions="Fill"  
-                        HorizontalTextAlignment="Center"
-                        HeightRequest="100"
-                        WidthRequest="400"
-                        VerticalTextAlignment="Center"
+                    <Label                            
+                    Text="{Binding Company.Name}" 
+                    HorizontalOptions="Fill"  
+                    HorizontalTextAlignment="Center"
+                    HeightRequest="100"
+                    WidthRequest="400"
+                    VerticalTextAlignment="Center"
                         
-                        FontSize="35"
-                        FontFamily="Boldnose"
-                        FontAttributes="Bold"
-                        BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                        TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"/>
+                    FontSize="35"
+                    FontFamily="Boldnose"
+                    FontAttributes="Bold"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"/>
 
-                        <Border
-                            Margin="0,10,0,0"
-                            x:Name="CompanyLogo"                                
-                            HeightRequest="135" WidthRequest="275"
-                            Stroke="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                            BackgroundColor="Transparent"
-                            Padding="0">
+                    <Border
+                        Margin="0,20,0,0"
+                        x:Name="CompanyLogo"                                
+                        HeightRequest="135" WidthRequest="275"
+                        Stroke="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                        BackgroundColor="Transparent"
+                        Padding="0">
 
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="30" />
-                            </Border.StrokeShape>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="30" />
+                        </Border.StrokeShape>
 
 
                         <Image
                                 Source="image1.png"
                                 Aspect="AspectFit"></Image>
-                        </Border>
+                    </Border>
 
-                        <HorizontalStackLayout Spacing="10" Padding="0,0" Margin="10,0,0,0">
-                            <Label 
+                    <CollectionView ItemsSource="{Binding Offices}"
+                                        SelectionMode="None"
+                                        Margin="10">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <HorizontalStackLayout Spacing="10" Padding="0,0" Margin="10,0,0,0">
+                                            <Label 
+                                                Margin="0,0,0,0"
+                                                FontFamily="icons"
+                                                TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" FontSize="25"
+                                                Text="{StaticResource IconMapMarker}"
+                                                BackgroundColor="Transparent">
+                                            </Label>
+                                            <Label                               
+                                                Margin="0,0,0,0"
+                                                VerticalTextAlignment="Center"
+                                                HorizontalTextAlignment="Start"
+                                                Text="{Binding Location}"
+                                                LineBreakMode="WordWrap"
+                                                WidthRequest="250"
+                                                MaxLines="2"/>
+                                        </HorizontalStackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                    <HorizontalStackLayout Spacing="10" Margin="10,-10,0,0" Padding="0,0">
+                        <Label 
                                 Margin="0,0,0,0"
                                 FontFamily="icons"
                                 TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" FontSize="25"
-                                Text="{StaticResource IconMapMarker}"
+                                Text="{StaticResource IconClock}"
                                 BackgroundColor="Transparent">
-                            </Label>
-                            <Label                               
+                        </Label>
+                        <Label                               
                                 Margin="0,0,0,0"
                                 VerticalTextAlignment="Center"
                                 HorizontalTextAlignment="Start"
-                                Text="Sofia, Aleksandar Malinov Boulevard 79В, Office No12"
+                                Text="Член на HEADSTARTER от:"
                                 LineBreakMode="WordWrap"
-                                WidthRequest="250"
+                                MaxLines="1"/>
+                        <Label                               
+                                Margin="0,0,0,0"
+                                VerticalTextAlignment="Center"
+                                Text="{Binding Company.CreatedAt}"
+                                LineBreakMode="WordWrap"
                                 MaxLines="2"/>
-                        </HorizontalStackLayout>
-
-                        <HorizontalStackLayout Spacing="10" Margin="10,-10,0,0" Padding="0,0">
-                        <Label 
-                            Margin="0,0,0,0"
-                            FontFamily="icons"
-                            TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" FontSize="25"
-                            Text="{StaticResource IconClock}"
-                            BackgroundColor="Transparent">
-                        </Label>
-                        <Label                               
-                            Margin="0,0,0,0"
-                            VerticalTextAlignment="Center"
-                            HorizontalTextAlignment="Start"
-                            Text="Член на HEADSTARTER от:"
-                            LineBreakMode="WordWrap"
-                            MaxLines="1"/>
-                        <Label                               
-                            Margin="0,0,0,0"
-                            VerticalTextAlignment="Center"
-                            Text="12.12.2022"
-                            LineBreakMode="WordWrap"
-                            MaxLines="2"/>
                     </HorizontalStackLayout>
 
-                        <HorizontalStackLayout Spacing="10" Margin="10,-10,0,0" Padding="0,0">
+                    <HorizontalStackLayout Spacing="10" Margin="10,-10,0,0" Padding="0,0">
                         <Label 
                                 Margin="0,0,0,0"
                                 FontFamily="icons"
@@ -122,20 +109,23 @@
                                 Margin="0,0,0,0"
                                 VerticalTextAlignment="Center"
                                 HorizontalTextAlignment="Start"
-                                Text="https://www.sap.com/bulgaria/index.html"
+                                Text="{Binding Company.Website}"
                                 LineBreakMode="WordWrap"
                                 WidthRequest="250"
                                 MaxLines="2"/>
                         </HorizontalStackLayout>
 
-                        <Label
-                            HorizontalOptions="Center"
-                            Text="Описание на фирмата:"
-                            FontSize="18">
-                        </Label>
-                        <Label Padding="10,0,10,15"
-                            Text="In a world where time moves fast, we seek moments that last. A smile, a kind word, or a shared laugh can make all the difference. Life is a journey, full of surprises and lessons. Embrace each day with hope, cherish loved ones, and never stop dreaming. The best stories are yet to be written aaaaaaa.">
-                        </Label>
+                    <Label
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="Описание на фирмата:"
+                        FontAttributes="Bold"
+                        FontSize="20">
+                    </Label>
+                    <Label Padding="10,0,10,15"
+                           FontSize="15"
+                            Text="{Binding Company.Description}">
+                    </Label>
                     </VerticalStackLayout>
                     
 
@@ -150,110 +140,25 @@
                     Text="Обяви за работа:"
                     HorizontalOptions="Center"
                     TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                    FontAttributes="Bold"
                     FontSize="30">
                 </Label>
 
-                <Frame Margin="0,10,0,0" Padding="0,0,0,0" WidthRequest="325" HeightRequest="170" CornerRadius="30" BackgroundColor="Transparent" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" >
-                    <StackLayout>
-                        <Label     
-                            Margin="15,10,0,0"
-                            Text="Junior Software Developer"
-                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                            FontAttributes="Bold"
-                            FontSize="18">
-                        </Label>
-                        <HorizontalStackLayout Spacing="10">
-                            <Label   
-                                Margin="15,5,0,0"
-                                Text="Ниво:"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontAttributes="Bold"
-                                FontSize="16">
-                            </Label>
-                            <Label
-                                Margin="0,5,0,0"
-                                Text="Entry"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontSize="16">
-                            </Label>
-                        </HorizontalStackLayout>
-                        <HorizontalStackLayout Spacing="10">
-                            <Label   
-                                Margin="15,0,0,0"
-                                Text="Години опит:"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontAttributes="Bold"
-                                FontSize="16">
-                            </Label>
-                            <Label
-                                Margin="0,0,0,0"
-                                Text="0 - 2"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontSize="16">
-                            </Label>
-                        </HorizontalStackLayout>
-                        <HorizontalStackLayout Spacing="10">
-                            <Label   
-                                Margin="15,0,0,0"
-                                Text="Място:"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontAttributes="Bold"
-                                FontSize="16">
-                            </Label>
-                            <Label
-                                Margin="0,0,0,0"
-                                Text="София"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontSize="16">
-                            </Label>
-                        </HorizontalStackLayout>
-                        <HorizontalStackLayout Spacing="10">
-                            <Label   
-                                Margin="15,0,0,0"
-                                Text="Заетост:"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontAttributes="Bold"
-                                FontSize="16">
-                            </Label>
-                            <Label
-                                Margin="0,0,0,0"
-                                Text="8 часа"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontSize="16">
-                            </Label>
-                        </HorizontalStackLayout>
-                        <HorizontalStackLayout Spacing="10">
-                            <Label   
-                                Margin="15,0,0,0"
-                                Text="Режим:"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontAttributes="Bold"
-                                FontSize="16">
-                            </Label>
-                            <Label
-                                Margin="0,0,0,0"
-                                Text="Присъствен"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontSize="16">
-                            </Label>
-                        </HorizontalStackLayout>
+                <CollectionView
+                    ItemsSource="{Binding Positions}"
+                    SelectionMode="None"
+                    Margin="10,0">
 
-                        <Button
-                            HorizontalOptions="End"
-                            Text="Виж"
-                            FontSize="16"
-                            FontAttributes="Bold"
-                            TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
-                            CornerRadius="50"
-                            BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                            WidthRequest="100"
-                            HeightRequest="50"
-                            Margin="0,-45,10,0">
-                        </Button>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <controls:JobOfferWidget
+                                Position="{Binding .}" 
+                                ViewPositionCommand="{Binding BindingContext.ViewPositionCommand, Source={x:Reference MyPageRoot}}"
+                            />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
-                    </StackLayout>
-                </Frame>
-                
             </VerticalStackLayout>
         </ScrollView>
 

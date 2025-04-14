@@ -1,44 +1,41 @@
 const grpc = require('@grpc/grpc-js');
-const { validateToken, checkPermission } = require('../utils');
+const { validateToken, checkPermission, db2pb_company } = require('../utils');
 
 module.exports = {
     getCompany: (pool) => async (call, callback) => {
-        validateToken(call, callback, async () => {
-            checkPermission('companies.read.all')(call, callback, async () => {
-                try {
-                    const { id } = call.request; // call.request is Company
-                    const client = await pool.connect();
-                    const result = await client.query('SELECT * FROM companies WHERE id = $1', [id]);
-                    client.release();
+        try {
+            const { id } = call.request; // call.request is Company
+            const client = await pool.connect();
+            const result = await client.query('SELECT * FROM company WHERE id = $1', [id]);
+            client.release();
 
-                    if (result.rows.length > 0) {
-                        callback(null, result.rows[0]);
-                    } else {
-                        callback({ code: grpc.status.NOT_FOUND, details: 'Company not found' });
-                    }
-                } catch (error) {
-                    console.error('Error getting company:', error);
-                    callback({ code: grpc.status.INTERNAL, details: 'Internal server error' });
-                }
-            });
-        });
+            if (result.rows.length > 0) {
+                console.log(db2pb_company(result.rows[0]));
+                callback(null, db2pb_company(result.rows[0]));
+            } else {
+                callback({ code: grpc.status.NOT_FOUND, details: 'Company not found' });
+            }
+        } catch (error) {
+            console.error('Error getting company:', error);
+            callback({ code: grpc.status.INTERNAL, details: 'Internal server error' });
+        }
     },
     getAllCompanies: (pool) => async (call) => {
-        validateToken(call, call.callback, async () => {
-            checkPermission('companies.read.all')(call, call.callback, async () => {
-                try {
-                    const client = await pool.connect();
-                    const result = await client.query('SELECT * FROM companies');
-                    client.release();
+        try {
+            const client = await pool.connect();
+            const result = await client.query('SELECT * FROM company');
+            client.release();
 
-                    result.rows.forEach((row) => call.write(row));
-                    call.end();
-                } catch (error) {
-                    console.error('Error getting all companies:', error);
-                    call.emit('error', { code: grpc.status.INTERNAL, details: 'Internal server error' });
-                }
+            result.rows.forEach((row) => {
+                const pb_data = db2pb_company(row);
+                console.log(pb_data);
+                call.write(pd_data);
             });
-        });
+            call.end();
+        } catch (error) {
+            console.error('Error getting all companies:', error);
+            call.emit('error', { code: grpc.status.INTERNAL, details: 'Internal server error' });
+        }
     },
     createCompany: (pool) => async (call, callback) => {
         validateToken(call, callback, async () => {
@@ -97,7 +94,7 @@ module.exports = {
                 try {
                     const { id } = call.request; // call.request is Company
                     const client = await pool.connect();
-                    await client.query('DELETE FROM companies WHERE id = $1', [id]);
+                    await client.query('DELETE FROM company WHERE id = $1', [id]);
                     client.release();
                     callback(null, {});
                 } catch (error) {

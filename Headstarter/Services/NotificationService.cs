@@ -1,6 +1,6 @@
-﻿using Headstarter.Interfaces;
-using Headstarter.Protos;
+﻿using Headstarter.Protos;
 using Grpc.Core;
+using Headstarter.Interfaces;
 
 
 namespace Headstarter.Services

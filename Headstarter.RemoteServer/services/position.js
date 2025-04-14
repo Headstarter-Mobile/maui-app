@@ -1,44 +1,92 @@
 const grpc = require('@grpc/grpc-js');
-const { validateToken, checkPermission } = require('../utils');
+const { validateToken, checkPermission, db2pb_position } = require('../utils');
 
 module.exports = {
     getPosition: (pool) => async (call, callback) => {
-        validateToken(call, callback, async () => {
-            checkPermission('positions.read.all', {})(call, callback, async () => { // Adjust permission string as needed
-                try {
-                    const { id } = call.request; // call.request is Position
-                    const client = await pool.connect();
-                    const result = await client.query('SELECT * FROM positions WHERE id = $1', [id]);
-                    client.release();
+        try {
+            const { id } = call.request; // call.request is Position
+            const client = await pool.connect();
+            const result = await client.query('SELECT * FROM position WHERE id = $1', [id]);
+            client.release();
 
-                    if (result.rows.length > 0) {
-                        callback(null, result.rows[0]);
-                    } else {
-                        callback({ code: grpc.status.NOT_FOUND, details: 'Position not found' });
-                    }
-                } catch (error) {
-                    console.error('Error getting position:', error);
-                    callback({ code: grpc.status.INTERNAL, details: 'Internal server error' });
-                }
-            });
-        });
+            if (result.rows.length > 0) {
+                callback(null, result.rows[0]);
+            } else {
+                callback({ code: grpc.status.NOT_FOUND, details: 'Position not found' });
+            }
+        } catch (error) {
+            console.error('Error getting position:', error);
+            callback({ code: grpc.status.INTERNAL, details: 'Internal server error' });
+        }
     },
     getAllPositions: (pool) => async (call) => {
-        validateToken(call, call.callback, async () => {
-            checkPermission('positions.read.all', {})(call, callback, async () => { // Adjust permission string as needed
-                try {
-                    const client = await pool.connect();
-                    const result = await client.query('SELECT * FROM positions');
-                    client.release();
+        try {
+            const filters = call.request;
+            let query = `SELECT * FROM position WHERE 1=1`;
+            const values = [];
+            let paramIndex = 1;
 
-                    result.rows.forEach((row) => call.write(row));
-                    call.end();
-                } catch (error) {
-                    console.error('Error getting all positions:', error);
-                    call.emit('error', { code: grpc.status.INTERNAL, details: 'Internal server error' });
+            if (filters.id) {
+                query += ` AND id = $${paramIndex++}`;
+                values.push(filters.id);
+            }
+
+            // (continue with other filters...)
+
+            const client = await pool.connect();
+
+            // 1. Get all positions
+            const positionResult = await client.query(query, values);
+            const positionIds = positionResult.rows.map(r => r.id);
+
+            // 2. Get related offices
+            const officeQuery = `
+        SELECT o.*, po.position_id
+        FROM office o
+        JOIN position_office po ON o.id = po.office_id
+        WHERE po.position_id = ANY($1)
+    `;
+            const officeResult = await client.query(officeQuery, [positionIds]);
+
+            client.release();
+
+            // 3. Group offices by position_id
+            const officesByPositionId = {};
+            for (const row of officeResult.rows) {
+                const office = {
+                    id: row.id,
+                    name: row.name,
+                    address: row.address,
+                    location: row.location,
+                    description: row.description,
+                    companyId: row.company_id,
+                    createdAt: row.created_at.toISOString?.() ?? String(row.created_at),
+                    updatedAt: row.updated_at.toISOString?.() ?? String(row.updated_at)
+                };
+
+                if (!officesByPositionId[row.position_id]) {
+                    officesByPositionId[row.position_id] = [];
                 }
+
+                officesByPositionId[row.position_id].push(office);
+            }
+
+            // 4. Stream positions with their offices
+            for (const row of positionResult.rows) {
+                const grpcPosition = db2pb_position(row, officesByPositionId[row.id] ?? []);
+                console.log(grpcPosition);
+                call.write(grpcPosition);
+            }
+
+            call.end();
+
+        } catch (error) {
+            console.error('Error getting all positions:', error);
+            call.emit('error', {
+                code: grpc.status.INTERNAL,
+                details: 'Internal server error',
             });
-        });
+        }
     },
     createPosition: (pool) => async (call, callback) => {
         validateToken(call, callback, async () => {
@@ -71,7 +119,7 @@ module.exports = {
                 const { id, status, title, description, companyId, externalApplicationLink, createdAt, updatedAt, publishedAt, expiresAt } = newData;
 
                 const client = await pool.connect();
-                const result = await client.query('SELECT company_id FROM positions WHERE id = $1', [id]);
+                const result = await client.query('SELECT company_id FROM position WHERE id = $1', [id]);
                 client.release();
 
                 if (result.rows.length === 0) {
@@ -97,7 +145,7 @@ module.exports = {
             try {
                 const { id } = call.request; // call.request is Position
                 const client = await pool.connect();
-                const result = await client.query('SELECT company_id FROM positions WHERE id = $1', [id]);
+                const result = await client.query('SELECT company_id FROM position WHERE id = $1', [id]);
                 client.release();
 
                 if (result.rows.length === 0) {
@@ -106,7 +154,7 @@ module.exports = {
 
                 const positionCompanyId = result.rows[0].company_id;
                 checkPermission('positions.delete.company', { companyId: positionCompanyId })(call, callback, async () => {
-                    await client.query('DELETE FROM positions WHERE id = $1', [id]);
+                    await client.query('DELETE FROM position WHERE id = $1', [id]);
                     client.release();
                     callback(null, {});
                 });
