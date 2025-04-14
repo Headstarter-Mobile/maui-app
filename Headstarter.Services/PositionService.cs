@@ -66,12 +66,12 @@ public class PositionService : IPositionService
         }
     }
 
-    public async Task<ICollection<Position>> GetAllPositions()
+    public async Task<ICollection<Position>> GetAllPositions(Position filters)
     {
         try
         {
             var client = _grpcService.positionClient;
-            using var call = client.GetAllPositions(new Google.Protobuf.WellKnownTypes.Empty(), _grpcService._metadata);
+            using var call = client.GetAllPositions(filters, _grpcService._metadata);
             List<Position> positions = [];
 
             while (await call.ResponseStream.MoveNext())

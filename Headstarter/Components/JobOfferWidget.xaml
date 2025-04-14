@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Headstarter.Components.JobOfferWidget"
+             xmlns:local="clr-namespace:Headstarter.Converter"
+             xmlns:local1="clr-namespace:Headstarter.Components">
+    <ContentView.Resources>
+        <local:YearsRequiredConverter x:Key="YearsRequiredConverter" />
+    </ContentView.Resources>
+
+    <Frame Margin="0,10,0,0" Padding="0" WidthRequest="325" CornerRadius="30"
+           BackgroundColor="Transparent"
+           BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
+
+        <StackLayout>
+            <Label
+            Margin="15,10,0,0"
+            Text="{Binding Title}"
+            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+            FontAttributes="Bold"
+            FontSize="18" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="Ниво:" FontAttributes="Bold" FontSize="16"
+               Margin="15,5,0,0"
+               TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+                <Label Text="{Binding Level}" FontSize="16"
+               Margin="0,5,0,0"
+               TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="Години опит:" FontAttributes="Bold" FontSize="16"
+               Margin="15,0,0,0"
+               TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+                <Label FontSize="16"
+               Margin="0,0,0,0"
+               TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+               Text="{Binding YearsRequired, Converter={StaticResource YearsRequiredConverter}}" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="Места:" FontAttributes="Bold" FontSize="16"
+               Margin="15,0,0,0"
+               TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+
+                <CollectionView ItemsSource="{Binding Offices}"
+                    ItemsLayout="VerticalList"
+                    HeightRequest="40"
+                    Margin="15,0,0,0"
+                    SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding Location}" FontSize="14" />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="Заетост:" FontAttributes="Bold" FontSize="16"
+               Margin="15,0,0,0"
+               TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+                <Label Text="{Binding Hours}" FontSize="16"
+               Margin="0,0,0,0"
+               TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="Режим:" FontAttributes="Bold" FontSize="16"
+               Margin="15,0,0,0"
+               TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+                <Label Text="{Binding Type}" FontSize="16"
+               Margin="0,0,0,0"
+               TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+            </HorizontalStackLayout>
+
+            <Button
+                HorizontalOptions="End"
+                Text="Виж"
+                FontSize="16"
+                FontAttributes="Bold"
+                CornerRadius="50"
+                WidthRequest="100"
+                HeightRequest="50"
+                Margin="0,-45,10,0"
+                TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type local1:JobOfferWidget}}, Path=ViewPositionCommand}"
+                CommandParameter="{Binding}" />
+        </StackLayout>
+    </Frame>
+
+</ContentView>

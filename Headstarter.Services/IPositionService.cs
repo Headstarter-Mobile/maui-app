@@ -5,7 +5,7 @@ namespace Headstarter.Services
     public interface IPositionService
     {
         Position GetPosition(Position position);
-        Task<ICollection<Position>> GetAllPositions();
+        Task<ICollection<Position>> GetAllPositions(Position filters);
         Position CreatePosition(Position position);
         Position UpdatePosition(Position oldPosition, Position newPosition);
         Position DeletePosition(Position position);

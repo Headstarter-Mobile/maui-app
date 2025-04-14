@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Headstarter.Views.RecruiterProfilePage"
+             xmlns:controls="clr-namespace:Headstarter.Components"
              Title="">
 
     <Grid RowDefinitions="*, Auto">
@@ -12,30 +13,7 @@
             Padding="0,0,0,100"
             Spacing="25">
 
-                <HorizontalStackLayout HorizontalOptions="Center" Margin="0,30,0,-10">
-                    <Label 
-                    Margin="0,0,0,0"
-                    Text="HEAD"
-                    FontSize="44"
-                    FontFamily="LilitaOne"
-                    FontAttributes="None"
-                    TextColor="{StaticResource LogoGreen}"
-                    />
-
-                    <Image 
-                    Source="headstarter_logo2.png"
-                    HeightRequest="38"
-                    Aspect="AspectFit"/>
-
-                    <Label 
-                    Margin="0,0,0,0"
-                    Text="TARTER"
-                    FontSize="44"
-                    FontFamily="LilitaOne"
-                    FontAttributes="None"
-                    TextColor="{StaticResource LogoOrange}"
-                    />
-                </HorizontalStackLayout>
+<controls:Header></controls:Header>
 
                 <Frame Margin="0,20,0,0" CornerRadius="50" HeightRequest="550" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" BackgroundColor="Transparent" >
                     <StackLayout Padding="10,0,10,0" Spacing="25" >

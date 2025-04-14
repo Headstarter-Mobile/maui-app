@@ -98,10 +98,62 @@ function checkPermission(requiredPermission, context) {
         return callback({ code: grpc.status.PERMISSION_DENIED, details: 'Insufficient permissions' });
     };
 }
+
+function db2pb_company(db_company) {
+    return {
+        id: db_company.id,
+        name: db_company.name,
+        description: db_company.description,
+        logo: db_company.logo,
+        website: db_company.website,
+        createdAt: db_company.created_at.toISOString?.() ?? String(db_company.created_at),
+        updatedAt: db_company.updated_at.toISOString?.() ?? String(db_company.updated_at),
+    };
+}
+
+function db2pb_position(db_position, offices) {
+    return {
+        id: db_position.id,
+        status: db_position.status,
+        title: db_position.title,
+        description: db_position.description,
+        companyId: db_position.company_id,
+        externalApplicationLink: db_position.external_application_link,
+        createdAt: db_position.created_at.toISOString?.() ?? String(db_position.created_at),
+        updatedAt: db_position.updated_at.toISOString?.() ?? String(db_position.updated_at),
+        publishedAt: db_position.published_at?.toISOString?.() ?? String(db_position.published_at),
+        expiresAt: db_position.expires_at?.toISOString?.() ?? String(db_position.expires_at),
+        level: db_position.level,
+        hours: db_position.hours,
+        type: db_position.type,
+        yearsRequired: {
+            from: db_position.years_required_from,
+            to: db_position.years_required_to
+        },
+        offices: offices
+    };
+}
+
+function db2pb_office(db_office) {
+    return {
+        id: db_office.id,
+        name: db_office.name,
+        address: db_office.address,
+        location: db_office.location,
+        description: db_office.description,
+        companyId: db_office.company_id,
+        createdAt: '' + db_office.created_at.toISOString?.() ?? String(db_office.created_at),
+        updatedAt: '' + db_office.updated_at.toISOString?.() ?? String(db_office.updated_at),
+    };
+}
+
 module.exports = {
     hashPassword,
     verifyPassword,
     generateToken,
     validateToken,
     checkPermission,
+    db2pb_company,
+    db2pb_position,
+    db2pb_office
 };

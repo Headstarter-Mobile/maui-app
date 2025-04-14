@@ -1,44 +1,79 @@
 const grpc = require('@grpc/grpc-js');
-const { validateToken, checkPermission } = require('../utils');
+const { validateToken, checkPermission, db2pb_office } = require('../utils');
 
 module.exports = {
     getOffice: (pool) => async (call, callback) => {
-        validateToken(call, callback, async () => {
-            checkPermission('offices.read', {})(call, callback, async () => { // Adjust permission string as needed
-                try {
-                    const { id } = call.request; // call.request is Office
-                    const client = await pool.connect();
-                    const result = await client.query('SELECT * FROM offices WHERE id = $1', [id]);
-                    client.release();
+        try {
+            const { id } = call.request; // call.request is Office
+            const client = await pool.connect();
+            const result = await client.query('SELECT * FROM office WHERE id = $1', [id]);
+            client.release();
 
-                    if (result.rows.length > 0) {
-                        callback(null, result.rows[0]);
-                    } else {
-                        callback({ code: grpc.status.NOT_FOUND, details: 'Office not found' });
-                    }
-                } catch (error) {
-                    console.error('Error getting office:', error);
-                    callback({ code: grpc.status.INTERNAL, details: 'Internal server error' });
-                }
-            });
-        });
+            if (result.rows.length > 0) {
+                callback(null, db2pb_office(result.rows[0]));
+            } else {
+                callback({ code: grpc.status.NOT_FOUND, details: 'Office not found' });
+            }
+        } catch (error) {
+            console.error('Error getting office:', error);
+            callback({ code: grpc.status.INTERNAL, details: 'Internal server error' });
+        }
     },
     getAllOffices: (pool) => async (call) => {
-        validateToken(call, call.callback, async () => {
-            checkPermission('offices.read', {})(call, callback, async () => { // Adjust permission string as needed
-                try {
-                    const client = await pool.connect();
-                    const result = await client.query('SELECT * FROM offices');
-                    client.release();
+        try {
+            const filters = call.request;
+            let query = `SELECT * FROM office WHERE 1=1`;
+            const values = [];
+            let paramIndex = 1;
 
-                    result.rows.forEach((row) => call.write(row));
-                    call.end();
-                } catch (error) {
-                    console.error('Error getting all offices:', error);
-                    call.emit('error', { code: grpc.status.INTERNAL, details: 'Internal server error' });
-                }
+            if (filters.id) {
+                query += ` AND id = $${paramIndex++}`;
+                values.push(filters.id);
+            }
+
+            if (filters.name) {
+                query += ` AND name ILIKE $${paramIndex++}`;
+                values.push(filters.name);
+            }
+
+            if (filters.address) {
+                query += ` AND address ILIKE $${paramIndex++}`;
+                values.push(filters.address);
+            }
+
+            if (filters.location) {
+                query += ` AND location ILIKE $${paramIndex++}`;
+                values.push(filters.location);
+            }
+
+            if (filters.description) {
+                query += ` AND description ILIKE $${paramIndex++}`;
+                values.push(filters.description);
+            }
+
+            if (filters.companyId) {
+                query += ` AND company_id = $${paramIndex++}`;
+                values.push(filters.companyId);
+            }
+
+            const client = await pool.connect();
+            const result = await client.query(query, values);
+            client.release();
+
+            result.rows.forEach((row) => {
+                const pb_office = db2pb_office(row);
+                call.write(pb_office);
+                console.log("Written:", pb_office);
             });
-        });
+            call.end();
+            console.log("ended");
+        } catch (error) {
+            console.error('Error getting all offices:', error);
+            call.emit('error', {
+                code: grpc.status.INTERNAL,
+                details: 'Internal server error',
+            });
+        }
     },
     createOffice: (pool) => async (call, callback) => {
         validateToken(call, callback, async () => {
@@ -71,7 +106,7 @@ module.exports = {
                 const { id, name, address, location, description, companyId, createdAt, updatedAt } = newData;
 
                 const client = await pool.connect();
-                const result = await client.query('SELECT company_id FROM offices WHERE id = $1', [id]);
+                const result = await client.query('SELECT company_id FROM office WHERE id = $1', [id]);
                 client.release();
 
                 if (result.rows.length === 0) {
@@ -97,7 +132,7 @@ module.exports = {
             try {
                 const { id } = call.request; // call.request is Office
                 const client = await pool.connect();
-                const result = await client.query('SELECT company_id FROM offices WHERE id = $1', [id]);
+                const result = await client.query('SELECT company_id FROM office WHERE id = $1', [id]);
                 client.release();
 
                 if (result.rows.length === 0) {
@@ -106,7 +141,7 @@ module.exports = {
 
                 const officeCompanyId = result.rows[0].company_id;
                 checkPermission('offices.delete.company', { companyId: officeCompanyId })(call, callback, async () => {
-                    await client.query('DELETE FROM offices WHERE id = $1', [id]);
+                    await client.query('DELETE FROM office WHERE id = $1', [id]);
                     client.release();
                     callback(null, {});
                 });
