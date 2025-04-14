@@ -57,19 +57,11 @@ public class CompanyPageViewModel : INotifyPropertyChanged
         }
     }
 
-    public ICommand ViewPositionCommand { get; }
-
-    private async void OnViewPosition(Position position)
-    {
-        await Shell.Current.GoToAsync($"positionDetails?id={position.Id}");
-    }
-
     public CompanyPageViewModel(ICompanyService companyService, IOfficeService officeService, IPositionService positionService)
     {
         _companyService = companyService ?? throw new ArgumentNullException(nameof(companyService));
         _officeService = officeService ?? throw new ArgumentNullException(nameof(officeService));
         _positionService = positionService ?? throw new ArgumentNullException(nameof(positionService));
-        ViewPositionCommand = new Command<Position>(OnViewPosition);
     }
 
     private async Task LoadOfficesForCompany(int companyId)
