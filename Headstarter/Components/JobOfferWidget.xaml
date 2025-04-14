@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Headstarter.Components.JobOfferWidget"
              xmlns:local="clr-namespace:Headstarter.Converter"
-             xmlns:local1="clr-namespace:Headstarter.Components">
+             xmlns:local1="clr-namespace:Headstarter.Components"
+             x:Name="JobWidget">
     <ContentView.Resources>
         <local:YearsRequiredConverter x:Key="YearsRequiredConverter" />
     </ContentView.Resources>
@@ -86,7 +87,7 @@
                 Margin="0,-45,10,0"
                 TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
                 BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                Command="{Binding Source={RelativeSource AncestorType={x:Type local1:JobOfferWidget}}, Path=ViewPositionCommand}"
+                Command="{Binding Source={x:Reference JobWidget}, Path=ViewPositionCommand}"
                 CommandParameter="{Binding}" />
         </StackLayout>
     </Frame>

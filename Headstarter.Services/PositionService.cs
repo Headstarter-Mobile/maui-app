@@ -66,23 +66,46 @@ public class PositionService : IPositionService
         }
     }
 
-    public async Task<ICollection<Position>> GetAllPositions(Position filters)
+    public async Task<ICollection<Position>> GetAllPositions(Position filters, int? limit = null)
     {
+        List<Position> positions = [];
         try
         {
-            var client = _grpcService.positionClient;
-            using var call = client.GetAllPositions(filters, _grpcService._metadata);
-            List<Position> positions = [];
-
-            while (await call.ResponseStream.MoveNext())
+            if (limit is null)
             {
-                positions.Add(call.ResponseStream.Current);
+                var client = _grpcService.positionClient;
+                using var call = client.GetAllPositions(filters, _grpcService._metadata);
+
+                while (await call.ResponseStream.MoveNext())
+                {
+                    positions.Add(call.ResponseStream.Current);
+                }
             }
-            return positions;
+            else
+            {
+                using var cts = new CancellationTokenSource();
+                var client = _grpcService.positionClient;
+                using var call = client.GetAllPositions(filters, _grpcService._metadata);
+
+                while (await call.ResponseStream.MoveNext(cts.Token))
+                {
+                    positions.Add(call.ResponseStream.Current);
+                    limit--;
+
+                    if (limit == 0)
+                    {
+                        cts.Cancel(); // signal cancel to stop upstream
+                    }
+                }
+            }
         }
         catch (RpcException ex)
         {
-            if (ex.Status.StatusCode.Equals(StatusCode.NotFound))
+            if (ex.StatusCode == StatusCode.Cancelled)
+            {
+                // all good
+            }
+            else if (ex.Status.StatusCode.Equals(StatusCode.NotFound))
             {
                 // user not found
                 return null;
@@ -98,6 +121,7 @@ public class PositionService : IPositionService
                 return null;
             }
         }
+        return positions;
     }
 
     public Position GetPosition(Position position)
