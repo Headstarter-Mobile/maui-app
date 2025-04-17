@@ -13,7 +13,7 @@
             Padding="0,0,0,100"
             Spacing="25">
 
-<controls:Header></controls:Header>
+                <controls:Header />
 
                 <Frame Margin="0,20,0,0" CornerRadius="50" HeightRequest="550" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" BackgroundColor="Transparent" >
                     <StackLayout Padding="10,0,10,0" Spacing="25" >

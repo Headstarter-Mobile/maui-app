@@ -13,32 +13,7 @@
         Padding="30,0,30,100"
         Spacing="25">
 
-                <HorizontalStackLayout HorizontalOptions="Center" Margin="0,30,0,-10">
-                    <Label 
-                        Margin="0,0,0,0"
-                        Text="HEAD"
-                        FontSize="44"
-                        FontFamily="LilitaOne"
-                        FontAttributes="None"
-                        TextColor="{StaticResource LogoGreen}"
-                        />
-
-                    <Image 
-                        Source="headstarter_logo2.png"
-                        HeightRequest="38"
-                        Aspect="AspectFit"/>
-
-                    <Label 
-                        Margin="0,0,0,0"
-                        Text="TARTER"
-                        FontSize="44"
-                        FontFamily="LilitaOne"
-                        FontAttributes="None"
-                        TextColor="{StaticResource LogoOrange}"
-                        />
-                </HorizontalStackLayout>
-
-
+                <controls:Header />
 
                 <Label Text="Въведи своя код"
                 TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
@@ -57,12 +32,12 @@
 
                 <Frame Margin="0,0,0,0" CornerRadius="50" HeightRequest="80" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
                     <HorizontalStackLayout HorizontalOptions="Center">
-                        <Entry x:Name="Digit1" HorizontalTextAlignment="Center" FontAttributes="Bold" MaxLength="1" Keyboard="Numeric" TextChanged="OnDigitEntered" TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
-                        <Entry x:Name="Digit2" HorizontalTextAlignment="Center" FontAttributes="Bold" MaxLength="1" Keyboard="Numeric" TextChanged="OnDigitEntered" TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
-                        <Entry x:Name="Digit3" HorizontalTextAlignment="Center" FontAttributes="Bold" MaxLength="1" Keyboard="Numeric" TextChanged="OnDigitEntered" TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
-                        <Entry x:Name="Digit4" HorizontalTextAlignment="Center" FontAttributes="Bold" MaxLength="1" Keyboard="Numeric" TextChanged="OnDigitEntered" TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
-                        <Entry x:Name="Digit5" HorizontalTextAlignment="Center" FontAttributes="Bold" MaxLength="1" Keyboard="Numeric" TextChanged="OnDigitEntered" TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
-                        <Entry x:Name="Digit6" HorizontalTextAlignment="Center" FontAttributes="Bold" MaxLength="1" Keyboard="Numeric" TextChanged="OnDigitEntered" TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
+                        <Entry x:Name="Digit1" Text="{Binding Digit1}" HorizontalTextAlignment="Center" FontAttributes="Bold" MaxLength="1" Keyboard="Numeric" TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
+                        <Entry x:Name="Digit2" Text="{Binding Digit2}" HorizontalTextAlignment="Center" FontAttributes="Bold" MaxLength="1" Keyboard="Numeric" TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
+                        <Entry x:Name="Digit3" Text="{Binding Digit3}" HorizontalTextAlignment="Center" FontAttributes="Bold" MaxLength="1" Keyboard="Numeric" TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
+                        <Entry x:Name="Digit4" Text="{Binding Digit4}" HorizontalTextAlignment="Center" FontAttributes="Bold" MaxLength="1" Keyboard="Numeric" TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
+                        <Entry x:Name="Digit5" Text="{Binding Digit5}" HorizontalTextAlignment="Center" FontAttributes="Bold" MaxLength="1" Keyboard="Numeric" TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
+                        <Entry x:Name="Digit6" Text="{Binding Digit6}" HorizontalTextAlignment="Center" FontAttributes="Bold" MaxLength="1" Keyboard="Numeric" TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
                     </HorizontalStackLayout>
                 </Frame>
 
@@ -73,7 +48,7 @@
                 FontAttributes="None"
                 HorizontalOptions="Start"/>
 
-                <Label Text="bobovlahov@gmail.com"
+                <Label Text="{Binding Email}"
                 Margin="15,-20,0,0"
                 FontSize="16"
                 TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
@@ -83,7 +58,6 @@
                 <Button Text="Продължете" 
                     BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
                     Margin="0,20,0,0"
-                    x:Name="NavigateToProfileOptions"
                     HeightRequest="65" WidthRequest="175"
                     CornerRadius="50"
                     TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
@@ -92,7 +66,7 @@
                     HorizontalOptions="Center"
                     BorderWidth="2"
                     BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                    Clicked="NavigateToProfileOptionsCommand"/>
+                    Command="{Binding NavigateToProfileOptionsCommand}" />
 
             </VerticalStackLayout>
         </ScrollView>

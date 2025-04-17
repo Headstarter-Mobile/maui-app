@@ -49,7 +49,7 @@ public static class MauiProgramExtensions
         builder.Services.AddSingleton<CompanyPageViewModel>();
         builder.Services.AddSingleton<EmailVerificationPageViewModel>();
         builder.Services.AddSingleton<ForgottenPasswordPageViewModel>();
-        builder.Services.AddSingleton<JobOfferWidgetViewModel>();
+        builder.Services.AddSingleton<JobOfferPageViewModel>();
         builder.Services.AddSingleton<LoginPageViewModel>();
         builder.Services.AddSingleton<MainPageViewModel>();
         builder.Services.AddSingleton<NewPassVerificationPageViewModel>();

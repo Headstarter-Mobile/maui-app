@@ -1,10 +1,14 @@
+using Headstarter.ViewModels;
+using Microsoft.Maui.ApplicationModel.Communication;
+
 namespace Headstarter.Views;
 
 public partial class EmailVerificationPage : ContentPage
 {
-	public EmailVerificationPage()
-	{
+	public EmailVerificationPage(string email)
+    {
 		InitializeComponent();
+        BindingContext = new EmailVerificationPageViewModel(email);
     }
 
     private void OnDigitEntered(object sender, TextChangedEventArgs e)

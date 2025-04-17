@@ -11,7 +11,7 @@ public partial class SignupPage : ContentPage
 
     private async void NavigateToEmailVerificationCommand(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new EmailVerificationPage());
+        await Navigation.PushAsync(new EmailVerificationPage(EmailEntry.Text));
     }
 
     private async void NavigateToLoginCommand(object sender, EventArgs e)
