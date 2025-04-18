@@ -13,15 +13,15 @@ public partial class UserService : IUserService
 
     }
 
-    public async Task<LoggedUserData> AuthenticateUser(string email, string password)
+    public async Task<LoggedUserData> LoginUser(User user)
     {
         try
         {
-            var hashedPassword = await PasswordService.Instance.Hash(password);
+            var hashedPassword = await PasswordService.Instance.Hash(user.Password);
             var response = await _grpcService.usersClient.LoginUserAsync(new()
             {
-                Email = email,
-                Password = password
+                Email = user.Email,
+                Password = user.Password
             }, _grpcService._metadata, DateTime.UtcNow.AddSeconds(7));
             return response;
         }
@@ -103,12 +103,13 @@ public partial class UserService : IUserService
             }
         }
     }
-    public async Task<ICollection<User>> GetAllUsers()
+    
+    public async Task<ICollection<User>> GetAllUsers(User filters)
     {
         try
         {
             var client = _grpcService.usersClient;
-            using var call = client.GetAllUsers(new Google.Protobuf.WellKnownTypes.Empty(), _grpcService._metadata);
+            using var call = client.GetAllUsers(filters, _grpcService._metadata);
             List<User> users = [];
 
             while (await call.ResponseStream.MoveNext())
@@ -137,16 +138,41 @@ public partial class UserService : IUserService
         }
     }
 
-    public User UpdateUser(User oldUser, User newUser)
+    public User UpdateUser(UserUpdateRequest updateData)
     {
         try
         {
-            var response = _grpcService.usersClient.UpdateUser(new()
-            {
-                OldData = oldUser,
-                NewData = newUser
-            }, _grpcService._metadata);
+            var response = _grpcService.usersClient.UpdateUser(updateData, _grpcService._metadata);
             return response;
+        }
+        catch (RpcException ex)
+        {
+            if (ex.Status.StatusCode.Equals(StatusCode.NotFound))
+            {
+                // user not found
+                return null;
+            }
+            else if (ex.Status.StatusCode.Equals(StatusCode.PermissionDenied))
+            {
+                // permission denied
+                return null;
+            }
+            else
+            {
+                // other error
+                return null;
+            }
+        }
+    }
+
+    public User GetUser(User filter)
+    {
+        try
+        {
+            var client = _grpcService.usersClient;
+            User user = client.GetUser(filter, _grpcService._metadata);
+            
+            return user;
         }
         catch (RpcException ex)
         {

@@ -9,9 +9,16 @@ public partial class EmailVerificationPage : ContentPage
     {
 		InitializeComponent();
         BindingContext = new EmailVerificationPageViewModel(email);
+        Digit1.TextChanged += OnDigitEntered;
+        Digit2.TextChanged += OnDigitEntered;
+        Digit3.TextChanged += OnDigitEntered;
+        Digit4.TextChanged += OnDigitEntered;
+        Digit5.TextChanged += OnDigitEntered;
+        Digit6.TextChanged += OnDigitEntered;
+        ContinueButton.Clicked += NavigateToProfileOptionsCommand;
     }
 
-    private void OnDigitEntered(object sender, TextChangedEventArgs e)
+    private void OnDigitEntered(object? sender, TextChangedEventArgs e)
     {
         if (sender is Entry currentEntry)
         {
@@ -34,7 +41,7 @@ public partial class EmailVerificationPage : ContentPage
         }
     }
 
-    private async void NavigateToProfileOptionsCommand(object sender, EventArgs e)
+    private async void NavigateToProfileOptionsCommand(object? sender, EventArgs e)
     {
         await Navigation.PushAsync(new ProfileOptionsPage());
     }

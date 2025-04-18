@@ -22,22 +22,72 @@ module.exports = {
     getAllPositions: (pool) => async (call) => {
         try {
             const filters = call.request;
+            console.log(filters);
             let query = `SELECT * FROM position WHERE 1=1`;
             const values = [];
             let paramIndex = 1;
-
+            // Filter by position ID
             if (filters.id) {
                 query += ` AND id = $${paramIndex++}`;
                 values.push(filters.id);
             }
 
-            // (continue with other filters...)
+            // Filter by company ID
+            if (filters.companyId) {
+                query += ` AND company_id = $${paramIndex++}`;
+                values.push(filters.companyId);
+            }
+
+            // Filter by position level
+            if (filters.level !== undefined && filters.level !== null) {
+                query += ` AND level = $${paramIndex++}`;
+                values.push(filters.level);
+            }
+
+            // Filter by type
+            if (filters.type !== undefined && filters.type !== null) {
+                query += ` AND type = $${paramIndex++}`;
+                values.push(filters.type);
+            }
+
+            // Filter by hours
+            if (filters.hours) {
+                query += ` AND hours = $${paramIndex++}`;
+                values.push(filters.hours);
+            }
+
+            // Filter by status
+            if (filters.status !== undefined && filters.status !== null) {
+                query += ` AND status = $${paramIndex++}`;
+                values.push(filters.status);
+            }
+
+            // Filter by search in title
+            if (filters.title && filters.title.trim() !== '') {
+                query += ` AND LOWER(title) LIKE $${paramIndex++}`;
+                values.push(`%${filters.title.toLowerCase()}%`);
+            }
+
+            // Filter by min and max years
+            if (filters.yearsRequired?.from) {
+                query += ` AND years_required_from >= $${paramIndex++}`;
+                values.push(filters.yearsRequired.from);
+            }
+
+            if (filters.yearsRequired?.to) {
+                query += ` AND years_required_to <= $${paramIndex++}`;
+                values.push(filters.yearsRequired.to);
+            }
+
+            console.log(query, values);
 
             const client = await pool.connect();
 
             // 1. Get all positions
             const positionResult = await client.query(query, values);
             const positionIds = positionResult.rows.map(r => r.id);
+
+            console.log(positionResult.rows);
 
             // 2. Get related offices
             const officeQuery = `

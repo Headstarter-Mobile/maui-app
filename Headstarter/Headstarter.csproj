@@ -60,9 +60,6 @@
 		<MauiXaml Update="Views\MainPage.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
-		<MauiXaml Update="Views\NewPassVerificationPage.xaml">
-		  <Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
 		<MauiXaml Update="Views\ProfileOptionsPage.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>

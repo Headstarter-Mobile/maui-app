@@ -43,12 +43,9 @@ public class ForgottenPasswordPageViewModel : INotifyPropertyChanged
             {
                 _isPasswordVisible = value;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(HidePasswordText));
             }
         }
     }
-
-    public string HidePasswordText => IsPasswordVisible ? "Скриване" : "Показване";
 
     private void TogglePasswordVisibility()
     {
