@@ -52,12 +52,12 @@ public static class MauiProgramExtensions
         builder.Services.AddSingleton<JobOfferPageViewModel>();
         builder.Services.AddSingleton<LoginPageViewModel>();
         builder.Services.AddSingleton<MainPageViewModel>();
-        builder.Services.AddSingleton<NewPassVerificationPageViewModel>();
         builder.Services.AddSingleton<ProfileOptionsPageViewModel>();
         builder.Services.AddSingleton<ProfilePageViewModel>();
         builder.Services.AddSingleton<RecruiterProfilePageViewModel>();
         builder.Services.AddSingleton<SignupPageViewModel>();
         builder.Services.AddSingleton<WorkerProfilePageViewModel>();
+        builder.Services.AddSingleton<SearchOfferPageViewModel>();
 
         // Views
         builder.Services.AddSingleton<CompanyPage>();
@@ -66,12 +66,12 @@ public static class MauiProgramExtensions
         builder.Services.AddSingleton<JobOfferWidget>();
         builder.Services.AddSingleton<LoginPage>();
         builder.Services.AddSingleton<MainPage>();
-        builder.Services.AddSingleton<NewPassVerificationPage>();
         builder.Services.AddSingleton<ProfileOptionsPage>();
         builder.Services.AddSingleton<ProfilePage>();
         builder.Services.AddSingleton<RecruiterProfilePage>();
         builder.Services.AddSingleton<SignupPage>();
         builder.Services.AddSingleton<WorkerProfilePage>();
+        builder.Services.AddSingleton<SearchOfferPage>();
 
         return builder;
     }

@@ -9,9 +9,9 @@
 
         <ScrollView Grid.Row="0">
             <VerticalStackLayout
-        VerticalOptions="Start"
-        Padding="30,0,30,100"
-        Spacing="25">
+                VerticalOptions="Start"
+                Padding="30,0,30,100"
+                Spacing="25">
 
                 <controls:Header />
 
@@ -46,16 +46,16 @@
                 Margin="15,10,0,0"
                 FontSize="16"
                 FontAttributes="None"
-                HorizontalOptions="Start"/>
+                HorizontalOptions="Start" />
 
                 <Label Text="{Binding Email}"
                 Margin="15,-20,0,0"
                 FontSize="16"
                 TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
                 FontAttributes="None"
-                HorizontalOptions="Start"/>
+                HorizontalOptions="Start" />
 
-                <Button Text="Продължете" 
+                <Button x:Name="ContinueButton" Text="Продължете" 
                     BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
                     Margin="0,20,0,0"
                     HeightRequest="65" WidthRequest="175"
@@ -65,8 +65,7 @@
                     FontAttributes="Bold"
                     HorizontalOptions="Center"
                     BorderWidth="2"
-                    BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                    Command="{Binding NavigateToProfileOptionsCommand}" />
+                    BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" />
 
             </VerticalStackLayout>
         </ScrollView>

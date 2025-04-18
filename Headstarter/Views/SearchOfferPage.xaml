@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Headstarter.Views.SearchOfferPage"
@@ -19,463 +18,156 @@
                     HorizontalOptions="Center"
                     Source="image2.png"
                     HeightRequest="240"               
-                    Aspect="AspectFit"
-                    SemanticProperties.Description="Main page image" />
+                    Aspect="AspectFit" />
 
                 <Label   
-                    Margin="0,0,0,0"
                     Text="Намери подходящата за теб работа"
                     TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
                     FontSize="30"
                     FontAttributes="Bold"
                     HorizontalTextAlignment="Center"/>
 
-
-                <Frame Margin="0,0,0,0" CornerRadius="50" WidthRequest="325" HeightRequest="90" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
-                    <SearchBar x:Name="SearchBar" TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+                <Frame CornerRadius="50" WidthRequest="325" HeightRequest="90" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
+                    <SearchBar TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" 
+                               Text="{Binding SearchText}" />
                 </Frame>
 
-                <Button 
-                    Margin="0,20,0,10"
-                    Text="Търси" 
-                    BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                    x:Name="NavigateToEmailVerification"
-                    HeightRequest="75" WidthRequest="180"
-                    CornerRadius="50"
-                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
-                    FontSize="20"
-                    FontAttributes="Bold"
-                    HorizontalOptions="Center"
-                    BorderWidth="2"
-                    BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"/>
+                <Button Text="Търси" 
+                        Command="{Binding SearchCommand}"
+                        Margin="0,20,0,10"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                        HeightRequest="75" WidthRequest="180"
+                        CornerRadius="50"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        BorderWidth="2"
+                        BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" />
 
-                <Label   
-                    Margin="0,10,0,10"
-                    Text="Категории:"
-                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                    FontSize="30"
-                    FontAttributes="Bold"
-                    HorizontalTextAlignment="Center"/>
+                <Label Text="Категории:"
+                       FontSize="30"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
 
-
+                <!-- Filters -->
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="25">
                     <VerticalStackLayout>
-                        <Label 
-                            HorizontalOptions="Center"
-                            FontSize="20"
-                            FontAttributes="Bold"
-                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                            Text="Ниво">
-                        </Label>
-                        <Border   
-                            Margin="0,10,0,0"
-                            BackgroundColor="Transparent"
-                            WidthRequest="140" HeightRequest="60"
-                            Stroke="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
-
+                        <Label Text="Ниво"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                               HorizontalOptions="Center" />
+                        <Border Stroke="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                                WidthRequest="140" HeightRequest="60" Margin="0,10,0,0">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="50" />
+                                <RoundRectangle CornerRadius="50"/>
                             </Border.StrokeShape>
-                            <Picker 
-                                
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                VerticalOptions="Center"
-                                FontSize="18"
-                                SelectedItem="{Binding SelectedUserType}" 
-                                HorizontalOptions="Center">
-                                <Picker.Items>
-                                    <x:String>Всичко</x:String>
-                                    <x:String>Entry</x:String>
-                                    <x:String>Beginner</x:String>
-                                    <x:String>Advanced</x:String>
-                                    <x:String>Expert</x:String>
-                                </Picker.Items>
-                            </Picker>
+                            <Picker ItemsSource="{Binding Levels}" 
+                                    SelectedItem="{Binding SelectedLevel}"
+                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                    FontSize="18"/>
                         </Border>
                     </VerticalStackLayout>
-                    <VerticalStackLayout>
-                        <Label 
-                            HorizontalOptions="Center"
-                            FontSize="20"
-                            FontAttributes="Bold"
-                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                            Text="Години опит">
-                        </Label>
-                        <Border   
-                            Margin="0,10,0,0"
-                            BackgroundColor="Transparent"
-                            WidthRequest="100" HeightRequest="60"
-                            Stroke="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
 
+                    <VerticalStackLayout>
+                        <Label Text="Години опит"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                               HorizontalOptions="Center" />
+                        <Border Stroke="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                                WidthRequest="100" HeightRequest="60" Margin="0,10,0,0">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="50" />
+                                <RoundRectangle CornerRadius="50"/>
                             </Border.StrokeShape>
-                            <Picker 
-                                
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                VerticalOptions="Center"
-                                FontSize="18"
-                                SelectedItem="{Binding SelectedUserType}" 
-                                HorizontalOptions="Center">
-                                <Picker.Items>
-                                    <x:String>Всичко</x:String>
-                                    <x:String>0 - 1</x:String>
-                                    <x:String>2 - 4</x:String>
-                                    <x:String>5 - 9</x:String>
-                                    <x:String>10 +</x:String>
-                                </Picker.Items>
-                            </Picker>
+                            <Picker ItemsSource="{Binding Experiences}" 
+                                    SelectedItem="{Binding SelectedExperience}"
+                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                    FontSize="18"/>
                         </Border>
                     </VerticalStackLayout>
                 </HorizontalStackLayout>
 
                 <VerticalStackLayout>
-                    <Label 
-                            HorizontalOptions="Center"
-                            FontSize="20"
-                            FontAttributes="Bold"
-                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                            Text="Местоположение">
-                    </Label>
-                    <Border   
-                            Margin="0,10,0,0"
-                            BackgroundColor="Transparent"
-                            WidthRequest="220" HeightRequest="60"
-                            Stroke="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
-
+                    <Label Text="Местоположение"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                           HorizontalOptions="Center"/>
+                    <Border Stroke="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                            WidthRequest="220" HeightRequest="60" Margin="0,10,0,0">
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="50" />
+                            <RoundRectangle CornerRadius="50"/>
                         </Border.StrokeShape>
-                        <Picker 
-                                
+                        <Picker ItemsSource="{Binding Locations}" 
+                                SelectedItem="{Binding SelectedLocation}"
                                 TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                VerticalOptions="Center"
-                                FontSize="18"
-                                SelectedItem="{Binding SelectedUserType}" 
-                                HorizontalOptions="Center">
-                            <Picker.Items>
-                                <x:String>Всички</x:String>
-                                <x:String>Благоевград</x:String>
-                                <x:String>Бургас</x:String>
-                                <x:String>Варна</x:String>
-                                <x:String>Велико Търново</x:String>
-                                <x:String>Видин</x:String>
-                                <x:String>Враца</x:String>
-                                <x:String>Габрово</x:String>
-                                <x:String>Добрич</x:String>
-                                <x:String>Кърджали</x:String>
-                                <x:String>Кюстендил</x:String>
-                                <x:String>Ловеч</x:String>
-                                <x:String>Монтана</x:String>
-                                <x:String>Пазарджик</x:String>
-                                <x:String>Перник</x:String>
-                                <x:String>Плевен</x:String>
-                                <x:String>Пловдив</x:String>
-                                <x:String>Разград</x:String>
-                                <x:String>Русе</x:String>
-                                <x:String>Силистра</x:String>
-                                <x:String>Сливен</x:String>
-                                <x:String>Смолян</x:String>
-                                <x:String>София (град)</x:String>
-                                <x:String>София (област)</x:String>
-                                <x:String>Стара Загора</x:String>
-                                <x:String>Търговище</x:String>
-                                <x:String>Хасково</x:String>
-                                <x:String>Шумен</x:String>
-                                <x:String>Ямбол</x:String>
-                            </Picker.Items>
-                        </Picker>
+                                FontSize="18"/>
                     </Border>
                 </VerticalStackLayout>
 
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="25">
                     <VerticalStackLayout>
-                        <Label 
-                            HorizontalOptions="Center"
-                            FontSize="20"
-                            FontAttributes="Bold"
-                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                            Text="Заетост">
-                        </Label>
-                        <Border   
-                            Margin="0,10,0,0"
-                            BackgroundColor="Transparent"
-                            WidthRequest="110" HeightRequest="60"
-                            Stroke="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
-
+                        <Label Text="Заетост"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                               HorizontalOptions="Center" />
+                        <Border Stroke="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                                WidthRequest="110" HeightRequest="60" Margin="0,10,0,0">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="50" />
+                                <RoundRectangle CornerRadius="50"/>
                             </Border.StrokeShape>
-                            <Picker 
-                                
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                VerticalOptions="Center"
-                                FontSize="18"
-                                SelectedItem="{Binding SelectedUserType}" 
-                                HorizontalOptions="Center">
-                                <Picker.Items>
-                                    <x:String>Всичко</x:String>
-                                    <x:String>2 часа</x:String>
-                                    <x:String>4 часа</x:String>
-                                    <x:String>6 часа</x:String>
-                                    <x:String>8 часа</x:String>
-                                </Picker.Items>
-                            </Picker>
+                            <Picker ItemsSource="{Binding Hours}" 
+                                    SelectedItem="{Binding SelectedHours}"
+                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                    FontSize="18"/>
                         </Border>
                     </VerticalStackLayout>
-                    <VerticalStackLayout>
-                        <Label 
-                            HorizontalOptions="Center"
-                            FontSize="20"
-                            FontAttributes="Bold"
-                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                            Text="Режим">
-                        </Label>
-                        <Border   
-                            Margin="0,10,0,0"
-                            BackgroundColor="Transparent"
-                            WidthRequest="170" HeightRequest="60"
-                            Stroke="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
 
+                    <VerticalStackLayout>
+                        <Label Text="Режим"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                               HorizontalOptions="Center" />
+                        <Border Stroke="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                                WidthRequest="170" HeightRequest="60" Margin="0,10,0,0">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="50" />
+                                <RoundRectangle CornerRadius="50"/>
                             </Border.StrokeShape>
-                            <Picker 
-                                
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                VerticalOptions="Center"
-                                FontSize="18"
-                                SelectedItem="{Binding SelectedUserType}" 
-                                HorizontalOptions="Center">
-                                <Picker.Items>
-                                    <x:String>Всичко</x:String>
-                                    <x:String>Присъствен</x:String>
-                                    <x:String>Дистанционен</x:String>
-                                    <x:String>Комбиниран</x:String>
-                                </Picker.Items>
-                            </Picker>
+                            <Picker ItemsSource="{Binding Types}" 
+                                    SelectedItem="{Binding SelectedType}"
+                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                                    FontSize="18"/>
                         </Border>
                     </VerticalStackLayout>
                 </HorizontalStackLayout>
 
-                <BoxView 
-                    Margin="0,20"
-                    WidthRequest="325" 
-                    HeightRequest="1" 
-                    BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                    VerticalOptions="Center"/>
+                <BoxView Margin="0,20"
+                         WidthRequest="325" 
+                         HeightRequest="1" 
+                         BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"/>
 
-                <Label                   
-                    Text="Най-новите обяви"
-                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                    FontSize="30"
-                    FontAttributes="Bold"
-                    HorizontalTextAlignment="Center"/>
+                <Label Text="Най-новите обяви"
+                       FontSize="30"
+                       FontAttributes="Bold"
+                       TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                       HorizontalTextAlignment="Center"/>
 
-
-                <Frame Margin="0,10,0,0" Padding="0,0,0,0" WidthRequest="325" HeightRequest="170" CornerRadius="30" BackgroundColor="Transparent" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" >
-                    <StackLayout>
-                        <Label     
-                            Margin="15,10,0,0"
-                            Text="Junior Software Developer"
-                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                            FontAttributes="Bold"
-                            FontSize="18">
-                        </Label>
-                        <HorizontalStackLayout Spacing="10">
-                            <Label   
-                                Margin="15,5,0,0"
-                                Text="Ниво:"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontAttributes="Bold"
-                                FontSize="16">
-                            </Label>
-                            <Label
-                                Margin="0,5,0,0"
-                                Text="Entry"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontSize="16">
-                            </Label>
-                        </HorizontalStackLayout>
-                        <HorizontalStackLayout Spacing="10">
-                            <Label   
-                                Margin="15,0,0,0"
-                                Text="Години опит:"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontAttributes="Bold"
-                                FontSize="16">
-                            </Label>
-                            <Label
-                                Margin="0,0,0,0"
-                                Text="0 - 2"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontSize="16">
-                            </Label>
-                        </HorizontalStackLayout>
-                        <HorizontalStackLayout Spacing="10">
-                            <Label   
-                                Margin="15,0,0,0"
-                                Text="Място:"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontAttributes="Bold"
-                                FontSize="16">
-                            </Label>
-                            <Label
-                                Margin="0,0,0,0"
-                                Text="София"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontSize="16">
-                            </Label>
-                        </HorizontalStackLayout>
-                        <HorizontalStackLayout Spacing="10">
-                            <Label   
-                                Margin="15,0,0,0"
-                                Text="Заетост:"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontAttributes="Bold"
-                                FontSize="16">
-                            </Label>
-                            <Label
-                                Margin="0,0,0,0"
-                                Text="8 часа"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontSize="16">
-                            </Label>
-                        </HorizontalStackLayout>
-                        <HorizontalStackLayout Spacing="10">
-                            <Label   
-                                Margin="15,0,0,0"
-                                Text="Режим:"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontAttributes="Bold"
-                                FontSize="16">
-                            </Label>
-                            <Label
-                                Margin="0,0,0,0"
-                                Text="Присъствен"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontSize="16">
-                            </Label>
-                        </HorizontalStackLayout>
-
-                        <Button
-                            HorizontalOptions="End"
-                            Text="Виж"
-                            FontSize="16"
-                            FontAttributes="Bold"
-                            TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
-                            CornerRadius="50"
-                            BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                            WidthRequest="100"
-                            HeightRequest="50"
-                            Margin="0,-45,10,0">
-                        </Button>
-                    </StackLayout>
-                </Frame>
-
-                <Frame Margin="0,10,0,0" Padding="0,0,0,0" WidthRequest="325" HeightRequest="170" CornerRadius="30" BackgroundColor="Transparent" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" >
-                    <StackLayout>
-                        <Label     
-                            Margin="15,10,0,0"
-                            Text="Junior Software Developer"
-                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                            FontAttributes="Bold"
-                            FontSize="18">
-                        </Label>
-                        <HorizontalStackLayout Spacing="10">
-                            <Label   
-                                Margin="15,5,0,0"
-                                Text="Ниво:"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontAttributes="Bold"
-                                FontSize="16">
-                            </Label>
-                            <Label
-                                Margin="0,5,0,0"
-                                Text="Entry"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontSize="16">
-                            </Label>
-                        </HorizontalStackLayout>
-                        <HorizontalStackLayout Spacing="10">
-                            <Label   
-                                Margin="15,0,0,0"
-                                Text="Години опит:"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontAttributes="Bold"
-                                FontSize="16">
-                            </Label>
-                            <Label
-                                Margin="0,0,0,0"
-                                Text="0 - 2"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontSize="16">
-                            </Label>
-                        </HorizontalStackLayout>
-                        <HorizontalStackLayout Spacing="10">
-                            <Label   
-                                Margin="15,0,0,0"
-                                Text="Място:"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontAttributes="Bold"
-                                FontSize="16">
-                            </Label>
-                            <Label
-                                Margin="0,0,0,0"
-                                Text="София"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontSize="16">
-                            </Label>
-                        </HorizontalStackLayout>
-                        <HorizontalStackLayout Spacing="10">
-                            <Label   
-                                Margin="15,0,0,0"
-                                Text="Заетост:"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontAttributes="Bold"
-                                FontSize="16">
-                            </Label>
-                            <Label
-                                Margin="0,0,0,0"
-                                Text="8 часа"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontSize="16">
-                            </Label>
-                        </HorizontalStackLayout>
-                        <HorizontalStackLayout Spacing="10">
-                            <Label   
-                                Margin="15,0,0,0"
-                                Text="Режим:"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontAttributes="Bold"
-                                FontSize="16">
-                            </Label>
-                            <Label
-                                Margin="0,0,0,0"
-                                Text="Присъствен"
-                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                                FontSize="16">
-                            </Label>
-                        </HorizontalStackLayout>
-
-                        <Button
-                            HorizontalOptions="End"
-                            Text="Виж"
-                            FontSize="16"
-                            FontAttributes="Bold"
-                            TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
-                            CornerRadius="50"
-                            BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                            WidthRequest="100"
-                            HeightRequest="50"
-                            Margin="0,-45,10,0">
-                        </Button>
-                    </StackLayout>
-                </Frame>
-
+                <CollectionView ItemsSource="{Binding NewPositions}"
+                                SelectionMode="None"
+                                Margin="10,0">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <controls:JobOfferWidget Position="{Binding .}" />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
-
 </ContentPage>

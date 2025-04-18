@@ -23,7 +23,11 @@ public class LoginPageViewModel
 
     internal async Task LoginValidation()
     {
-        LoggedUserData? loggedUser = await _userService.AuthenticateUser(Email, Password);
+        LoggedUserData? loggedUser = await _userService.LoginUser(new()
+        {
+            Email = Email,
+            Password = Password
+        });
         if (loggedUser != null)
         {
             await SessionService.Instance.SaveSessionAsync(loggedUser.UserData, loggedUser.Token);
