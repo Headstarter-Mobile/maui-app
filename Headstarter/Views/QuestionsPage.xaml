@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Headstarter.Views.QuestionsPage"
+             xmlns:controls="clr-namespace:Headstarter.Components"
+             Title="">
+
+    <Grid RowDefinitions="*, Auto">
+
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout
+               VerticalOptions="Start"
+               Padding="30,0,30,0"
+               Spacing="25">
+
+                <controls:Header></controls:Header>
+                
+                <Image
+                    HorizontalOptions="Center"
+                    Source="image31.png"
+                    HeightRequest="240"               
+                    Aspect="AspectFit"
+                    SemanticProperties.Description="Main page image" />
+
+                <Label   
+                    Margin="0,-20,0,20"
+                    Text="Често задавани въпроси"
+                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"/>
+
+                <!-- vupros 1 -->
+                <Frame
+                    x:Name="QuestionFrame1"
+                    Margin="0,0,0,10"
+                    Padding="30,10"
+                    WidthRequest="325"
+                    HeightRequest="120"
+                    BackgroundColor="Transparent"
+                    BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                    CornerRadius="30">
+                    <StackLayout VerticalOptions="Center">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label
+                                Grid.Column="0"
+                                Text="Какво да правя при проблем с влизането в профила ми?"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                LineBreakMode="WordWrap"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Center"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+
+                            <Label 
+                                x:Name="IconLabel1"
+                                Grid.Column="1"
+                                FontFamily="icons"
+                                TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" 
+                                FontSize="45"
+                                Text="{StaticResource IconPlusBox}"
+                                BackgroundColor="Transparent"
+                                VerticalOptions="Center"
+                                Margin="20,0,0,0"/>
+                        </Grid>
+
+                        <Label
+                            VerticalOptions="Center"
+                            x:Name="AnswerLabel1"
+                            IsVisible="False"
+                            Text="Провери дали изписваш имейла и паролата си правилно и опитай отново! Ако проблемът продължава пиши на нашия имейл или ни звънни по телефона!"
+                            FontSize="16"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            Margin="0,10,0,0"
+                            LineBreakMode="WordWrap" />
+                    </StackLayout>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnFrameTapped1" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <!-- vupros 2 -->
+                
+                <Frame
+                    x:Name="QuestionFrame2"
+                    Margin="0,0,0,10"
+                    Padding="30,10"
+                    WidthRequest="325"
+                    HeightRequest="120"
+                    BackgroundColor="Transparent"
+                    BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                    CornerRadius="30">
+                    <StackLayout VerticalOptions="Center">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label
+                                Grid.Column="0"
+                                Text="Как да се регистрирам в приложението?"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                LineBreakMode="WordWrap"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Center"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+
+                            <Label 
+                                x:Name="IconLabel2"
+                                Grid.Column="1"
+                                FontFamily="icons"
+                                TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" 
+                                FontSize="45"
+                                Text="{StaticResource IconPlusBox}"
+                                BackgroundColor="Transparent"
+                                VerticalOptions="Center"
+                                Margin="20,0,0,0"/>
+                        </Grid>
+
+                        <Label
+                            VerticalOptions="Center"
+                            x:Name="AnswerLabel2"
+                            IsVisible="False"
+                            Text="В приложението можеш да се регистриташ като работник (ако ще кандидатстваш за работа) или като работодател (ако ще наемаш хора към твоята компания)!"
+                            FontSize="16"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            Margin="0,10,0,0"
+                            LineBreakMode="WordWrap" />
+                    </StackLayout>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnFrameTapped2" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <!-- vupros 3 -->
+
+                <Frame
+                    x:Name="QuestionFrame3"
+                    Margin="0,0,0,10"
+                    Padding="30,10"
+                    WidthRequest="325"
+                    HeightRequest="120"
+                    BackgroundColor="Transparent"
+                    BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                    CornerRadius="30">
+                    <StackLayout VerticalOptions="Center">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label
+                                Grid.Column="0"
+                                Text="Как да разберa, че кандидатурата ми е приета? "
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                LineBreakMode="WordWrap"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Center"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+
+                            <Label 
+                                x:Name="IconLabel3"
+                                Grid.Column="1"
+                                FontFamily="icons"
+                                TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" 
+                                FontSize="45"
+                                Text="{StaticResource IconPlusBox}"
+                                BackgroundColor="Transparent"
+                                VerticalOptions="Center"
+                                Margin="20,0,0,0"/>
+                        </Grid>
+
+                        <Label
+                            VerticalOptions="Center"
+                            x:Name="AnswerLabel3"
+                            IsVisible="False"
+                            Text="От нас - ще получиш съобщение, че кандидатурата ти е изпратена успешно на работодателя. От работодателя - от съответната компания, ще разгледат твоята кандидатура и ще се свържат с теб.
+
+"
+                            FontSize="16"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            Margin="0,10,0,0"
+                            LineBreakMode="WordWrap" />
+                    </StackLayout>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnFrameTapped3" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <!-- vupros 4 -->
+
+                <Frame
+                    x:Name="QuestionFrame4"
+                    Margin="0,0,0,10"
+                    Padding="30,10"
+                    WidthRequest="325"
+                    HeightRequest="120"
+                    BackgroundColor="Transparent"
+                    BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                    CornerRadius="30">
+                    <StackLayout VerticalOptions="Center">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label
+                                Grid.Column="0"
+                                Text="Как фирмата ще се свърже с мен? "
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                LineBreakMode="WordWrap"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Center"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+
+                            <Label 
+                                x:Name="IconLabel4"
+                                Grid.Column="4"
+                                FontFamily="icons"
+                                TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" 
+                                FontSize="45"
+                                Text="{StaticResource IconPlusBox}"
+                                BackgroundColor="Transparent"
+                                VerticalOptions="Center"
+                                Margin="20,0,0,0"/>
+                        </Grid>
+
+                        <Label
+                            VerticalOptions="Center"
+                            x:Name="AnswerLabel4"
+                            IsVisible="False"
+                            Text="Фирмата ще се свърже с теб чрез контактите, които си оставил в профила си. Провери дали са верни! "
+                            FontSize="16"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            Margin="0,10,0,0"
+                            LineBreakMode="WordWrap" />
+                    </StackLayout>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnFrameTapped4" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <!-- vupros 5 -->
+
+                <Frame
+                    x:Name="QuestionFrame5"
+                    Margin="0,0,0,10"
+                    Padding="30,10"
+                    WidthRequest="325"
+                    HeightRequest="120"
+                    BackgroundColor="Transparent"
+                    BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                    CornerRadius="30">
+                    <StackLayout VerticalOptions="Center">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label
+                                Grid.Column="0"
+                                Text="Къде ще получа обратна връзка? "
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                LineBreakMode="WordWrap"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Center"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+
+                            <Label 
+                                x:Name="IconLabel5"
+                                Grid.Column="1"
+                                FontFamily="icons"
+                                TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" 
+                                FontSize="45"
+                                Text="{StaticResource IconPlusBox}"
+                                BackgroundColor="Transparent"
+                                VerticalOptions="Center"
+                                Margin="20,0,0,0"/>
+                        </Grid>
+
+                        <Label
+                            VerticalOptions="Center"
+                            x:Name="AnswerLabel5"
+                            IsVisible="False"
+                            Text="По имейл или по телефон. Фирмата ще ти изпрати обратна връзка на един от контактите, които си дал (най-често по имейл)."
+                            FontSize="16"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            Margin="0,10,0,0"
+                            LineBreakMode="WordWrap" />
+                    </StackLayout>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnFrameTapped5" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <!-- vupros 6 -->
+                
+                <Frame
+                    x:Name="QuestionFrame6"
+                    Margin="0,0,0,10"
+                    Padding="30,10"
+                    WidthRequest="325"
+                    HeightRequest="120"
+                    BackgroundColor="Transparent"
+                    BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                    CornerRadius="30">
+                    <StackLayout VerticalOptions="Center">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label
+                                Grid.Column="0"
+                                Text="Как мога да се свържа с работодателя? "
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                LineBreakMode="WordWrap"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Center"
+                                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+
+                            <Label 
+                                x:Name="IconLabel6"
+                                Grid.Column="1"
+                                FontFamily="icons"
+                                TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" 
+                                FontSize="45"
+                                Text="{StaticResource IconPlusBox}"
+                                BackgroundColor="Transparent"
+                                VerticalOptions="Center"
+                                Margin="20,0,0,0"/>
+                        </Grid>
+
+                        <Label
+                            VerticalOptions="Center"
+                            x:Name="AnswerLabel6"
+                            IsVisible="False"
+                            Text="С работодателя може да се свържеш, чрез контактите, които са посочени от фирмата в нейния профил на сайта."
+                            FontSize="16"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            Margin="0,10,0,0"
+                            LineBreakMode="WordWrap" />
+                    </StackLayout>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnFrameTapped6" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+
+                <controls:Footer></controls:Footer>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>
