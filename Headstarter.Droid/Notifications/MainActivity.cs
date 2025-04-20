@@ -3,21 +3,20 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Headstarter.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Microsoft.Maui.ApplicationModel;
 using System.Threading.Tasks;
 
 namespace Headstarter.Notifications
 {
-    [Activity (Theme = "@style/Maui.SplashTheme", MainLauncher = true, LaunchMode = LaunchMode.SingleTop)]
+    [Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, LaunchMode = LaunchMode.SingleTop)]
     public class MainActivity : MauiAppCompatActivity
     {
-        PermissionStatus status = await Permissions.RequestAsync<NotificationPermission>();
         protected override void OnCreate(Bundle? savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            // Fire-and-forget the permission request
+            RequestNotificationPermissionAsync();
 
             CreateNotificationFromIntent(Intent);
         }
@@ -25,7 +24,6 @@ namespace Headstarter.Notifications
         protected override void OnNewIntent(Intent? intent)
         {
             base.OnNewIntent(intent);
-
             CreateNotificationFromIntent(intent);
         }
 
@@ -33,12 +31,27 @@ namespace Headstarter.Notifications
         {
             if (intent?.Extras != null)
             {
-                string title = intent.GetStringExtra(Headstarter.Services.NotificationManagerService.TitleKey);
-                string message = intent.GetStringExtra(Headstarter.Services.NotificationManagerService.MessageKey);
+                string title = intent.GetStringExtra(NotificationManagerService.TitleKey);
+                string message = intent.GetStringExtra(NotificationManagerService.MessageKey);
 
                 var service = IPlatformApplication.Current.Services.GetService<INotificationManagerService>();
                 service.ReceiveNotification(title, message);
             }
+        }
+
+        private async void RequestNotificationPermissionAsync()
+        {
+#if ANDROID
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu) // Android 13+
+            {
+                var status = await Permissions.RequestAsync<Permissions.PostNotifications>();
+                if (status != PermissionStatus.Granted)
+                {
+                    // Handle the case where permission is denied
+                    System.Diagnostics.Debug.WriteLine("Notification permission was not granted.");
+                }
+            }
+#endif
         }
     }
 }

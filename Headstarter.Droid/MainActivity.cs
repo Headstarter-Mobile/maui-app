@@ -29,8 +29,8 @@ public class MainActivity : MauiAppCompatActivity
     {
         if (intent?.Extras != null)
         {
-            string title = intent.GetStringExtra(Headstarter.Services.NotificationManagerService.TitleKey);
-            string message = intent.GetStringExtra(Headstarter.Services.NotificationManagerService.MessageKey);
+            string title = intent.GetStringExtra(NotificationManagerService.TitleKey);
+            string message = intent.GetStringExtra(NotificationManagerService.MessageKey);
 
             var service = IPlatformApplication.Current.Services.GetService<INotificationManagerService>();
             service.ReceiveNotification(title, message);

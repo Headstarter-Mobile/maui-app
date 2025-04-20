@@ -1,3 +1,4 @@
+using Headstarter.Protos;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -12,13 +13,15 @@ public class EmailVerificationPageViewModel : INotifyPropertyChanged
     private string? _digit4;
     private string? _digit5;
     private string? _digit6;
-    private string? _email;
+    private User user;
+
+    public User User { get => user; set { user = value; OnPropertyChanged(); } }
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    public EmailVerificationPageViewModel(string email)
+    public  EmailVerificationPageViewModel(User _user)
     {
-        Email = email;
+        User = _user;
         NavigateToProfileOptionsCommand = new Command(OnNavigateToProfileOptions);
     }
 
@@ -59,19 +62,13 @@ public class EmailVerificationPageViewModel : INotifyPropertyChanged
     }
 
     public string FullCode => $"{Digit1}{Digit2}{Digit3}{Digit4}{Digit5}{Digit6}";
-
-    public string Email
-    {
-        get => _email;
-        set { _email = value; OnPropertyChanged(); }
-    }
-
+    
     public ICommand NavigateToProfileOptionsCommand { get; }
 
     private void OnNavigateToProfileOptions()
     {
         // Logic to verify the code or navigate forward
-        Application.Current.MainPage.DisplayAlert("Code Entered", $"Code: {FullCode}", "OK");
+        Microsoft.Maui.Controls.Application.Current.MainPage.DisplayAlert("Code Entered", $"Code: {FullCode}", "OK");
 
         // Optionally navigate to next page using Shell or Navigation
         // await Shell.Current.GoToAsync("ProfileOptionsPage");

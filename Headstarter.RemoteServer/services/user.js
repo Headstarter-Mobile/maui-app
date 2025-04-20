@@ -47,10 +47,16 @@ module.exports = {
             const hashedPassword = await hashPassword(password); // Hash the password
 
             const client = await pool.connect();
-            const result = await client.query(
-                'INSERT INTO users (name, email, password, company_id, type, created_at, updated_at) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id, name, email, company_id, type, created_at, updated_at',
-                [name, email, hashedPassword, companyId, type, createdAt, updatedAt]
-            );
+            let query, values;
+            if (type === 0) { // CANDIDATE
+                query = 'INSERT INTO users (name, email, password, company_id, type, created_at, updated_at) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id, name, email, company_id, type, created_at, updated_at';
+                values = [name, email, hashedPassword, null, type, createdAt, updatedAt];
+            }
+            else if (type === 1) { // RECRUITER
+                query = 'INSERT INTO users (name, email, password, company_id, type, created_at, updated_at) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id, name, email, company_id, type, created_at, updated_at';
+                values = [name, email, hashedPassword, companyId, type, createdAt, updatedAt];
+            }
+            const result = await client.query(query, values);
             client.release();
 
             if (result.rows.length > 0) {

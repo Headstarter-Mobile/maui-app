@@ -1,69 +1,66 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Headstarter.Components.NewsWidget"
-             x:Name="NewsWidgetName">
+             x:Name="NewsWidgetRef">
 
     <Frame 
-                    Margin="0,10,0,0" 
-                    Padding="5" 
-                    WidthRequest="325" 
-                    HeightRequest="325"
-                    CornerRadius="30" 
-                    BackgroundColor="Transparent"
-                    BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
+        Margin="0,10,0,0" 
+        Padding="5" 
+        WidthRequest="325" 
+        HeightRequest="325"
+        CornerRadius="30" 
+        BackgroundColor="Transparent"
+        BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
+
         <StackLayout>
             <Label     
-                            Margin="15,10,0,0"
-                            Text="{Binding Title}"
-                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                            FontAttributes="Bold"
-                            FontSize="18" />
+                Margin="15,10,0,0"
+                Text="{Binding Source={x:Reference NewsWidgetRef}, Path=Title}"
+                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                FontAttributes="Bold"
+                FontSize="18" />
 
             <Label
-                            Margin="15,10,0,0"
-                            Text="{Binding Description}"
-                            FontSize="15"
-                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                        />
+                Margin="15,10,0,0"
+                Text="{Binding Source={x:Reference NewsWidgetRef}, Path=Description}"
+                FontSize="15"
+                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"/>
 
             <HorizontalStackLayout 
-                            Spacing="30" 
-                            HorizontalOptions="Start" 
-                            VerticalOptions="Center" 
-                            Margin="15,20,0,0">
+                Spacing="30" 
+                HorizontalOptions="Start" 
+                VerticalOptions="Center" 
+                Margin="15,20,0,0">
+
                 <Border
-                                HeightRequest="80" WidthRequest="150"
-                                StrokeLineCap="Round"
-                                Stroke="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                                BackgroundColor="Transparent"
-                                Padding="0"
-                                VerticalOptions="Center">
+                    HeightRequest="80" WidthRequest="150"
+                    StrokeLineCap="Round"
+                    Stroke="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                    BackgroundColor="Transparent"
+                    Padding="0"
+                    VerticalOptions="Center">
 
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="15" />
                     </Border.StrokeShape>
 
                     <Image
-                                    Source="{Binding Image}"
-                                    Aspect="AspectFill" />
+                        Source="{Binding Source={x:Reference NewsWidgetRef}, Path=Image}"
+                        Aspect="AspectFill" />
                 </Border>
 
                 <Button
-                                VerticalOptions="Center"
-                                Text="Виж"
-                                FontSize="16"
-                                FontAttributes="Bold"
-                                TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
-                                CornerRadius="50"
-                                BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                                WidthRequest="100"
-                                HeightRequest="50"
-                                Command="{Binding Source={x:Reference NewsWidgetName}, Path=ViewPositionCommand}"
-                                CommandParameter="{Binding}" />
+                    VerticalOptions="Center"
+                    Text="Виж"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                    CornerRadius="50"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                    WidthRequest="100"
+                    HeightRequest="50"
+                    Command="{Binding Source={x:Reference NewsWidgetRef}, Path=ViewNewsCommand}" />
             </HorizontalStackLayout>
         </StackLayout>
     </Frame>
-
-
 </ContentView>
