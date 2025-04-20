@@ -64,6 +64,7 @@ public static class MauiProgramExtensions
         builder.Services.AddSingleton<EmailVerificationPage>();
         builder.Services.AddSingleton<ForgottenPasswordPage>();
         builder.Services.AddSingleton<JobOfferWidget>();
+        builder.Services.AddSingleton<NewsWidget>();
         builder.Services.AddSingleton<LoginPage>();
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<ProfileOptionsPage>();
@@ -72,6 +73,11 @@ public static class MauiProgramExtensions
         builder.Services.AddSingleton<SignupPage>();
         builder.Services.AddSingleton<WorkerProfilePage>();
         builder.Services.AddSingleton<SearchOfferPage>();
+        builder.Services.AddSingleton<NewsPage>();
+        builder.Services.AddSingleton<NewsTemplatePage>();
+        builder.Services.AddSingleton<NotRecruiterPage>();
+        builder.Services.AddSingleton<NotWorkerPage>();
+        builder.Services.AddSingleton<QuestionsPage>();
 
         return builder;
     }

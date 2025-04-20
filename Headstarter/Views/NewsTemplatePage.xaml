@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Headstarter.Views.NewsTemplatePage"
+             xmlns:controls="clr-namespace:Headstarter.Components"
+             Title="">
+
+    <Grid RowDefinitions="*, Auto">
+
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout
+                VerticalOptions="Start"
+                Padding="30,0,30,100"
+                Spacing="25">
+
+                <controls:Header></controls:Header>
+
+                <Label        
+                    Margin="0,10,0,0"
+                    Text="{Binding Title}"
+                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                    FontSize="35"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"/>
+
+                <Border
+                    HeightRequest="175" WidthRequest="325"
+                    StrokeLineCap="Round"
+                    Stroke="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                    BackgroundColor="Transparent"
+                    Padding="0"
+                    VerticalOptions="Center">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="30" />
+                    </Border.StrokeShape>
+
+                    <Image
+                        Source="{Binding Image}"
+                        Aspect="AspectFill" />
+                </Border>
+
+                <Label        
+                    Margin="0,10,0,0"
+                    Text="{Binding Description}"
+                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray400}}"
+                    FontSize="22"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Start"/>
+
+                <Label        
+                    Margin="0,0,0,0"
+                    Text="{Binding Content}"
+                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                    FontSize="17"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Start"/>
+
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>

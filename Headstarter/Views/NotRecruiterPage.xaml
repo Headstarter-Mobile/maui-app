@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Headstarter.Views.NotRecruiterPage"
+             xmlns:controls="clr-namespace:Headstarter.Components"
+             Title="">
+
+    <Grid RowDefinitions="*, Auto">
+
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout
+                VerticalOptions="Start"
+                Padding="30,0,30,100"
+                Spacing="25">
+
+                <controls:Header></controls:Header>
+                
+                <Image
+                   HorizontalOptions="Center"
+                   Source="image51.png"
+                   HeightRequest="240"               
+                   Aspect="AspectFit"
+                   SemanticProperties.Description="Main page image" />
+
+                <Label   
+                   Margin="0,0,0,20"
+                   Text="Вие сте регистриран като работник и нямате възможност да добавяте обяви за работа! "
+                   TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Start"/>
+
+                <Label   
+                   Margin="0,-20,0,20"
+                   Text="Ако искате да добавяте обяви се регистрирайте като работник от бутона долу:"
+                   TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Start"/>
+
+                <Button Text="Регистрация" 
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                    x:Name="NavigateToSignUp"
+                    HeightRequest="65" WidthRequest="180"
+                    CornerRadius="50"
+                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    BorderWidth="2"
+                    BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"/>
+
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>

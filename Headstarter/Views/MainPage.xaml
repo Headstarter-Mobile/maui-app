@@ -90,7 +90,30 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                
+                <BoxView 
+                    Margin="0,20,0,10"
+                    WidthRequest="325" 
+                    HeightRequest="1" 
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                    VerticalOptions="Center"/>
 
+                <Label                   
+                    Text="Последните новини"
+                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"/>
+
+                <controls:NewsWidget
+                    Title="Мненията на служителите за Blankfactor" 
+                    Description="Запознайте се с професионалисти на различни позиции и вижте какво мислят за компанията като работодател."
+                    Image="image_bf.jpg" />
+
+                <controls:NewsWidget
+                    Title="Какво четат ИТ хората в България: д-р Марян Ризински, Bosch Digital" 
+                    Description="Д-р Ризински споделя 3 ценни съвета, които „Към себе си“ на Марк Аврелий дава за живота и работата на софтуерните специалисти." 
+                    Image="image_bosch1.jpg" />
 
                 <controls:Footer></controls:Footer>
 

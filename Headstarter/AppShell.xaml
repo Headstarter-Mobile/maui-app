@@ -21,23 +21,23 @@
             <ShellContent ContentTemplate="{DataTemplate views:MainPage}" />
         </Tab>
 
-        <Tab Title="Новини">
-            <Tab.Icon>
-                <FontImageSource FontFamily="icons" Glyph="{StaticResource IconNewspaper}" />
-            </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate views:RecruiterProfilePage}" />
-        </Tab>
-
         <Tab Title="Обяви">
             <Tab.Icon>
                 <FontImageSource FontFamily="icons" Glyph="{StaticResource IconMagnify}" />
             </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:RecruiterProfilePage}" />
+        </Tab>
+
+        <Tab Title="Добави">
+            <Tab.Icon>
+                <FontImageSource FontFamily="icons" Glyph="{StaticResource IconPlusBox}" />
+            </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate views:CompanyPage}" />
         </Tab>
 
-        <Tab Title="Настройки">
+        <Tab Title="Новини">
             <Tab.Icon>
-                <FontImageSource FontFamily="icons" Glyph="{StaticResource IconCog}" />
+                <FontImageSource FontFamily="icons" Glyph="{StaticResource IconNewspaper}" />
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate views:LoginPage}" />
         </Tab>

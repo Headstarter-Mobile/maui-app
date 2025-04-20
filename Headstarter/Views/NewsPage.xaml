@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Headstarter.Views.NewsPage"
+             xmlns:controls="clr-namespace:Headstarter.Components"
+             Title="">
+
+    <Grid RowDefinitions="*, Auto">
+
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout
+                VerticalOptions="Start"
+                Padding="30,0,30,100"
+                Spacing="25">
+
+                <controls:Header></controls:Header>
+                
+                <Image
+                   HorizontalOptions="Center"
+                   Source="image41.png"
+                   HeightRequest="240"               
+                   Aspect="AspectFit"
+                   SemanticProperties.Description="Main page image" />
+
+                <Label   
+                   Margin="0,-20,0,20"
+                   Text="Новини в сферата"
+                   TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"/>
+
+                <controls:NewsWidget
+                    Title="Мненията на служителите за Blankfactor" 
+                    Description="Запознайте се с професионалисти на различни позиции и вижте какво мислят за компанията като работодател."
+                    Image="image_bf.jpg" />
+
+                <controls:NewsWidget
+                    Title="Какво четат ИТ хората в България: д-р Марян Ризински, Bosch Digital" 
+                    Description="Д-р Ризински споделя 3 ценни съвета, които „Към себе си“ на Марк Аврелий дава за живота и работата на софтуерните специалисти." 
+                    Image="image_bosch1.jpg" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+
+
+</ContentPage>
