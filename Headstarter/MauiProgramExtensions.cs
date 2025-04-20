@@ -58,6 +58,7 @@ public static class MauiProgramExtensions
         builder.Services.AddSingleton<SignupPageViewModel>();
         builder.Services.AddSingleton<WorkerProfilePageViewModel>();
         builder.Services.AddSingleton<SearchOfferPageViewModel>();
+        builder.Services.AddSingleton<NewsTemplateViewModel>();
 
         // Views
         builder.Services.AddSingleton<CompanyPage>();
