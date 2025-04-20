@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Headstarter.Views.SignupPage"
              xmlns:controls="clr-namespace:Headstarter.Components"
+             xmlns:viewmodels="clr-namespace:Headstarter.ViewModels"
+             x:Class="Headstarter.Views.SignupPage"
+             x:DataType="viewmodels:SignupPageViewModel"
              Title="">
 
     <Grid RowDefinitions="*, Auto">
@@ -26,155 +28,157 @@
                     TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
                     Margin="15,10,0,0"
                     FontSize="16"
-                    FontAttributes="None"
                     HorizontalOptions="Start"/>
 
-                <Frame Margin="0,0,0,0" CornerRadius="50" HeightRequest="80" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
+                <Frame CornerRadius="50" HeightRequest="80" WidthRequest="325"
+                       BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
                     <Entry x:Name="FirstNameEntry"
-                        Placeholder="Имe"
-                        PlaceholderColor="{StaticResource Gray300}"
-                        Keyboard="Email"
-                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                        FontSize="15"
-                        BackgroundColor="Transparent"/>
+                           Text="{Binding FirstName}"
+                           Placeholder="Имe"
+                           PlaceholderColor="{StaticResource Gray300}"
+                           Keyboard="Text"
+                           TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                           FontSize="15"
+                           BackgroundColor="Transparent"/>
                 </Frame>
 
-                <Frame CornerRadius="50" HeightRequest="80" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
+                <Frame CornerRadius="50" HeightRequest="80" WidthRequest="325"
+                       BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
                     <Entry x:Name="LastNameEntry"
-                            Placeholder="Фамилия"
-                            PlaceholderColor="{StaticResource Gray300}"
-                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                            FontSize="15"
-                            BackgroundColor="Transparent"/>
+                           Text="{Binding LastName}"
+                           Placeholder="Фамилия"
+                           PlaceholderColor="{StaticResource Gray300}"
+                           TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                           FontSize="15"
+                           BackgroundColor="Transparent"/>
                 </Frame>
 
                 <Label Text="Въведете Вашата рождена дата:"
-                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                    Margin="15,10,0,0"
-                    FontSize="16"
-                    FontAttributes="None"
-                    HorizontalOptions="Start"/>
+                       TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                       Margin="15,10,0,0"
+                       FontSize="16"
+                       HorizontalOptions="Start"/>
 
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
+                    <Button x:Name="DayButton"
+                            Text="{Binding BirthDay}"
+                            WidthRequest="75" 
+                            HeightRequest="50"
+                            BackgroundColor="Transparent"
+                            BorderWidth="1"
+                            BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                            CornerRadius="50"
+                            FontSize="15"
+                            Clicked="OnDayButtonClicked"/>
 
-                <HorizontalStackLayout HorizontalOptions="Center" Spacing="15" Margin="0,0,0,0">
-                    <Button Text="Ден" 
-                        x:Name="DayButton" 
-                        WidthRequest="75" 
-                        HeightRequest="50"
-                        BackgroundColor="Transparent"
-                        BorderWidth="1"
-                        BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                        CornerRadius="50"
-                        FontSize="15"
-                        Clicked="OnDayButtonClicked"/>
+                    <Button x:Name="MonthButton"
+                            Text="{Binding BirthMonth}"
+                            WidthRequest="125" 
+                            HeightRequest="50"
+                            BackgroundColor="Transparent"
+                            BorderWidth="1"
+                            BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                            CornerRadius="50"
+                            FontSize="15"
+                            Clicked="OnMonthButtonClicked"/>
 
-                    <Button Text="Месец" 
-                        x:Name="MonthButton" 
-                        WidthRequest="125" 
-                        HeightRequest="50"
-                        BackgroundColor="Transparent"
-                        BorderWidth="1"
-                        BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                        CornerRadius="50"
-                        FontSize="15"
-                        Clicked="OnMonthButtonClicked"/>
-
-                    <Button Text="Година" 
-                        x:Name="YearButton" 
-                        WidthRequest="95" 
-                        HeightRequest="50"
-                        BackgroundColor="Transparent"
-                        BorderWidth="1"
-                        BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                        CornerRadius="50"
-                        FontSize="15"
-                        Clicked="OnYearButtonClicked"/>
+                    <Button x:Name="YearButton"
+                            Text="{Binding BirthYear}"
+                            WidthRequest="95" 
+                            HeightRequest="50"
+                            BackgroundColor="Transparent"
+                            BorderWidth="1"
+                            BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                            CornerRadius="50"
+                            FontSize="15"
+                            Clicked="OnYearButtonClicked"/>
                 </HorizontalStackLayout>
 
-
                 <Label Text="Въведете телефонен номер:"
-                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                    Margin="15,15,0,0"
-                    FontSize="16"
-                    FontAttributes="None"
-                    HorizontalOptions="Start"/>
+                       TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                       Margin="15,15,0,0"
+                       FontSize="16"
+                       HorizontalOptions="Start"/>
 
-                <Frame CornerRadius="50" HeightRequest="80" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" >
+                <Frame CornerRadius="50" HeightRequest="80" WidthRequest="325"
+                       BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
                     <Entry x:Name="PhoneNumberEntry"
-                        Placeholder="Телефонен номер"
-                        PlaceholderColor="{StaticResource Gray300}"
-                        Keyboard="Telephone"
-                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                        FontSize="15"
-                        BackgroundColor="Transparent"/>
+                           Text="{Binding Phone}"
+                           Placeholder="Телефонен номер"
+                           PlaceholderColor="{StaticResource Gray300}"
+                           Keyboard="Telephone"
+                           TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                           FontSize="15"
+                           BackgroundColor="Transparent"/>
                 </Frame>
 
                 <Label Text="Въведете валиден имейл:"
-                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                    Margin="15,15,0,0"
-                    FontSize="16"
-                    FontAttributes="None"
-                    HorizontalOptions="Start"/>
+                       TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                       Margin="15,15,0,0"
+                       FontSize="16"
+                       HorizontalOptions="Start"/>
 
-                <Frame CornerRadius="50" HeightRequest="80" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" >
+                <Frame CornerRadius="50" HeightRequest="80" WidthRequest="325"
+                       BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
                     <Entry x:Name="EmailEntry"
-                        Placeholder="Имейл"
-                        PlaceholderColor="{StaticResource Gray300}"
-                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                        FontSize="15"
-                        BackgroundColor="Transparent"/>
+                           Text="{Binding Email}"
+                           Placeholder="Имейл"
+                           PlaceholderColor="{StaticResource Gray300}"
+                           Keyboard="Email"
+                           TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                           FontSize="15"
+                           BackgroundColor="Transparent"/>
                 </Frame>
 
                 <Label Text="Въведете парола:"
-                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                    Margin="15,15,0,0"
-                    FontSize="16"
-                    FontAttributes="None"
-                    HorizontalOptions="Start"/>
+                       TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                       Margin="15,15,0,0"
+                       FontSize="16"
+                       HorizontalOptions="Start"/>
 
-
-
-                <Frame CornerRadius="50" HeightRequest="80" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" >
+                <Frame CornerRadius="50" HeightRequest="80" WidthRequest="325"
+                       BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
                     <Entry x:Name="PasswordEntry"
-                        Placeholder="Парола"
-                        PlaceholderColor="{StaticResource Gray300}"
-                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                        FontSize="15"
-                        IsPassword="True"   
-                        BackgroundColor="Transparent"/>
+                           Text="{Binding Password}"
+                           IsPassword="{Binding IsPasswordVisible, Converter={StaticResource InverseBoolConverter}}"
+                           Placeholder="Парола"
+                           PlaceholderColor="{StaticResource Gray300}"
+                           TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                           FontSize="15"
+                           BackgroundColor="Transparent"/>
                 </Frame>
 
-
-
-                <Frame CornerRadius="50" HeightRequest="80" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" >
+                <Frame CornerRadius="50" HeightRequest="80" WidthRequest="325"
+                       BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
                     <Entry x:Name="ConfirmPasswordEntry"
-                        Placeholder="Повторете паролата"
-                        PlaceholderColor="{StaticResource Gray300}"
-                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                        FontSize="15"
-                        IsPassword="True"
-                        BackgroundColor="Transparent"/>
+                           Text="{Binding ConfirmPassword}"
+                           IsPassword="{Binding IsPasswordVisible, Converter={StaticResource InverseBoolConverter}}"
+                           Placeholder="Повторете паролата"
+                           PlaceholderColor="{StaticResource Gray300}"
+                           TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                           FontSize="15"
+                           BackgroundColor="Transparent"/>
                 </Frame>
 
                 <Button Text="Показване / Скриване"
-                    BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                    HeightRequest="50" WidthRequest="220"
-                    BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                    BorderWidth="2"
-                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
-                    CornerRadius="50"
-                    FontSize="15"
-                    Clicked="TogglePasswordVisibility"/>
+                        x:Name="TogglePasswordVisibilityButton"
+                        Command="{Binding TogglePasswordVisibilityCommand}"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                        HeightRequest="50" WidthRequest="220"
+                        BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                        BorderWidth="2"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                        CornerRadius="50"
+                        FontSize="15"/>
 
                 <Label Text="Изисквания за парола:"
-                    Margin="15,0,0,0"
-                    FontSize="16"
-                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                    FontAttributes="None"
-                    HorizontalOptions="Start"/>
+                       Margin="15,0,0,0"
+                       FontSize="16"
+                       TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                       HorizontalOptions="Start"/>
 
                 <StackLayout Margin="20,-20,0,15">
                     <Label Text="• Минимум 8 символа" FontSize="14" FontAttributes="Italic" TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray400}}"/>
@@ -185,69 +189,50 @@
                 </StackLayout>
 
                 <HorizontalStackLayout HorizontalOptions="Start" Padding="10,0" Spacing="10" Margin="0,-20,0,0">
-                    <CheckBox x:Name="AcceptCheckBox" VerticalOptions="Center" Color="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" />
-                    <Label Text="Съгласявам се с общи условия" Margin="-10,0"
-                        VerticalOptions="Center"       
-                        FontSize="14"
-                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"/>
+                    <CheckBox x:Name="AcceptCheckBox"
+                              IsChecked="{Binding AcceptTerms}" 
+                              VerticalOptions="Center" 
+                              Color="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"/>
+                    <Label Text="Съгласявам се с общи условия" 
+                           Margin="-10,0"
+                           VerticalOptions="Center"       
+                           FontSize="14"
+                           TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"/>
                 </HorizontalStackLayout>
 
-                <Button Text="Регистрация" 
-                    BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                    x:Name="NavigateToEmailVerification"
-                    HeightRequest="65" WidthRequest="180"
-                    CornerRadius="50"
-                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
-                    FontSize="16"
-                    FontAttributes="Bold"
-                    HorizontalOptions="Center"
-                    BorderWidth="2"
-                    BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                    Clicked="NavigateToEmailVerificationCommand"/>
+                <Button x:Name="NavigateToEmailVerification"
+                        Text="Регистрация" 
+                        Command="{Binding RegisterCommand}"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                        HeightRequest="65" WidthRequest="180"
+                        CornerRadius="50"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        BorderWidth="2"
+                        BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"/>
 
                 <HorizontalStackLayout HorizontalOptions="Center" Padding="10,0" Spacing="5" Margin="0,-5,0,0">
                     <Label Text="Имате акаунт?"  
-                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
-                       FontSize="16" 
-                       FontAttributes="Bold" 
-                       VerticalOptions="Center"/>
+                           TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                           FontSize="16" 
+                           FontAttributes="Bold" 
+                           VerticalOptions="Center"/>
 
-                    <Button Text="Вход"  
-                        x:Name="NavigateToLogin"
-                        TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                        BackgroundColor="Transparent"
-                        FontSize="16" 
-                        FontAttributes="Bold" 
-                        VerticalOptions="Center"
-                        Padding="0"
-                        Clicked="NavigateToLoginCommand"/>
+                    <Button x:Name="NavigateToLogin"
+                            Text="Вход"  
+                            Command="{Binding NavigateToLoginCommand}"
+                            TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
+                            BackgroundColor="Transparent"
+                            FontSize="16" 
+                            FontAttributes="Bold" 
+                            VerticalOptions="Center"
+                            Padding="0"/>
                 </HorizontalStackLayout>
-
 
             </VerticalStackLayout>
         </ScrollView>
 
-
-        <!--<FlexLayout Grid.Row="1"
-                Direction="Column"
-                AlignItems="Center"
-                JustifyContent="Center"
-                Padding="10"
-                BackgroundColor="{StaticResource LogoYellow}">
-
-            <Label Text=" aaaaaaaaaaaaaa"
-               TextColor="Black"
-               FontSize="16"
-               Background="{StaticResource LogoGreen}"
-               Padding="100,5"/>
-
-            <Label Text="Headstarter 2025"
-               TextColor="Black"
-               FontSize="16"
-               Background="{StaticResource LogoGreen}"
-               Padding="100,5"/>
-        </FlexLayout>-->
-
     </Grid>
-
 </ContentPage>

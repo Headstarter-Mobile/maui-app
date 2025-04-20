@@ -1,4 +1,6 @@
-﻿namespace Headstarter.Views;
+﻿using Headstarter.ViewModels;
+
+namespace Headstarter.Views;
 
 public partial class SignupPage : ContentPage
 {
@@ -7,11 +9,12 @@ public partial class SignupPage : ContentPage
     public SignupPage()
     {
         InitializeComponent();
+        BindingContext = Microsoft.Maui.Controls.Application.Current.Windows[0].Page.Handler.MauiContext.Services.GetService<SignupPageViewModel>();
     }
 
     private async void NavigateToEmailVerificationCommand(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new EmailVerificationPage(EmailEntry.Text));
+        await Navigation.PushAsync(new EmailVerificationPage((this.BindingContext as SignupPageViewModel).newUser));
     }
 
     private async void NavigateToLoginCommand(object sender, EventArgs e)

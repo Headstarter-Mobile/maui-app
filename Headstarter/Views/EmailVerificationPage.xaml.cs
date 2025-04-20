@@ -1,3 +1,4 @@
+using Headstarter.Protos;
 using Headstarter.ViewModels;
 using Microsoft.Maui.ApplicationModel.Communication;
 
@@ -5,10 +6,12 @@ namespace Headstarter.Views;
 
 public partial class EmailVerificationPage : ContentPage
 {
-	public EmailVerificationPage(string email)
+    private User user;
+	public EmailVerificationPage(User _user)
     {
+        user = _user;
 		InitializeComponent();
-        BindingContext = new EmailVerificationPageViewModel(email);
+        BindingContext = new EmailVerificationPageViewModel(user);
         Digit1.TextChanged += OnDigitEntered;
         Digit2.TextChanged += OnDigitEntered;
         Digit3.TextChanged += OnDigitEntered;
@@ -43,7 +46,7 @@ public partial class EmailVerificationPage : ContentPage
 
     private async void NavigateToProfileOptionsCommand(object? sender, EventArgs e)
     {
-        await Navigation.PushAsync(new ProfileOptionsPage());
+        await Navigation.PushAsync(new ProfileOptionsPage(user));
     }
 
 }

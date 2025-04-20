@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Headstarter.ViewModels;
+using System.ComponentModel;
 
 namespace Headstarter.Views;
 
@@ -15,42 +16,44 @@ public partial class ProfileOptionsPage : ContentPage, INotifyPropertyChanged
         }
     }
 
-    public ProfileOptionsPage()
+    public ProfileOptionsPage(Protos.User newUser)
     {
         WorkerRecruiterNotSelected = true;
         InitializeComponent();
-        BindingContext = this;
+        BindingContext = Microsoft.Maui.Controls.Application.Current.Windows[0].Page.Handler.MauiContext.Services.GetService<ProfileOptionsPageViewModel>().SetUser(newUser);
+        WorkerSection.IsVisible = false;
+        RecruiterSection.IsVisible = false;
     }
 
-    //private void OnWorkerSelected(object sender, EventArgs e)
-    //{
-    //    WorkerRecruiterNotSelected = false;
-    //    WorkerSection.IsVisible = true;
-    //    RecruiterSection.IsVisible = false;
-    //
-    //    WorkerButton.WidthRequest = 160;
-    //    WorkerButton.HeightRequest = 75;
-    //    WorkerButton.FontSize = 18;
-    //
-    //    RecruiterButton.WidthRequest = 120;
-    //    RecruiterButton.HeightRequest = 55;
-    //    RecruiterButton.FontSize = 14;
-    //}
-    //
-    //private void OnRecruiterSelected(object sender, EventArgs e)
-    //{
-    //    WorkerRecruiterNotSelected = false;
-    //    WorkerSection.IsVisible = false;
-    //    RecruiterSection.IsVisible = true;
-    //
-    //    RecruiterButton.WidthRequest = 160;
-    //    RecruiterButton.HeightRequest = 75;
-    //    RecruiterButton.FontSize = 18;
-    //
-    //    WorkerButton.WidthRequest = 120;
-    //    WorkerButton.HeightRequest = 55;
-    //    WorkerButton.FontSize = 14;
-    //}
+    private void OnWorkerSelected(object sender, EventArgs e)
+    {
+        WorkerRecruiterNotSelected = false;
+        WorkerSection.IsVisible = true;
+        RecruiterSection.IsVisible = false;
+    
+        WorkerButton.WidthRequest = 160;
+        WorkerButton.HeightRequest = 75;
+        WorkerButton.FontSize = 18;
+    
+        RecruiterButton.WidthRequest = 120;
+        RecruiterButton.HeightRequest = 55;
+        RecruiterButton.FontSize = 14;
+    }
+    
+    private void OnRecruiterSelected(object sender, EventArgs e)
+    {
+        WorkerRecruiterNotSelected = true;
+        WorkerSection.IsVisible = false;
+        RecruiterSection.IsVisible = true;
+    
+        RecruiterButton.WidthRequest = 160;
+        RecruiterButton.HeightRequest = 75;
+        RecruiterButton.FontSize = 18;
+    
+        WorkerButton.WidthRequest = 120;
+        WorkerButton.HeightRequest = 55;
+        WorkerButton.FontSize = 14;
+    }
 
     private async void OnWorkerRegister(object sender, EventArgs e)
     {

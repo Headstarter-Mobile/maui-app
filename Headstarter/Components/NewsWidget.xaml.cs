@@ -5,29 +5,53 @@ namespace Headstarter.Components;
 
 public partial class NewsWidget : ContentView
 {
-	public string Title { get; set; }
-	public static readonly BindableProperty TitleProperty = BindableProperty.Create(
-		nameof(Title),
-		typeof(string),
-		typeof(NewsWidget));
-	public string Description { get; set; }
-	public static readonly BindableProperty DescriptionProperty = BindableProperty.Create(
-		nameof(Description),
-		typeof(string),
-		typeof(NewsWidget));
-	public string Image { get; set; }
-	public static readonly BindableProperty ImagerProperty = BindableProperty.Create(
-		nameof(Image),
-		typeof(string),
-		typeof(NewsWidget));
-	public NewsWidget()
-	{
-		InitializeComponent();
-	}
-	public static readonly BindableProperty ViewNewsCommandProperty = BindableProperty.Create(
-		nameof(ViewNewsCommand),
-		typeof(ICommand),
-		typeof(NewsWidget));
+    public NewsWidget()
+    {
+        InitializeComponent();
+        ViewNewsCommand = new Command(OnViewNews);
+    }
+
+    public static readonly BindableProperty TitleProperty = BindableProperty.Create(
+        nameof(Title),
+        typeof(string),
+        typeof(NewsWidget),
+        string.Empty);
+
+    public string Title
+    {
+        get => (string)GetValue(TitleProperty);
+        set => SetValue(TitleProperty, value);
+    }
+
+    public static readonly BindableProperty DescriptionProperty = BindableProperty.Create(
+        nameof(Description),
+        typeof(string),
+        typeof(NewsWidget),
+        string.Empty);
+
+    public string Description
+    {
+        get => (string)GetValue(DescriptionProperty);
+        set => SetValue(DescriptionProperty, value);
+    }
+
+    public static readonly BindableProperty ImageProperty = BindableProperty.Create(
+        nameof(Image),
+        typeof(string),
+        typeof(NewsWidget),
+        string.Empty);
+
+    public string Image
+    {
+        get => (string)GetValue(ImageProperty);
+        set => SetValue(ImageProperty, value);
+    }
+
+    public static readonly BindableProperty ViewNewsCommandProperty = BindableProperty.Create(
+        nameof(ViewNewsCommand),
+        typeof(ICommand),
+        typeof(NewsWidget),
+        null);
 
     public ICommand ViewNewsCommand
     {
@@ -35,15 +59,16 @@ public partial class NewsWidget : ContentView
         set => SetValue(ViewNewsCommandProperty, value);
     }
 
-    private async void OnViewNews(int id)
+    private async void OnViewNews()
     {
         try
         {
-            await Shell.Current.GoToAsync($"newsDetails?id={id}");
+            // Assuming navigation logic is related to the title, you can adjust if ID is needed
+            await Shell.Current.GoToAsync($"newsDetails?title={Title}");
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Error navigating to news details: {ex.Message}");
+            Debug.WriteLine($"Navigation error: {ex.Message}");
         }
     }
 }

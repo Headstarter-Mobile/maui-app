@@ -23,7 +23,7 @@ public partial class LoginPage : ContentPage
 
     private async void NavigateToNewPassVerifCommand(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new EmailVerificationPage((this.BindingContext as LoginPageViewModel).Email));
+        await Navigation.PushAsync(new EmailVerificationPage((this.BindingContext as LoginPageViewModel).User));
     }
 
     private async void NavigateToSignupCommand(object sender, EventArgs e)

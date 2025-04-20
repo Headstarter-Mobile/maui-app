@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Microsoft.Maui.Controls;
 using Headstarter.Protos;
+using Headstarter.Services;
 
 namespace Headstarter.ViewModels;
 
@@ -16,16 +17,25 @@ public class ProfileOptionsPageViewModel : INotifyPropertyChanged
     private string _linkedInUrl = "";
     private string _otherLink = "";
     private Company _company = new Company();
+    private User user;
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    public ProfileOptionsPageViewModel()
+    public ProfileOptionsPageViewModel(IUserService userService, ICompanyService companyService)
     {
+        _userService = userService;
+        _companyService = companyService;
         SelectWorkerCommand = new Command(OnSelectWorker);
         SelectRecruiterCommand = new Command(OnSelectRecruiter);
         CompleteWorkerProfileCommand = new Command(OnWorkerProfileCompleted);
         CompleteRecruiterProfileCommand = new Command(OnRecruiterProfileCompleted);
         PickFileCommand = new Command(OnPickFile);
+    }
+
+    public ProfileOptionsPageViewModel SetUser(User _user)
+    {
+        user = _user;
+        return this;
     }
 
     public bool WorkerSelected
@@ -82,6 +92,9 @@ public class ProfileOptionsPageViewModel : INotifyPropertyChanged
         set { Company.Description = value; OnPropertyChanged(); OnPropertyChanged(nameof(Company)); }
     }
 
+    private readonly IUserService _userService;
+    private readonly ICompanyService _companyService;
+
     public ICommand SelectWorkerCommand { get; }
     public ICommand SelectRecruiterCommand { get; }
     public ICommand CompleteWorkerProfileCommand { get; }
@@ -104,11 +117,22 @@ public class ProfileOptionsPageViewModel : INotifyPropertyChanged
 
     private async void OnWorkerProfileCompleted()
     {
+        user.Type = UserRole.Candidate;
+        _userService.CreateUser(user);
+        var login = await _userService.LoginUser(user);
+        await SessionService.Instance.SaveSessionAsync(login.UserData, login.Token);
         await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayAlert("Success", "Worker profile completed!", "OK");
     }
 
     private async void OnRecruiterProfileCompleted()
     {
+        user.Type = UserRole.Recruiter;
+        Company = _companyService.CreateCompany(Company);
+        user.CompanyId = Company.Id;
+        user.Type = UserRole.Recruiter;
+        _userService.CreateUser(user);
+        var login = await _userService.LoginUser(user);
+        await SessionService.Instance.SaveSessionAsync(login.UserData, login.Token);
         await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayAlert("Success", "Recruiter profile completed!", "OK");
     }
 

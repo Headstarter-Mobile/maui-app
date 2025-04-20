@@ -4,10 +4,6 @@
              xmlns:controls="clr-namespace:Headstarter.Components"
              x:Class="Headstarter.Views.ProfileOptionsPage"
              Title="">
-    <ContentPage.BindingContext>
-        <viewmodels:ProfileOptionsPageViewModel xmlns:viewmodels="clr-namespace:Headstarter.ViewModels" />
-    </ContentPage.BindingContext>
-
     <Grid RowDefinitions="*, Auto">
         <ScrollView Grid.Row="0">
             <VerticalStackLayout VerticalOptions="Start" Padding="30,0,30,100" Spacing="25">
@@ -23,6 +19,7 @@
 
                 <HorizontalStackLayout HorizontalOptions="Center" Padding="10,0" Spacing="20" Margin="0,15,0,0">
                     <Button Text="Работник"
+                            x:Name="WorkerButton"
                             Command="{Binding SelectWorkerCommand}"
                             HeightRequest="65" WidthRequest="140"
                             TextColor="{StaticResource Black}"
@@ -33,7 +30,8 @@
                             FontSize="16" 
                             FontAttributes="Bold" 
                             VerticalOptions="Center"
-                            Padding="0" />
+                            Padding="0"
+                            Clicked="OnWorkerSelected" />
 
                     <BoxView WidthRequest="2" 
                              HeightRequest="65" 
@@ -41,6 +39,7 @@
                              VerticalOptions="Center" />
 
                     <Button Text="Работодател"
+                            x:Name="RecruiterButton"
                             Command="{Binding SelectRecruiterCommand}"
                             HeightRequest="65" WidthRequest="140"
                             TextColor="{StaticResource Black}"
@@ -51,18 +50,18 @@
                             FontSize="16" 
                             FontAttributes="Bold" 
                             VerticalOptions="Center"
-                            Padding="0" />
+                            Padding="0"
+                            Clicked="OnRecruiterSelected" />
                 </HorizontalStackLayout>
 
                 <Image Source="image1.png"
-                       IsVisible="{Binding WorkerRecruiterNotSelected}"
                        Margin="0,10"
                        HorizontalOptions="Center"
                        HeightRequest="240"               
                        Aspect="AspectFit" />
 
                 <!-- Worker Section -->
-                <StackLayout IsVisible="{Binding WorkerSelected}" VerticalOptions="Start" Padding="30,0,30,100" Spacing="25">
+                <StackLayout x:Name="WorkerSection" IsVisible="{Binding WorkerSelected}" VerticalOptions="Start" Padding="30,0,30,100" Spacing="25">
 
                     <Label Text="Въведете данните на Вашата кандидатура:"
                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
@@ -129,7 +128,7 @@
                 </StackLayout>
 
                 <!-- Recruiter Section -->
-                <StackLayout IsVisible="{Binding RecruiterSelected}" VerticalOptions="Start" Padding="30,0,30,100" Spacing="25">
+                <StackLayout x:Name="RecruiterSection" IsVisible="{Binding RecruiterSelected}" VerticalOptions="Start" Padding="30,0,30,100" Spacing="25">
 
                     <Label Text="Въведете данните на Вашата фирма:"
                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"

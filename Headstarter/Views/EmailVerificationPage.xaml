@@ -48,7 +48,7 @@
                 FontAttributes="None"
                 HorizontalOptions="Start" />
 
-                <Label Text="{Binding Email}"
+                <Label Text="{Binding User.Email}"
                 Margin="15,-20,0,0"
                 FontSize="16"
                 TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
