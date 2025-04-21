@@ -19,7 +19,7 @@
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
-		<MauiSplashScreen Include="Resources\Splash\white_square.svg" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" />
 		<MauiIcon Include="Resources\Images\headstarter_logo2.png" />
 	</ItemGroup>
 
