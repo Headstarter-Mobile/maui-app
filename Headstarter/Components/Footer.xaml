@@ -4,197 +4,225 @@
              x:Class="Headstarter.Components.Footer">
 
 
-    <Grid Margin="-30,50,-30,0" Padding="0,50"
-                      BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
+    <Grid 
+        Margin="-30,50,-30,0" 
+        Padding="0,50"
+        BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
         <VerticalStackLayout Spacing="25">
 
             <Label
-                            Padding="0,0,0,10"
-                            HorizontalOptions="Center"
-                            Text="ЗА НАС"
-                            TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
-                            FontSize="20"
-                            FontAttributes="Bold" />
+                Padding="0,0,0,10"
+                HorizontalOptions="Center"
+                Text="ЗА НАС"
+                TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                FontSize="20"
+                FontAttributes="Bold" />
 
             <Frame
-                            Padding="0"
-                            HasShadow="False"
-                            BackgroundColor="Transparent"
-                            BorderColor="Transparent"
-                            CornerRadius="12">
+                Padding="0"
+                HasShadow="False"
+                BackgroundColor="Transparent"
+                BorderColor="Transparent"
+                CornerRadius="12">
 
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnAboutUsTapped" />
                 </Frame.GestureRecognizers>
 
                 <HorizontalStackLayout
-                                Spacing="5"
-                                Padding="30,0">
+                    Spacing="5"
+                    Padding="30,0">
                     <Label 
-                                    FontFamily="icons"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" 
-                                    FontSize="25"
-                                    Text="{StaticResource IconFaceManShimmer}"
-                                    BackgroundColor="Transparent" />
+                        FontFamily="icons"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" 
+                        FontSize="25"
+                        Text="{StaticResource IconFaceManShimmer}"
+                        BackgroundColor="Transparent" />
                     <Label
-                                    VerticalTextAlignment="Center"
-                                    HorizontalTextAlignment="Start"
-                                    Text="Екип на HEADSTARTER"
-                                    FontSize="18"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" />
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Start"
+                        Text="Екип на HEADSTARTER"
+                        FontSize="18"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" />
                 </HorizontalStackLayout>
             </Frame>
 
             <Frame
-                            Padding="0"
-                            HasShadow="False"
-                            BackgroundColor="Transparent"
-                            BorderColor="Transparent"
-                            CornerRadius="12">
+                Padding="0"
+                HasShadow="False"
+                BackgroundColor="Transparent"
+                BorderColor="Transparent"
+                CornerRadius="12">
+
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnQuestionsTapped" />
+                </Frame.GestureRecognizers>
+
+
                 <HorizontalStackLayout
-                                Spacing="5"
-                                Padding="30,0">
+                    Spacing="5"
+                    Padding="30,0">
                     <Label 
-                                    FontFamily="icons"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" 
-                                    FontSize="25"
-                                    Text="{StaticResource IconHelp}"
-                                    BackgroundColor="Transparent" />
+                        FontFamily="icons"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" 
+                        FontSize="25"
+                        Text="{StaticResource IconHelp}"
+                        BackgroundColor="Transparent" />
                     <Label
-                                    VerticalTextAlignment="Center"
-                                    HorizontalTextAlignment="Start"
-                                    Text="Често задавани въпроси"
-                                    FontSize="18"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" />
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Start"
+                        Text="Често задавани въпроси"
+                        FontSize="18"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" />
                 </HorizontalStackLayout>
             </Frame>
 
             <BoxView 
-                            WidthRequest="325" 
-                            HeightRequest="1" 
-                            BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
-                            VerticalOptions="Center"/>
+                WidthRequest="325" 
+                HeightRequest="1" 
+                BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                VerticalOptions="Center"/>
 
             <Label
-                            Padding="0,10,0,10"
-                            HorizontalOptions="Center"
-                            Text="СВЪРЖИ СЕ С НАС"
-                            TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
-                            FontSize="20"
-                            FontAttributes="Bold" />
+                Padding="0,10,0,10"
+                HorizontalOptions="Center"
+                Text="СВЪРЖИ СЕ С НАС"
+                TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                FontSize="20"
+                FontAttributes="Bold" />
 
             <Frame
-                            Padding="0"
-                            HasShadow="False"
-                            BackgroundColor="Transparent"
-                            BorderColor="Transparent"
-                            CornerRadius="12">
+                Padding="0"
+                HasShadow="False"
+                BackgroundColor="Transparent"
+                BorderColor="Transparent"
+                CornerRadius="12">
+
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnHSPhoneTapped" />
+                </Frame.GestureRecognizers>
+
                 <HorizontalStackLayout
-                                Spacing="5"
-                                Padding="30,0">
+                    Spacing="5"
+                    Padding="30,0">
                     <Label 
-                                    FontFamily="icons"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" 
-                                    FontSize="25"
-                                    Text="{StaticResource IconPhone}"
-                                    BackgroundColor="Transparent" />
+                        FontFamily="icons"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" 
+                        FontSize="25"
+                        Text="{StaticResource IconPhone}"
+                        BackgroundColor="Transparent" />
                     <Label
-                                    VerticalTextAlignment="Center"
-                                    HorizontalTextAlignment="Start"
-                                    Text="+359 988 329 931"
-                                    FontSize="18"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" />
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Start"
+                        Text="+359 988 329 931"
+                        FontSize="18"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" />
                 </HorizontalStackLayout>
             </Frame>
 
             <Frame
-                            Padding="0"
-                            HasShadow="False"
-                            BackgroundColor="Transparent"
-                            BorderColor="Transparent"
-                            CornerRadius="12">
+                Padding="0"
+                HasShadow="False"
+                BackgroundColor="Transparent"
+                BorderColor="Transparent"
+                CornerRadius="12">
+
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnHSEmailTapped" />
+                </Frame.GestureRecognizers>
+
                 <HorizontalStackLayout
-                                Spacing="5"
-                                Padding="30,0">
+                    Spacing="5"
+                    Padding="30,0">
                     <Label 
-                                    FontFamily="icons"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" 
-                                    FontSize="25"
-                                    Text="{StaticResource IconEmail}"
-                                    BackgroundColor="Transparent" />
+                        FontFamily="icons"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" 
+                        FontSize="25"
+                        Text="{StaticResource IconEmail}"
+                        BackgroundColor="Transparent" />
                     <Label
-                                    VerticalTextAlignment="Center"
-                                    HorizontalTextAlignment="Start"
-                                    Text="contact_us@headstarter.eu"
-                                    FontSize="18"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" />
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Start"
+                        Text="contact_us@headstarter.eu"
+                        FontSize="18"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" />
                 </HorizontalStackLayout>
             </Frame>
 
             <Frame
-                            Padding="0"
-                            HasShadow="False"
-                            BackgroundColor="Transparent"
-                            BorderColor="Transparent"
-                            CornerRadius="12">
+                Padding="0"
+                HasShadow="False"
+                BackgroundColor="Transparent"
+                BorderColor="Transparent"
+                CornerRadius="12">
+
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnHSFacebookTapped" />
+                </Frame.GestureRecognizers>
+
                 <HorizontalStackLayout
-                                Spacing="5"
-                                Padding="30,0">
+                    Spacing="5"
+                    Padding="30,0">
                     <Label 
-                                    FontFamily="icons"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" 
-                                    FontSize="25"
-                                    Text="{StaticResource IconFacebook}"
-                                    BackgroundColor="Transparent" />
+                        FontFamily="icons"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" 
+                        FontSize="25"
+                        Text="{StaticResource IconFacebook}"
+                        BackgroundColor="Transparent" />
                     <Label
-                                    VerticalTextAlignment="Center"
-                                    HorizontalTextAlignment="Start"
-                                    Text="HEADSTARTER"
-                                    FontSize="18"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" />
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Start"
+                        Text="Headstarter"
+                        FontSize="18"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" />
                 </HorizontalStackLayout>
             </Frame>
 
             <Frame
-                            Padding="0"
-                            HasShadow="False"
-                            BackgroundColor="Transparent"
-                            BorderColor="Transparent"
-                            CornerRadius="12">
+                Padding="0"
+                HasShadow="False"
+                BackgroundColor="Transparent"
+                BorderColor="Transparent"
+                CornerRadius="12">
+
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnHSInstagramTapped" />
+                </Frame.GestureRecognizers>
+
                 <HorizontalStackLayout
-                                Spacing="5"
-                                Padding="30,0">
+                    Spacing="5"
+                    Padding="30,0">
                     <Label 
-                                    FontFamily="icons"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" 
-                                    FontSize="25"
-                                    Text="{StaticResource IconInstagram}"
-                                    BackgroundColor="Transparent" />
+                        FontFamily="icons"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" 
+                        FontSize="25"
+                        Text="{StaticResource IconInstagram}"
+                        BackgroundColor="Transparent" />
                     <Label
-                                    VerticalTextAlignment="Center"
-                                    HorizontalTextAlignment="Start"
-                                    Text="headstarter_company"
-                                    FontSize="18"
-                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" />
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Start"
+                        Text="headstarter_company"
+                        FontSize="18"
+                        TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}" />
                 </HorizontalStackLayout>
             </Frame>
 
             <BoxView 
-                            WidthRequest="325" 
-                            HeightRequest="1" 
-                            BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
-                            VerticalOptions="Center"/>
+                WidthRequest="325" 
+                HeightRequest="1" 
+                BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                VerticalOptions="Center"/>
 
             <HorizontalStackLayout HorizontalOptions="Center" Margin="0,30,0,0">
                 <Label
-                                Text="HEADSTARTER"
-                                TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
-                                FontFamily="LilitaOne"
-                                FontSize="25" />
+                    Text="HEADSTARTER"
+                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                    FontFamily="LilitaOne"
+                    FontSize="25" />
                 <Label
-                                Text=" © 2025"
-                                TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
-                                FontSize="22" />
+                    Text=" © 2025"
+                    TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
+                    FontSize="22" />
             </HorizontalStackLayout>
 
         </VerticalStackLayout>

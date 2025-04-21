@@ -23,7 +23,7 @@
                     FontAttributes="Bold"
                     HorizontalTextAlignment="Center"/>
 
-                <Frame Margin="0,20,0,20" CornerRadius="50" HeightRequest="450" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" BackgroundColor="Transparent" >
+                <Frame Margin="0,20,0,20" CornerRadius="50" HeightRequest="530" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" BackgroundColor="Transparent" >
                     <VerticalStackLayout Padding="10,0,10,0" Spacing="25" >
                         <Label
                             HorizontalOptions="Center"
@@ -58,12 +58,77 @@
                             BackgroundColor="Transparent"
                             BorderColor="Transparent"
                             CornerRadius="12">
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnAlexPhoneTapped" />
+                            </Frame.GestureRecognizers>
+
                             <HorizontalStackLayout
                                 Spacing="5"
                                 Padding="0,0">
                                 <Label 
                                     FontFamily="icons"
-                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" 
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" 
+                                    FontSize="25"
+                                    Text="{StaticResource IconPhone}"
+                                    BackgroundColor="Transparent" />
+                                <Label
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Start"
+                                    Text="+359 988 329 931"
+                                    FontSize="17"
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" />
+                            </HorizontalStackLayout>
+                        </Frame>
+
+                        <Frame
+                            Margin="0,-10,0,0"
+                            Padding="0"
+                            HasShadow="False"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            CornerRadius="12">
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnAlexEmailTapped" />
+                            </Frame.GestureRecognizers>
+
+                            <HorizontalStackLayout
+                                Spacing="5"
+                                Padding="0,0">
+                                <Label 
+                                    FontFamily="icons"
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" 
+                                    FontSize="25"
+                                    Text="{StaticResource IconEmail}"
+                                    BackgroundColor="Transparent" />
+                                <Label
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Start"
+                                    Text="alex_tsvetanov_2002@abv.bg"
+                                    FontSize="17"
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" />
+                            </HorizontalStackLayout>
+                        </Frame>
+
+                        <Frame
+                            Margin="0,-10,0,0"
+                            Padding="0"
+                            HasShadow="False"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            CornerRadius="12">
+                            
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnAlexFacebookTapped" />
+                            </Frame.GestureRecognizers>
+                            
+                            <HorizontalStackLayout
+                                Spacing="5"
+                                Padding="0,0">
+                                <Label 
+                                    FontFamily="icons"
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" 
                                     FontSize="25"
                                     Text="{StaticResource IconFacebook}"
                                     BackgroundColor="Transparent" />
@@ -71,8 +136,8 @@
                                     VerticalTextAlignment="Center"
                                     HorizontalTextAlignment="Start"
                                     Text="Alex Tsvetanov"
-                                    FontSize="18"
-                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+                                    FontSize="17"
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" />
                             </HorizontalStackLayout>
                         </Frame>
 
@@ -83,12 +148,17 @@
                             BackgroundColor="Transparent"
                             BorderColor="Transparent"
                             CornerRadius="12">
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnAlexInstagramTapped" />
+                            </Frame.GestureRecognizers>
+
                             <HorizontalStackLayout
                                 Spacing="5"
                                 Padding="0,0">
                                 <Label 
                                     FontFamily="icons"
-                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" 
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" 
                                     FontSize="25"
                                     Text="{StaticResource IconInstagram}"
                                     BackgroundColor="Transparent" />
@@ -96,15 +166,15 @@
                                     VerticalTextAlignment="Center"
                                     HorizontalTextAlignment="Start"
                                     Text="coder_of_worlds"
-                                    FontSize="18"
-                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+                                    FontSize="17"
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" />
                             </HorizontalStackLayout>
                         </Frame>
 
                     </VerticalStackLayout>
                 </Frame>
 
-                <Frame Margin="0,20,0,20" CornerRadius="50" HeightRequest="450" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" BackgroundColor="Transparent" >
+                <Frame Margin="0,20,0,20" CornerRadius="50" HeightRequest="530" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" BackgroundColor="Transparent" >
                     <VerticalStackLayout Padding="10,0,10,0" Spacing="25" >
                         <Label
                             HorizontalOptions="Center"
@@ -126,8 +196,8 @@
 
 
                             <Image
-                                    Source="kiril.jpg"
-                                    Aspect="AspectFill">
+                                Source="kiril.jpg"
+                                Aspect="AspectFill">
                             </Image>
                         </Border>
 
@@ -137,12 +207,77 @@
                             BackgroundColor="Transparent"
                             BorderColor="Transparent"
                             CornerRadius="12">
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnKirilPhoneTapped" />
+                            </Frame.GestureRecognizers>
+
                             <HorizontalStackLayout
                                 Spacing="5"
                                 Padding="0,0">
                                 <Label 
                                     FontFamily="icons"
-                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" 
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" 
+                                    FontSize="25"
+                                    Text="{StaticResource IconPhone}"
+                                    BackgroundColor="Transparent" />
+                                <Label
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Start"
+                                    Text="+359 877 691 277"
+                                    FontSize="17"
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" />
+                            </HorizontalStackLayout>
+                        </Frame>
+
+                        <Frame
+                            Margin="0,-10,0,0"
+                            Padding="0"
+                            HasShadow="False"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            CornerRadius="12">
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnKirilEmailTapped" />
+                            </Frame.GestureRecognizers>
+
+                            <HorizontalStackLayout
+                                Spacing="5"
+                                Padding="0,0">
+                                <Label 
+                                    FontFamily="icons"
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" 
+                                    FontSize="25"
+                                    Text="{StaticResource IconEmail}"
+                                    BackgroundColor="Transparent" />
+                                <Label
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Start"
+                                    Text="kiril.valkov@abv.bg"
+                                    FontSize="17"
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" />
+                            </HorizontalStackLayout>
+                        </Frame>
+
+                        <Frame
+                            Margin="0,-10,0,0"
+                            Padding="0"
+                            HasShadow="False"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            CornerRadius="12">
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnKirilFacebookTapped" />
+                            </Frame.GestureRecognizers>
+
+                            <HorizontalStackLayout
+                                Spacing="5"
+                                Padding="0,0">
+                                <Label 
+                                    FontFamily="icons"
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" 
                                     FontSize="25"
                                     Text="{StaticResource IconFacebook}"
                                     BackgroundColor="Transparent" />
@@ -150,8 +285,8 @@
                                     VerticalTextAlignment="Center"
                                     HorizontalTextAlignment="Start"
                                     Text="Kiril Valkov"
-                                    FontSize="18"
-                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+                                    FontSize="17"
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" />
                             </HorizontalStackLayout>
                         </Frame>
 
@@ -162,12 +297,17 @@
                             BackgroundColor="Transparent"
                             BorderColor="Transparent"
                             CornerRadius="12">
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnKirilInstagramTapped" />
+                            </Frame.GestureRecognizers>
+
                             <HorizontalStackLayout
                                 Spacing="5"
                                 Padding="0,0">
                                 <Label 
                                     FontFamily="icons"
-                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" 
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" 
                                     FontSize="25"
                                     Text="{StaticResource IconInstagram}"
                                     BackgroundColor="Transparent" />
@@ -175,15 +315,15 @@
                                     VerticalTextAlignment="Center"
                                     HorizontalTextAlignment="Start"
                                     Text="kirilvalkov_"
-                                    FontSize="18"
-                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+                                    FontSize="17"
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" />
                             </HorizontalStackLayout>
                         </Frame>
 
                     </VerticalStackLayout>
                 </Frame>
 
-                <Frame Margin="0,20,0,0" CornerRadius="50" HeightRequest="450" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" BackgroundColor="Transparent" >
+                <Frame Margin="0,20,0,0" CornerRadius="50" HeightRequest="530" WidthRequest="325" BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" BackgroundColor="Transparent" >
                     <VerticalStackLayout Padding="10,0,10,0" Spacing="25" >
                         <Label
                             HorizontalOptions="Center"
@@ -215,12 +355,77 @@
                             BackgroundColor="Transparent"
                             BorderColor="Transparent"
                             CornerRadius="12">
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnBorisPhoneTapped" />
+                            </Frame.GestureRecognizers>
+
                             <HorizontalStackLayout
                                 Spacing="5"
                                 Padding="0,0">
                                 <Label 
                                     FontFamily="icons"
-                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" 
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" 
+                                    FontSize="25"
+                                    Text="{StaticResource IconPhone}"
+                                    BackgroundColor="Transparent" />
+                                <Label
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Start"
+                                    Text="+359 888 440 107"
+                                    FontSize="17"
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" />
+                            </HorizontalStackLayout>
+                        </Frame>
+
+                        <Frame
+                            Margin="0,-10,0,0"
+                            Padding="0"
+                            HasShadow="False"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            CornerRadius="12">
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnBorisEmailTapped" />
+                            </Frame.GestureRecognizers>
+
+                            <HorizontalStackLayout
+                                Spacing="5"
+                                Padding="0,0">
+                                <Label 
+                                    FontFamily="icons"
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" 
+                                    FontSize="25"
+                                    Text="{StaticResource IconEmail}"
+                                    BackgroundColor="Transparent" />
+                                <Label
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Start"
+                                    Text="bobovlahov@gmail.com"
+                                    FontSize="17"
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" />
+                            </HorizontalStackLayout>
+                        </Frame>
+
+                        <Frame
+                            Margin="0,-10,0,0"
+                            Padding="0"
+                            HasShadow="False"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            CornerRadius="12">
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnBorisFacebookTapped" />
+                            </Frame.GestureRecognizers>
+
+                            <HorizontalStackLayout
+                                Spacing="5"
+                                Padding="0,0">
+                                <Label 
+                                    FontFamily="icons"
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" 
                                     FontSize="25"
                                     Text="{StaticResource IconFacebook}"
                                     BackgroundColor="Transparent" />
@@ -228,8 +433,8 @@
                                     VerticalTextAlignment="Center"
                                     HorizontalTextAlignment="Start"
                                     Text="Boris Vlahov"
-                                    FontSize="18"
-                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+                                    FontSize="17"
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" />
                             </HorizontalStackLayout>
                         </Frame>
 
@@ -240,12 +445,17 @@
                             BackgroundColor="Transparent"
                             BorderColor="Transparent"
                             CornerRadius="12">
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnBorisInstagramTapped" />
+                            </Frame.GestureRecognizers>
+
                             <HorizontalStackLayout
                                 Spacing="5"
                                 Padding="0,0">
                                 <Label 
                                     FontFamily="icons"
-                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" 
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" 
                                     FontSize="25"
                                     Text="{StaticResource IconInstagram}"
                                     BackgroundColor="Transparent" />
@@ -253,8 +463,8 @@
                                     VerticalTextAlignment="Center"
                                     HorizontalTextAlignment="Start"
                                     Text="boris_vlahov"
-                                    FontSize="18"
-                                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}" />
+                                    FontSize="17"
+                                    TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" />
                             </HorizontalStackLayout>
                         </Frame>
                     </VerticalStackLayout>
