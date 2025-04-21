@@ -51,7 +51,7 @@ public partial class JobOfferWidget : ContentView
     {
         try
         {
-            await Shell.Current.GoToAsync($"positionDetails?id={position.Id}");
+            await Navigation.PushAsync(new JobOfferPage(Position.Id));
         }
         catch (Exception ex)
         {
@@ -60,6 +60,6 @@ public partial class JobOfferWidget : ContentView
     }
     private async void NavigateToJobsCommand(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new JobOfferPage());
+        await Navigation.PushAsync(new JobOfferPage(Position.Id));
     }
 }

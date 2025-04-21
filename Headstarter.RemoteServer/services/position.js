@@ -4,16 +4,48 @@ const { validateToken, checkPermission, db2pb_position } = require('../utils');
 module.exports = {
     getPosition: (pool) => async (call, callback) => {
         try {
-            const { id } = call.request; // call.request is Position
+            const { id } = call.request;
+
             const client = await pool.connect();
+
+            // 1. Fetch the position by ID
             const result = await client.query('SELECT * FROM position WHERE id = $1', [id]);
+
+            if (result.rows.length === 0) {
+                client.release();
+                return callback({ code: grpc.status.NOT_FOUND, details: 'Position not found' });
+            }
+
+            const positionRow = result.rows[0];
+
+            // 2. Fetch associated offices
+            const officeQuery = `
+            SELECT o.*, po.position_id
+            FROM office o
+            JOIN position_office po ON o.id = po.office_id
+            WHERE po.position_id = $1
+        `;
+            const officeResult = await client.query(officeQuery, [id]);
+
             client.release();
 
-            if (result.rows.length > 0) {
-                callback(null, result.rows[0]);
-            } else {
-                callback({ code: grpc.status.NOT_FOUND, details: 'Position not found' });
-            }
+            // 3. Transform offices
+            const offices = officeResult.rows.map(row => ({
+                id: row.id,
+                name: row.name,
+                address: row.address,
+                location: row.location,
+                description: row.description,
+                companyId: row.company_id,
+                createdAt: row.created_at.toISOString?.() ?? String(row.created_at),
+                updatedAt: row.updated_at.toISOString?.() ?? String(row.updated_at)
+            }));
+
+            // 4. Map to gRPC-compatible position
+            const grpcPosition = db2pb_position(positionRow, offices);
+
+            callback(null, grpcPosition);
+
         } catch (error) {
             console.error('Error getting position:', error);
             callback({ code: grpc.status.INTERNAL, details: 'Internal server error' });
