@@ -33,11 +33,19 @@ module.exports = {
                         let query = 'SELECT * FROM applications WHERE 1=1';
                         const values = [];
 
-                        if (call.request.userId) { // call.request is GetAllApplicationsRequest
-                            query += ' AND user_id = $' + (values.length + 1);
-                            values.push(call.request.userId);
-                        }
-                        // ... (other filters) ...
+                        const addFilter = (field, column) => {
+                            if (call.request[field] !== undefined && call.request[field] !== null && call.request[field] !== '') {
+                                query += ` AND ${column} = $${values.length + 1}`;
+                                values.push(call.request[field]);
+                            }
+                        };
+
+                        addFilter('id', 'id');
+                        addFilter('userId', 'user_id');
+                        addFilter('positionId', 'position_id');
+                        addFilter('status', 'status');
+                        addFilter('createdAt', 'created_at');
+                        addFilter('updatedAt', 'updated_at');
 
                         const client = await pool.connect();
                         const result = await client.query(query, values);
@@ -56,7 +64,19 @@ module.exports = {
                         let query = 'SELECT * FROM applications WHERE user_id = $1';
                         const values = [call.user.id];
 
-                        // ... (other filters) ...
+                        const addFilter = (field, column) => {
+                            if (call.request[field] !== undefined && call.request[field] !== null && call.request[field] !== '') {
+                                query += ` AND ${column} = $${values.length + 1}`;
+                                values.push(call.request[field]);
+                            }
+                        };
+
+                        addFilter('id', 'id');
+                        addFilter('userId', 'user_id');
+                        addFilter('positionId', 'position_id');
+                        addFilter('status', 'status');
+                        addFilter('createdAt', 'created_at');
+                        addFilter('updatedAt', 'updated_at');
 
                         const client = await pool.connect();
                         const result = await client.query(query, values);

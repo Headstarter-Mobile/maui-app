@@ -24,22 +24,18 @@ module.exports = {
             });
         });
     },
-    getAllUsers: (pool) => async (call, callback) => {
-        validateToken(call, callback, async () => {
-            checkPermission('users.read', {})(call, callback, async () => { // Adjust permission as needed
-                try {
-                    const client = await pool.connect();
-                    const result = await client.query('SELECT id, name, email, company_id, type, created_at, updated_at FROM users');
-                    client.release();
+    getAllUsers: (pool) => async (call) => {
+        try {
+            const client = await pool.connect();
+            const result = await client.query('SELECT id, name, email, company_id, type, created_at, updated_at FROM users');
+            client.release();
 
-                    result.rows.forEach((row) => call.write(row));
-                    call.end();
-                } catch (error) {
-                    console.error('Error getting all users:', error);
-                    call.emit('error', { code: grpc.status.INTERNAL, details: 'Internal server error' });
-                }
-            });
-        });
+            result.rows.forEach((row) => call.write(row));
+            call.end();
+        } catch (error) {
+            console.error('Error getting all users:', error);
+            call.emit('error', { code: grpc.status.INTERNAL, details: 'Internal server error' });
+        }
     },
     createUser: (pool) => async (call, callback) => {
         try {
