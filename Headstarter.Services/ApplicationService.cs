@@ -65,7 +65,7 @@ public class ApplicationService : IApplicationService
         }
     }
 
-    public async Task<ICollection<Protos.Application>> GetAllPositions(int userId, int positionId, string status, string createdAtStart, string createdAtEnd, string updatedAtStart, string updatedAtEnd)
+    public async Task<ICollection<Protos.Application>> GetAllApplications(int userId, int positionId, string status, string createdAtStart, string createdAtEnd, string updatedAtStart, string updatedAtEnd)
     {
         try
         {
