@@ -14,7 +14,7 @@
                 Spacing="25">
 
                 <controls:Header></controls:Header>
-                
+
                 <Image
                    HorizontalOptions="Center"
                    Source="image41.png"
@@ -33,12 +33,14 @@
                 <controls:NewsWidget
                     Title="Мненията на служителите за Blankfactor" 
                     Description="Запознайте се с професионалисти на различни позиции и вижте какво мислят за компанията като работодател."
-                    Image="image_bf.jpg" />
+                    Image="image_bf.jpg" 
+                    NewsContent="{Binding News1}" />
 
                 <controls:NewsWidget
                     Title="Какво четат ИТ хората в България: д-р Марян Ризински, Bosch Digital" 
                     Description="Д-р Ризински споделя 3 ценни съвета, които „Към себе си“ на Марк Аврелий дава за живота и работата на софтуерните специалисти." 
-                    Image="image_bosch1.jpg" />
+                    Image="image_bosch1.jpg" 
+                    NewsContent="{Binding News2}" />
 
             </VerticalStackLayout>
         </ScrollView>

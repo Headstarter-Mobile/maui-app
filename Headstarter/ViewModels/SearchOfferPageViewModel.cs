@@ -107,7 +107,7 @@ public class SearchOfferPageViewModel : INotifyPropertyChanged
 
     private PositionType? PositionTypesFromString()
     {
-        switch(SelectedType)
+        switch (SelectedType)
         {
             case "Присъствен": return PositionType.OnSite;
             case "Дистанционен": return PositionType.Remote;

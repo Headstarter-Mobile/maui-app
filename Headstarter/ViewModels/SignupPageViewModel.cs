@@ -140,7 +140,7 @@ public class SignupPageViewModel : INotifyPropertyChanged
 
     private async void OnNavigateToLogin()
     {
-        await Shell.Current.GoToAsync("//LoginPage");
+        await Shell.Current.GoToAsync("login");
     }
 
     private bool IsValid()

@@ -20,7 +20,7 @@ public class CompanyPageViewModel : INotifyPropertyChanged
 
     public Protos.Company Company
     {
-        get => company; 
+        get => company;
         private set
         {
             if (company != value)
@@ -32,8 +32,8 @@ public class CompanyPageViewModel : INotifyPropertyChanged
     }
 
     public IEnumerable<Protos.Office> Offices
-    { 
-        get => offices; 
+    {
+        get => offices;
         private set
         {
             if (offices != value)
@@ -104,5 +104,5 @@ public class CompanyPageViewModel : INotifyPropertyChanged
 
         return this;
     }
-    
+
 }

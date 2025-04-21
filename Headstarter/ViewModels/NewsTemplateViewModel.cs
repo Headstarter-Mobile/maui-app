@@ -3,11 +3,14 @@ using System.Windows.Input;
 
 namespace Headstarter.ViewModels;
 
-public class NewsTemplateViewModel: INotifyPropertyChanged{
+public class NewsTemplateViewModel : INotifyPropertyChanged
+{
     public event PropertyChangedEventHandler PropertyChanged;
     public void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     private string title;
-    public string Title{get => title; 
+    public string Title
+    {
+        get => title;
         private set
         {
             if (title != value)
@@ -15,10 +18,13 @@ public class NewsTemplateViewModel: INotifyPropertyChanged{
                 title = value;
                 OnPropertyChanged(nameof(Title));
             }
-        }}
+        }
+    }
 
     private string description;
-    public string Description{get => description; 
+    public string Description
+    {
+        get => description;
         private set
         {
             if (description != value)
@@ -26,10 +32,13 @@ public class NewsTemplateViewModel: INotifyPropertyChanged{
                 description = value;
                 OnPropertyChanged(nameof(Description));
             }
-        }}
+        }
+    }
 
     private string image;
-    public string Image{get => image; 
+    public string Image
+    {
+        get => image;
         private set
         {
             if (image != value)
@@ -37,9 +46,12 @@ public class NewsTemplateViewModel: INotifyPropertyChanged{
                 image = value;
                 OnPropertyChanged(nameof(Image));
             }
-        }}
+        }
+    }
     private string content;
-    public string Content{get => content; 
+    public string Content
+    {
+        get => content;
         private set
         {
             if (content != value)
@@ -47,12 +59,13 @@ public class NewsTemplateViewModel: INotifyPropertyChanged{
                 content = value;
                 OnPropertyChanged(nameof(Content));
             }
-        }}
-    public NewsTemplateViewModel(string content,string image, string description, string title)
-    {   
-        Content=content;
-        Image=image;
-        Description=description;
-        Title=title;
+        }
+    }
+    public NewsTemplateViewModel(string content, string image, string description, string title)
+    {
+        Content = content;
+        Image = image;
+        Description = description;
+        Title = title;
     }
 }

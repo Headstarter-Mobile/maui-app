@@ -10,7 +10,7 @@ namespace Headstarter.Droid;
 [Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, LaunchMode = LaunchMode.SingleTop)]
 public class MainActivity : MauiAppCompatActivity
 {
-    PermissionStatus status =  Permissions.RequestAsync<NotificationPermission>().Result;
+    PermissionStatus status = Permissions.RequestAsync<NotificationPermission>().Result;
     protected override void OnCreate(Bundle? savedInstanceState)
     {
         base.OnCreate(savedInstanceState);

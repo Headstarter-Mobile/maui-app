@@ -7,9 +7,9 @@ namespace Headstarter.Views;
 
 public partial class CompanyPage : ContentPage
 {
-	public CompanyPage(int id = 1)
-	{
-		InitializeComponent();
+    public CompanyPage(int id = 1)
+    {
+        InitializeComponent();
         Task.Run(() => this.LoadViewModel(id)).Wait();
     }
 

@@ -2,10 +2,10 @@ namespace Headstarter.Views;
 
 public partial class QuestionsPage : ContentPage
 {
-	public QuestionsPage()
-	{
-		InitializeComponent();
-	}
+    public QuestionsPage()
+    {
+        InitializeComponent();
+    }
 
     //vupros 1
     private void OnFrameTapped1(object sender, EventArgs e)

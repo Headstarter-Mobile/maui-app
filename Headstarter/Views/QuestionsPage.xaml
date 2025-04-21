@@ -14,7 +14,7 @@
                Spacing="25">
 
                 <controls:Header></controls:Header>
-                
+
                 <Image
                     HorizontalOptions="Center"
                     Source="image31.png"
@@ -86,7 +86,7 @@
                 </Frame>
 
                 <!-- vupros 2 -->
-                
+
                 <Frame
                     x:Name="QuestionFrame2"
                     Margin="0,0,0,10"
@@ -312,7 +312,7 @@
                 </Frame>
 
                 <!-- vupros 6 -->
-                
+
                 <Frame
                     x:Name="QuestionFrame6"
                     Margin="0,0,0,10"

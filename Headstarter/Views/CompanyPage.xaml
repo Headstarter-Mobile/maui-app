@@ -51,17 +51,17 @@
                     <CollectionView ItemsSource="{Binding Offices}"
                                         SelectionMode="None"
                                         Margin="10">
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate>
-                                        <HorizontalStackLayout Spacing="10" Padding="0,0" Margin="10,0,0,0">
-                                            <Label 
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <HorizontalStackLayout Spacing="10" Padding="0,0" Margin="10,0,0,0">
+                                    <Label 
                                                 Margin="0,0,0,0"
                                                 FontFamily="icons"
                                                 TextColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}" FontSize="25"
                                                 Text="{StaticResource IconMapMarker}"
                                                 BackgroundColor="Transparent">
-                                            </Label>
-                                            <Label                               
+                                    </Label>
+                                    <Label                               
                                                 Margin="0,0,0,0"
                                                 VerticalTextAlignment="Center"
                                                 HorizontalTextAlignment="Start"
@@ -69,10 +69,10 @@
                                                 LineBreakMode="WordWrap"
                                                 WidthRequest="250"
                                                 MaxLines="2"/>
-                                        </HorizontalStackLayout>
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                        </CollectionView>
+                                </HorizontalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
 
                     <HorizontalStackLayout Spacing="10" Margin="10,-10,0,0" Padding="0,0">
                         <Label 
@@ -105,7 +105,7 @@
                                 Text="{StaticResource IconLink}"
                                 BackgroundColor="Transparent">
                         </Label>
-                            <Label                               
+                        <Label                               
                                 Margin="0,0,0,0"
                                 VerticalTextAlignment="Center"
                                 HorizontalTextAlignment="Start"
@@ -113,7 +113,7 @@
                                 LineBreakMode="WordWrap"
                                 WidthRequest="250"
                                 MaxLines="2"/>
-                        </HorizontalStackLayout>
+                    </HorizontalStackLayout>
 
                     <Label
                         HorizontalOptions="Center"
@@ -126,8 +126,8 @@
                            FontSize="15"
                             Text="{Binding Company.Description}">
                     </Label>
-                    </VerticalStackLayout>
-                    
+                </VerticalStackLayout>
+
 
                 <BoxView 
                     Margin="0,0,0,0" 

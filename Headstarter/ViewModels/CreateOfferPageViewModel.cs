@@ -189,7 +189,7 @@ public class CreateOfferPageViewModel : INotifyPropertyChanged
         newPosition.Offices.AddRange(offices);
         _positionService.CreatePosition(newPosition);
     }
-        private PositionStatus VisibilityFromString(string visibility)
+    private PositionStatus VisibilityFromString(string visibility)
     {
         return visibility switch
         {

@@ -13,7 +13,7 @@
             Padding="30,0,30,100"
             Spacing="25">
 
-            <controls:Header />
+                <controls:Header />
 
             </VerticalStackLayout>
         </ScrollView>

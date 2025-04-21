@@ -32,7 +32,7 @@
                             FontSize="25"
                             FontAttributes="Bold"
                             />
- 
+
                         <Border
                             x:Name="AlexImage"
                             HeightRequest="225" WidthRequest="225"
@@ -118,11 +118,11 @@
                             BackgroundColor="Transparent"
                             BorderColor="Transparent"
                             CornerRadius="12">
-                            
+
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnAlexFacebookTapped" />
                             </Frame.GestureRecognizers>
-                            
+
                             <HorizontalStackLayout
                                 Spacing="5"
                                 Padding="0,0">

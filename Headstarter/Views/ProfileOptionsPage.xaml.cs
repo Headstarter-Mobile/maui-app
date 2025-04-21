@@ -30,26 +30,26 @@ public partial class ProfileOptionsPage : ContentPage, INotifyPropertyChanged
         WorkerRecruiterNotSelected = false;
         WorkerSection.IsVisible = true;
         RecruiterSection.IsVisible = false;
-    
+
         WorkerButton.WidthRequest = 160;
         WorkerButton.HeightRequest = 75;
         WorkerButton.FontSize = 18;
-    
+
         RecruiterButton.WidthRequest = 120;
         RecruiterButton.HeightRequest = 55;
         RecruiterButton.FontSize = 14;
     }
-    
+
     private void OnRecruiterSelected(object sender, EventArgs e)
     {
         WorkerRecruiterNotSelected = true;
         WorkerSection.IsVisible = false;
         RecruiterSection.IsVisible = true;
-    
+
         RecruiterButton.WidthRequest = 160;
         RecruiterButton.HeightRequest = 75;
         RecruiterButton.FontSize = 18;
-    
+
         WorkerButton.WidthRequest = 120;
         WorkerButton.HeightRequest = 55;
         WorkerButton.FontSize = 14;

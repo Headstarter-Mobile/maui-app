@@ -14,7 +14,7 @@
                 Spacing="25">
 
                 <controls:Header></controls:Header>
-                
+
                 <Image
                    HorizontalOptions="Center"
                    Source="image51.png"

@@ -6,11 +6,13 @@ namespace Headstarter.Views;
 
 public partial class EmailVerificationPage : ContentPage
 {
+    private bool toSignIn;
     private User user;
-	public EmailVerificationPage(User _user)
+    public EmailVerificationPage(User _user, bool _toSignIn)
     {
+        toSignIn = _toSignIn;
         user = _user;
-		InitializeComponent();
+        InitializeComponent();
         BindingContext = new EmailVerificationPageViewModel(user);
         Digit1.TextChanged += OnDigitEntered;
         Digit2.TextChanged += OnDigitEntered;
@@ -25,7 +27,7 @@ public partial class EmailVerificationPage : ContentPage
     {
         if (sender is Entry currentEntry)
         {
-            if (!string.IsNullOrEmpty(e.NewTextValue)) 
+            if (!string.IsNullOrEmpty(e.NewTextValue))
             {
                 if (currentEntry == Digit1) Digit2.Focus();
                 else if (currentEntry == Digit2) Digit3.Focus();
@@ -33,7 +35,7 @@ public partial class EmailVerificationPage : ContentPage
                 else if (currentEntry == Digit4) Digit5.Focus();
                 else if (currentEntry == Digit5) Digit6.Focus();
             }
-            else 
+            else
             {
                 if (currentEntry == Digit6) Digit5.Focus();
                 else if (currentEntry == Digit5) Digit4.Focus();
@@ -46,7 +48,9 @@ public partial class EmailVerificationPage : ContentPage
 
     private async void NavigateToProfileOptionsCommand(object? sender, EventArgs e)
     {
-        await Navigation.PushAsync(new ProfileOptionsPage(user));
+        if (!toSignIn)
+            await Navigation.PushAsync(new ProfileOptionsPage(user));
+        else
+            await Shell.Current.GoToAsync("login");
     }
-
 }

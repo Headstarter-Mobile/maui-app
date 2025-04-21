@@ -215,7 +215,7 @@
                                 </Button.ImageSource>
                             </Button>
                         </HorizontalStackLayout>
-                                              
+
                         <Label                           
                             x:Name="LinkedInLink1"
                             Text="Линк към LinkedIn профил:"
@@ -524,7 +524,7 @@
         </ScrollView>
 
 
-  
+
 
     </Grid>
 
