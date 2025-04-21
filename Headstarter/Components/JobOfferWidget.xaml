@@ -88,7 +88,8 @@
                 TextColor="{AppThemeBinding Light={StaticResource LogoPurpleLight}, Dark={StaticResource Black}}"
                 BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
                 Command="{Binding Source={x:Reference JobWidget}, Path=ViewPositionCommand}"
-                CommandParameter="{Binding}" />
+                CommandParameter="{Binding}" 
+                Clicked="NavigateToJobsCommand"/>
         </StackLayout>
     </Frame>
 

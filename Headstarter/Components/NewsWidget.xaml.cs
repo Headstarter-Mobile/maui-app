@@ -1,3 +1,4 @@
+using Headstarter.Views;
 using System.Diagnostics;
 using System.Windows.Input;
 
@@ -70,5 +71,9 @@ public partial class NewsWidget : ContentView
         {
             Debug.WriteLine($"Navigation error: {ex.Message}");
         }
+    }
+    private async void NavigateToNewsTempCommand(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new NewsTemplatePage());
     }
 }
