@@ -4,9 +4,9 @@ namespace Headstarter.Views;
 
 public partial class RecruiterProfilePage : ContentPage
 {
-	public RecruiterProfilePage(int? id = null)
-	{
-		InitializeComponent();
+    public RecruiterProfilePage(int? id = null)
+    {
+        InitializeComponent();
         Task.Run(() => this.LoadViewModel(id)).Wait();
     }
 

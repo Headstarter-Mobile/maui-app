@@ -19,7 +19,7 @@ public class EmailVerificationPageViewModel : INotifyPropertyChanged
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    public  EmailVerificationPageViewModel(User _user)
+    public EmailVerificationPageViewModel(User _user)
     {
         User = _user;
         NavigateToProfileOptionsCommand = new Command(OnNavigateToProfileOptions);
@@ -62,7 +62,7 @@ public class EmailVerificationPageViewModel : INotifyPropertyChanged
     }
 
     public string FullCode => $"{Digit1}{Digit2}{Digit3}{Digit4}{Digit5}{Digit6}";
-    
+
     public ICommand NavigateToProfileOptionsCommand { get; }
 
     private void OnNavigateToProfileOptions()

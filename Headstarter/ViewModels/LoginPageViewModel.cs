@@ -12,7 +12,7 @@ public class LoginPageViewModel
     public string Email { get; set; }
     public string Password { get; set; }
     public bool RememberMe { get; set; }
-    public User User { get => new User() { Email = Email } ; }
+    public User User { get => new User() { Email = Email }; }
     public LoginPageViewModel(IUserService userService)
     {
         _userService = userService ?? throw new ArgumentNullException(nameof(userService));

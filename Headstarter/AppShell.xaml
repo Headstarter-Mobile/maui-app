@@ -25,7 +25,7 @@
             <Tab.Icon>
                 <FontImageSource FontFamily="icons" Glyph="{StaticResource IconMagnify}" />
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate views:RecruiterProfilePage}" />
+            <ShellContent ContentTemplate="{DataTemplate views:SearchOfferPage}" />
         </Tab>
 
         <Tab Title="Добави">

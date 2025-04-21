@@ -14,7 +14,7 @@ public partial class SignupPage : ContentPage
 
     private async void NavigateToEmailVerificationCommand(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new EmailVerificationPage((this.BindingContext as SignupPageViewModel).newUser));
+        await Navigation.PushAsync(new EmailVerificationPage((this.BindingContext as SignupPageViewModel).newUser, false));
     }
 
     private async void NavigateToLoginCommand(object sender, EventArgs e)
@@ -34,14 +34,14 @@ public partial class SignupPage : ContentPage
         var dayOptions = new string[31];
         for (int i = 0; i < 31; i++)
         {
-            dayOptions[i] = (i + 1).ToString();  
+            dayOptions[i] = (i + 1).ToString();
         }
 
         var daySelected = await DisplayActionSheet("Select Day", "Cancel", null, dayOptions);
 
         if (daySelected != null && daySelected != "Cancel")
         {
-            DayButton.Text = daySelected;  
+            DayButton.Text = daySelected;
         }
     }
 
@@ -57,7 +57,7 @@ public partial class SignupPage : ContentPage
 
         if (monthSelected != null && monthSelected != "Cancel")
         {
-            MonthButton.Text = monthSelected;  
+            MonthButton.Text = monthSelected;
         }
     }
 
@@ -67,14 +67,14 @@ public partial class SignupPage : ContentPage
         var yearOptions = new string[126];
         for (int i = 0; i < 126; i++)
         {
-            yearOptions[i] = (2025 - i).ToString(); 
+            yearOptions[i] = (2025 - i).ToString();
         }
 
         var yearSelected = await DisplayActionSheet("Select Year", "Cancel", null, yearOptions);
 
         if (yearSelected != null && yearSelected != "Cancel")
         {
-            YearButton.Text = yearSelected;  
+            YearButton.Text = yearSelected;
         }
     }
 }

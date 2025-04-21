@@ -17,7 +17,7 @@ public class NotificationService : INotificationService
     {
         try
         {
-            var client = _grpcService.notificationClient;
+            var client = _grpcService.notificationServiceClient;
             using var call = client.GetUnseenMessages(new GetUnseenMessagesRequest()
             {
                 Id = Id
@@ -54,7 +54,7 @@ public class NotificationService : INotificationService
     {
         try
         {
-            var client = _grpcService.notificationClient;
+            var client = _grpcService.notificationServiceClient;
             var response = await client.MarkAsReadAsync(new MarkAsReadRequest()
             {
                 Id = Id

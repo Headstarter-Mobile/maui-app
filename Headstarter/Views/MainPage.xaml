@@ -48,7 +48,7 @@
                     BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
                     Clicked="NavigateToSearchOfferCommand"/>
 
-                <Button Text="Обява" 
+                <!--<Button Text="Обява" 
                     BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
                     Margin="0,20,0,0"
                     x:Name="NavigateToJobOffer"
@@ -60,7 +60,7 @@
                     HorizontalOptions="Center"
                     BorderWidth="2"
                     BorderColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
-                    Clicked="NavigateToJobOfferCommand"/>
+                    Clicked="NavigateToJobOfferCommand"/>-->
 
 
                 <BoxView 
@@ -90,7 +90,7 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                
+
                 <BoxView 
                     Margin="0,20,0,10"
                     WidthRequest="325" 
@@ -108,12 +108,14 @@
                 <controls:NewsWidget
                     Title="Мненията на служителите за Blankfactor" 
                     Description="Запознайте се с професионалисти на различни позиции и вижте какво мислят за компанията като работодател."
-                    Image="image_bf.jpg" />
+                    Image="image_bf.jpg"
+                    NewsContent="{Binding News1}" />
 
                 <controls:NewsWidget
                     Title="Какво четат ИТ хората в България: д-р Марян Ризински, Bosch Digital" 
                     Description="Д-р Ризински споделя 3 ценни съвета, които „Към себе си“ на Марк Аврелий дава за живота и работата на софтуерните специалисти." 
-                    Image="image_bosch1.jpg" />
+                    Image="image_bosch1.jpg" 
+                    NewsContent="{Binding News2}" />
 
                 <controls:Footer></controls:Footer>
 

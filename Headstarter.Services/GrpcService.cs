@@ -9,7 +9,6 @@ public sealed class GrpcService
     public readonly Protos.UserService.UserServiceClient usersClient;
     public readonly Protos.PositionService.PositionServiceClient positionClient;
     public readonly Protos.OfficeService.OfficeServiceClient officeClient;
-    public readonly Protos.NotificationService.NotificationServiceClient notificationClient;
     public readonly Protos.CompanyService.CompanyServiceClient companyClient;
     public readonly Protos.ApplicationService.ApplicationServiceClient applicationClient;
     public readonly Protos.NotificationService.NotificationServiceClient notificationServiceClient;
@@ -18,11 +17,11 @@ public sealed class GrpcService
     public GrpcService()
     {
 #if DEBUG
-        channel = GrpcChannel.ForAddress("http://localhost:5001");
-        //channel = GrpcChannel.ForAddress("http://129.159.196.117:5001");
+        //channel = GrpcChannel.ForAddress("http://localhost:5001");
+        channel = GrpcChannel.ForAddress("http://129.159.196.117:50051");
 #else
-        channel = GrpcChannel.ForAddress("http://129.159.196.117:5001");
-#endif
+        channel = GrpcChannel.ForAddress("http://129.159.196.117:50051");
+# endif
         _metadata = new Metadata
         {
             { "token", "" }
@@ -30,7 +29,6 @@ public sealed class GrpcService
         usersClient = new Protos.UserService.UserServiceClient(channel);
         positionClient = new Protos.PositionService.PositionServiceClient(channel);
         officeClient = new Protos.OfficeService.OfficeServiceClient(channel);
-        notificationClient = new Protos.NotificationService.NotificationServiceClient(channel);
         companyClient = new Protos.CompanyService.CompanyServiceClient(channel);
         applicationClient = new Protos.ApplicationService.ApplicationServiceClient(channel);
         notificationServiceClient = new Protos.NotificationService.NotificationServiceClient(channel);

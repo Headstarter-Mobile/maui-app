@@ -2,10 +2,10 @@ namespace Headstarter.Views;
 
 public partial class AboutUsPage : ContentPage
 {
-	public AboutUsPage()
-	{
-		InitializeComponent();
-	}
+    public AboutUsPage()
+    {
+        InitializeComponent();
+    }
     //alex social
 
     private async void OnAlexPhoneTapped(object sender, EventArgs e)

@@ -103,7 +103,7 @@ public partial class UserService : IUserService
             }
         }
     }
-    
+
     public async Task<ICollection<User>> GetAllUsers(User filters)
     {
         try
@@ -171,7 +171,7 @@ public partial class UserService : IUserService
         {
             var client = _grpcService.usersClient;
             User user = client.GetUser(filter, _grpcService._metadata);
-            
+
             return user;
         }
         catch (RpcException ex)

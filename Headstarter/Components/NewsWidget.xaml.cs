@@ -48,6 +48,18 @@ public partial class NewsWidget : ContentView
         set => SetValue(ImageProperty, value);
     }
 
+    public static readonly BindableProperty NewsContentProperty = BindableProperty.Create(
+        nameof(NewsContent),
+        typeof(string),
+        typeof(NewsWidget),
+        string.Empty);
+
+    public string NewsContent
+    {
+        get => (string)GetValue(NewsContentProperty);
+        set => SetValue(ContentProperty, value);
+    }
+
     public static readonly BindableProperty ViewNewsCommandProperty = BindableProperty.Create(
         nameof(ViewNewsCommand),
         typeof(ICommand),
@@ -64,8 +76,7 @@ public partial class NewsWidget : ContentView
     {
         try
         {
-            // Assuming navigation logic is related to the title, you can adjust if ID is needed
-            await Shell.Current.GoToAsync($"newsDetails?title={Title}");
+            await Navigation.PushAsync(new NewsTemplatePage(Title, Description, Image, NewsContent));
         }
         catch (Exception ex)
         {
@@ -74,6 +85,6 @@ public partial class NewsWidget : ContentView
     }
     private async void NavigateToNewsTempCommand(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new NewsTemplatePage());
+        await Navigation.PushAsync(new NewsTemplatePage(Title, Description, Image, NewsContent));
     }
 }

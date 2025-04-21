@@ -6,9 +6,9 @@ namespace Headstarter.Views;
 
 public partial class JobOfferPage : ContentPage
 {
-	public JobOfferPage(int? positionId = null)
-	{
-		InitializeComponent();
+    public JobOfferPage(int? positionId = null)
+    {
+        InitializeComponent();
         Task.Run(() => this.LoadViewModel(positionId)).Wait();
     }
     private async Task LoadViewModel(int? positionId)
