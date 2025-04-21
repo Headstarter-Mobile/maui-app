@@ -18,7 +18,8 @@ public sealed class GrpcService
     public GrpcService()
     {
 #if DEBUG
-        channel = GrpcChannel.ForAddress("http://localhost:5001");
+        //channel = GrpcChannel.ForAddress("http://localhost:5001");
+        channel = GrpcChannel.ForAddress("http://129.159.196.117:5001");
 #else
         channel = GrpcChannel.ForAddress("http://129.159.196.117:5001");
 #endif
