@@ -24,9 +24,9 @@ module.exports = {
             });
         });
     },
-    getAllUsers: (pool) => async (call) => {
-        validateToken(call, call.callback, async () => {
-            checkPermission('users.read', {})(call, call.callback, async () => { // Adjust permission as needed
+    getAllUsers: (pool) => async (call, callback) => {
+        validateToken(call, callback, async () => {
+            checkPermission('users.read', {})(call, callback, async () => { // Adjust permission as needed
                 try {
                     const client = await pool.connect();
                     const result = await client.query('SELECT id, name, email, company_id, type, created_at, updated_at FROM users');

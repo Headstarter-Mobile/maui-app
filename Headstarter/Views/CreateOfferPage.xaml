@@ -158,6 +158,39 @@
                             BackgroundColor="Transparent"/>
                 </Frame>
 
+                <VerticalStackLayout Margin="0,15,0,10">
+                    <Label                       
+                        HorizontalOptions="Center"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                        Text="Видимост">
+                    </Label>
+                    <Border   
+                        Margin="0,10,0,0"
+                        BackgroundColor="Transparent"
+                        WidthRequest="150" HeightRequest="60"
+                        Stroke="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="50" />
+                        </Border.StrokeShape>
+                        <Picker    
+                            x:Name="OfferVisibility"
+                            TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Gray100}}"
+                            VerticalOptions="Center"
+                            FontSize="18"
+                            SelectedItem="{Binding SelectedUserType}" 
+                            HorizontalOptions="Center">
+                            <Picker.Items>
+                                <x:String>Тестова</x:String>
+                                <x:String>Публична</x:String>
+                                <x:String>Изтекла</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </Border>
+                </VerticalStackLayout>
+
                 <Button Text="Публикуване"
                         Command="{Binding SearchCommand}"
                         Margin="0,20"
