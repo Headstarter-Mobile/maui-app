@@ -90,7 +90,10 @@ We offer:
 
     public async Task<JobOfferPageViewModel> ForPosition(int positionId)
     {
-        _position = _positionService.GetPosition(new Position { Id = positionId });
+        var list = (await _positionService.GetAllPositions(new Position { Id = positionId }, 1));
+        if (list.Count == 0)
+            throw new ArgumentNullException(nameof(positionId));
+        _position = list.First();
         if (_position == null)
             throw new ArgumentNullException(nameof(_position));
         _company = _companyService.GetCompany(new Company { Id = _position.CompanyId });
