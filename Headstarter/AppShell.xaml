@@ -32,14 +32,14 @@
             <Tab.Icon>
                 <FontImageSource FontFamily="icons" Glyph="{StaticResource IconPlusBox}" />
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate views:CompanyPage}" />
+            <ShellContent ContentTemplate="{DataTemplate views:CreateOfferPage}" />
         </Tab>
 
         <Tab Title="Новини">
             <Tab.Icon>
                 <FontImageSource FontFamily="icons" Glyph="{StaticResource IconNewspaper}" />
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate views:LoginPage}" />
+            <ShellContent ContentTemplate="{DataTemplate views:NewsPage}" />
         </Tab>
 
         <Tab Title="Профил">

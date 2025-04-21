@@ -59,7 +59,8 @@
                     BackgroundColor="{AppThemeBinding Light={StaticResource LogoPurple}, Dark={StaticResource LogoOrange}}"
                     WidthRequest="100"
                     HeightRequest="50"
-                    Command="{Binding Source={x:Reference NewsWidgetRef}, Path=ViewNewsCommand}" />
+                    Command="{Binding Source={x:Reference NewsWidgetRef}, Path=ViewNewsCommand}" 
+                    Clicked="NavigateToNewsTempCommand"/>
             </HorizontalStackLayout>
         </StackLayout>
     </Frame>

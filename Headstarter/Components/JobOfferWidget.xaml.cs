@@ -1,4 +1,5 @@
 using Headstarter.Protos;
+using Headstarter.Views;
 using System.Diagnostics;
 using System.Windows.Input;
 
@@ -56,5 +57,9 @@ public partial class JobOfferWidget : ContentView
         {
             Debug.WriteLine($"Error navigating to position details: {ex.Message}");
         }
+    }
+    private async void NavigateToJobsCommand(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new JobOfferPage());
     }
 }
