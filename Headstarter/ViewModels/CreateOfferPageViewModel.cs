@@ -88,7 +88,7 @@ public class CreateOfferPageViewModel : INotifyPropertyChanged
         Task.Run(() => LoadCompany());
     }
 
-    private async void LoadCompany()
+    public async Task<CreateOfferPageViewModel> LoadCompany()
     {
         Company = _companyService.GetCompany(new Company
         {
@@ -98,6 +98,7 @@ public class CreateOfferPageViewModel : INotifyPropertyChanged
         {
             CompanyId = SessionService.Instance.CurrentUser.CompanyId
         });
+        return this;
     }
 
     private PositionType PositionTypesFromString()
