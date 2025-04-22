@@ -11,7 +11,7 @@
 
 	<ItemGroup>
 		<!-- App Icon and Splash -->
-		<MauiIcon Include="Resources\AppIcon\headstarter_logo1.png"  Resize="False" Color="" />
+		<MauiIcon Include="Resources\AppIcon\headstarter_logo1.png" Resize="False" Color="" />
 		<MauiSplashScreen Include="Resources\Images\headstarter_logo2.png" Color="#FFFFFF" />		
 		
 		
@@ -29,6 +29,7 @@
 		<PackageReference Include="Konscious.Security.Cryptography.Argon2" Version="1.3.1" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+		<PackageReference Include="Plugin.LocalNotification" Version="11.1.4" />
 	</ItemGroup>
 
 	<ItemGroup>

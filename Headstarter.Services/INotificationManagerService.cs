@@ -1,4 +1,4 @@
-﻿namespace Headstarter.Interfaces;
+﻿namespace Headstarter.Services;
 
 public interface INotificationManagerService
 {

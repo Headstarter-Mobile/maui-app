@@ -1,6 +1,5 @@
 ﻿using Headstarter.Protos;
 using Grpc.Core;
-using Headstarter.Interfaces;
 
 
 namespace Headstarter.Services
@@ -8,8 +7,6 @@ namespace Headstarter.Services
     public class NotificationService : INotificationService
     {
         private readonly GrpcService _grpcService; // For API calls
-        private readonly INotificationManagerService notificationManager =
-        Microsoft.Maui.Controls.Application.Current?.Windows[0].Page?.Handler?.MauiContext?.Services.GetService<INotificationManagerService>();
         public NotificationService(GrpcService grpcService)
         {
             _grpcService = grpcService;
