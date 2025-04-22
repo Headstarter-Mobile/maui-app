@@ -39,6 +39,7 @@ public static class MauiProgramExtensions
 
         // ViewModels
         builder.Services.AddSingleton<CompanyPageViewModel>();
+        builder.Services.AddSingleton<CreateOfferPageViewModel>();
         builder.Services.AddSingleton<EmailVerificationPageViewModel>();
         builder.Services.AddSingleton<ForgottenPasswordPageViewModel>();
         builder.Services.AddSingleton<JobOfferPageViewModel>();
