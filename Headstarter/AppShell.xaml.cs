@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using Headstarter.Views;
+using System.Windows.Input;
 
 namespace Headstarter
 {
@@ -13,6 +14,8 @@ namespace Headstarter
             Routing.RegisterRoute("login", typeof(Views.LoginPage));
             Routing.RegisterRoute("signup", typeof(Views.SignupPage));
             Routing.RegisterRoute("profile", typeof(Views.ProfilePage));
+            Routing.RegisterRoute(nameof(RecruiterProfilePage), typeof(Views.RecruiterProfilePage));
+            Routing.RegisterRoute(nameof(WorkerProfilePage), typeof(Views.WorkerProfilePage));
 
 
             NavigateToLoginCommand = new Command(async () => await Shell.Current.GoToAsync("login"));

@@ -3,7 +3,7 @@ using Headstarter.Services;
 using Headstarter.ViewModels;
 using Headstarter.Views;
 using Microsoft.Extensions.Logging;
-using Microsoft.Maui.LifecycleEvents;
+using Plugin.LocalNotification;
 
 namespace Headstarter;
 
@@ -13,6 +13,7 @@ public static class MauiProgramExtensions
     {
         builder
             .UseMauiApp<App>()
+            .UseLocalNotification()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -22,15 +23,6 @@ public static class MauiProgramExtensions
                 fonts.AddFont("LilitaOne-Regular.ttf", "LilitaOne");
                 fonts.AddFont("materialdesignicons-webfont.ttf", "icons");
             });
-#if ANDROID
-        builder.Services.AddTransient<INotificationManagerService, Headstarter.Services.Android.NotificationManagerService>();
-#elif IOS
-        builder.Services.AddTransient<INotificationManagerService, Headstarter.Services.iOS.NotificationManagerService>();
-#elif MACCATALYST
-        builder.Services.AddTransient<INotificationManagerService, Headstarter.Services.MacCatalyst.NotificationManagerService>();
-#elif WINDOWS
-        builder.Services.AddTransient<INotificationManagerService, Headstarter.Services.Windows.NotificationManagerService>();          
-#endif
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
@@ -39,11 +31,11 @@ public static class MauiProgramExtensions
         builder.Services.AddTransient<IApplicationService, ApplicationService>();
         // builder.Services.AddTransient<IAuthTokenService, AuthTokenService>();
         builder.Services.AddTransient<ICompanyService, CompanyService>();
-        builder.Services.AddTransient<INotificationService, NotificationService>();
         builder.Services.AddTransient<IOfficeService, OfficeService>();
         builder.Services.AddTransient<IPasswordService, PasswordService>();
         builder.Services.AddTransient<IPositionService, PositionService>();
         builder.Services.AddTransient<IUserService, UserService>();
+        builder.Services.AddTransient<Services.INotificationService, Headstarter.Services.NotificationService>();
 
         // ViewModels
         builder.Services.AddSingleton<CompanyPageViewModel>();
