@@ -9,6 +9,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <UseMaui>true</UseMaui>
         <MtouchLink>SdkOnly</MtouchLink>
+		<EnableWindowsTargeting>true</EnableWindowsTargeting>
     </PropertyGroup>
 
     <ItemGroup>
