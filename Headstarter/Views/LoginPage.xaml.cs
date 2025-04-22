@@ -18,7 +18,7 @@ public partial class LoginPage : ContentPage
 
     private async void NavigateToProfileCommand(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new WorkerProfilePage());
+        await Navigation.PushAsync(new WorkerProfilePage(null));
     }
 
     private async void NavigateToNewPassVerifCommand(object sender, EventArgs e)
