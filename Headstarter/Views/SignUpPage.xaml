@@ -3,10 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Headstarter.Components"
              xmlns:viewmodels="clr-namespace:Headstarter.ViewModels"
+             xmlns:converters="clr-namespace:Headstarter.Converter"
              x:Class="Headstarter.Views.SignupPage"
              x:DataType="viewmodels:SignupPageViewModel"
              Title="">
-
+    <ContentPage.Resources>
+        <ResourceDictionary>
+              <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <Grid RowDefinitions="*, Auto">
 
         <ScrollView Grid.Row="0">
