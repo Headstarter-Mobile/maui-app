@@ -52,9 +52,15 @@ public class LoginPageViewModel
                 }
             });
             if (loggedUser.UserData.Type == UserRole.Recruiter)
-                await Shell.Current.GoToAsync(nameof(RecruiterProfilePage));
+            {
+                RecruiterProfilePage profile = new RecruiterProfilePage(SessionService.Instance.CurrentUser);
+                await Shell.Current.Navigation.PushAsync(profile);
+            }
             else if (loggedUser.UserData.Type == UserRole.Candidate)
-                await Shell.Current.GoToAsync(nameof(WorkerProfilePage));
+            {
+                WorkerProfilePage profile = new WorkerProfilePage(SessionService.Instance.CurrentUser.Id);
+                await Shell.Current.Navigation.PushAsync(profile);
+            }
         }
         else
         {

@@ -85,17 +85,12 @@ public class RecruiterProfilePageViewModel : INotifyPropertyChanged
         _positionService = positionService;
     }
 
-    public async Task<RecruiterProfilePageViewModel> LoadData(int? userId)
+    public async Task<RecruiterProfilePageViewModel> LoadData(User? user)
     {
         // Dummy data
-        if (userId is null)
+        if (user is null)
             return this;
-        User = _userService.GetUser(new User()
-        {
-            Id = (int)userId
-        });
-        if (User == null)
-            throw new ArgumentNullException(nameof(User));
+        User = user;
         Company = _companyService.GetCompany(new Company()
         {
             Id = User.CompanyId
