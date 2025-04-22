@@ -1,39 +1,49 @@
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using Headstarter.Interfaces;
-using Headstarter.Notifications;
 using Android.Content;
+using Headstarter.Services;
+using Plugin.LocalNotification;
 
 namespace Headstarter.Droid;
 
-[Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, LaunchMode = LaunchMode.SingleTop)]
+[Activity(
+    Theme = "@style/Maui.SplashTheme",
+    MainLauncher = true,
+    LaunchMode = LaunchMode.SingleTop,
+    ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize
+)]
 public class MainActivity : MauiAppCompatActivity
 {
-    PermissionStatus status = Permissions.RequestAsync<NotificationPermission>().Result;
-    protected override void OnCreate(Bundle? savedInstanceState)
+    protected override void OnCreate(Bundle savedInstanceState)
     {
         base.OnCreate(savedInstanceState);
-
-        CreateNotificationFromIntent(Intent);
-    }
-
-    protected override void OnNewIntent(Intent? intent)
-    {
-        base.OnNewIntent(intent);
-
-        CreateNotificationFromIntent(intent);
-    }
-
-    static void CreateNotificationFromIntent(Intent intent)
-    {
-        if (intent?.Extras != null)
+        CreateNotificationChannel(); // Still required for Android 8+
+        if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu) // Android 13+
         {
-            string title = intent.GetStringExtra(NotificationManagerService.TitleKey);
-            string message = intent.GetStringExtra(NotificationManagerService.MessageKey);
+            const string notificationPermission = Android.Manifest.Permission.PostNotifications;
 
-            var service = IPlatformApplication.Current.Services.GetService<INotificationManagerService>();
-            service.ReceiveNotification(title, message);
+            if (CheckSelfPermission(notificationPermission) != Permission.Granted)
+            {
+                RequestPermissions(new[] { notificationPermission }, 1001);
+            }
+        }
+    }
+
+    private void CreateNotificationChannel()
+    {
+        if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
+        {
+            var channel = new NotificationChannel(
+                "default",
+                "General Notifications",
+                NotificationImportance.Default)
+            {
+                Description = "Used for general local notifications"
+            };
+
+            var manager = (NotificationManager)GetSystemService(NotificationService);
+            manager.CreateNotificationChannel(channel);
         }
     }
 }
